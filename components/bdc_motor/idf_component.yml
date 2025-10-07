@@ -1,0 +1,10 @@
+dependencies:
+  idf: '>=5.0'
+description: Brushed DC Motor Control Driver
+issues: https://github.com/espressif/idf-extra-components/issues
+repository: git://github.com/espressif/idf-extra-components.git
+repository_info:
+  commit_sha: f467d5d5dcceb6e3d6bb4248b70884d0e9ba1ced
+  path: bdc_motor
+url: https://github.com/espressif/idf-extra-components/tree/master/bdc_motor
+version: 0.2.1
