@@ -1,0 +1,10 @@
+#ifndef __USER_MPU6050_H__
+#define __USER_MPU6050_H__
+
+#include "mpu6050.h"
+
+void mpu6050_init(void);
+void mpu6050_read( mpu6050_acce_value_t *const acce, mpu6050_gyro_value_t *const gyro);
+void mpu6050_get_rp( mpu6050_acce_value_t *const acce, mpu6050_gyro_value_t *const gyro, complimentary_angle_t *const complimentary_angle);
+
+#endif
