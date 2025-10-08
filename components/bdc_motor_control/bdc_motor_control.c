@@ -47,6 +47,8 @@ static void pid_loop_cb(void *args)
     float error = ctx->target_pulses - real_pulses;
     float new_speed = 0;
 
+    // ESP_LOGI(TAG, "error:%f", error);
+
     // set the new speed
     pid_compute(pid_ctrl, error, &new_speed);
     bdc_motor_set_speed_with_direction(motor, new_speed);
@@ -136,12 +138,13 @@ void dc_motor_control_init( dc_motor_control_config_t* control_config, dc_motor_
     control_context->last_pulses = 0;
     control_context->report_pulses = 0;
     control_context->target_pulses = 0;
+    control_context->mutex = xSemaphoreCreateMutex();
     ESP_LOGI( TAG, "初始化电机PID控制块完毕!!!");
 
     ESP_LOGI( TAG, "初始化电机高分辨率定时器中!!!");
     const esp_timer_create_args_t periodic_timer_args = {
         .callback = pid_loop_cb,
-        .arg = &control_context,
+        .arg = control_context,
         .name = "pid_loop"
     };
     esp_timer_handle_t pid_loop_timer = NULL;
@@ -154,7 +157,7 @@ void dc_motor_control_init( dc_motor_control_config_t* control_config, dc_motor_
     ESP_ERROR_CHECK(bdc_motor_forward(motor));
     ESP_ERROR_CHECK(bdc_motor_set_speed( motor, 0));
     ESP_LOGI(TAG, "开启当前电机的速度控制高分辨率周期控制(通过task)");
-    ESP_ERROR_CHECK(esp_timer_start_periodic(pid_loop_timer, control_config->pid.period_ms * 1000));
+    // ESP_ERROR_CHECK(esp_timer_start_periodic(pid_loop_timer, control_config->pid.period_ms * 1000));
 }
 
 /**
