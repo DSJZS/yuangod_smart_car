@@ -95,7 +95,7 @@ static esp_err_t mpu6050_read(mpu6050_handle_t sensor, const uint8_t reg_start_a
 #define BSP_ERROR_CHECK_RETURN_ERR(x)    ESP_ERROR_CHECK(x)
 esp_err_t bsp_i2c_init(mpu6050_i2c_config_t* port)
 {
-    const i2c_config_t i2c_conf = {
+    i2c_config_t i2c_conf = {
         .mode = I2C_MODE_MASTER,
         .sda_io_num = port->sda_io_num,
         .sda_pullup_en = GPIO_PULLUP_ENABLE,
