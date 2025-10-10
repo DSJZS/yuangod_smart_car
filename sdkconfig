@@ -1924,6 +1924,8 @@ CONFIG_SOFTWARE_ESTIMATION_SAMPLE_INTERVAL=20000
 # end of Software Estimation Configuration
 # end of ADC Battery Estimation
 
+CONFIG_USE_CAMPUS_NETWORK=y
+
 #
 # CMake Utilities
 #
