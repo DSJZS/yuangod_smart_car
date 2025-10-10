@@ -5,13 +5,13 @@
 
 static void network_init(void)
 {
-#ifdef USE_CAMPUS_NETWORK
+#ifdef CONFIG_USE_CAMPUS_NETWORK
     campus_network_config_t can_cfg = {
         .can_event_handler = NULL,
-        .can_ssid = CAMPUS_NETWORK_SSID,
+        .can_ssid = CONFIG_CAMPUS_NETWORK_SSID,
         .can_task_priority = NETWORK_TASK_PRIO,
-        .can_user_id = CAMPUS_NETWORK_ID,
-        .can_user_password = CAMPUS_NETWORK_PASSWORD,
+        .can_user_id = CONFIG_CAMPUS_NETWORK_ID,
+        .can_user_password = CONFIG_CAMPUS_NETWORK_PASSWORD,
     };
     campus_network_config( &can_cfg);
 #endif
