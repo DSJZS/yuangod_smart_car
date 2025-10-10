@@ -1,4 +1,4 @@
-#include "bdc_motor_control.h"
+#include "./include/bdc_motor_control.h"
 #include "esp_log.h"
 #include "esp_timer.h"
 
@@ -8,7 +8,7 @@
 
 static const char* TAG = "from -> "__FILE__;
 
-static void bdc_motor_set_speed_with_direction( bdc_motor_handle_t motor, float new_speed)
+void bdc_motor_set_speed_with_direction( bdc_motor_handle_t motor, float new_speed)
 {
     if ( new_speed > 0 ) {
         bdc_motor_forward( motor);
@@ -27,34 +27,34 @@ static void bdc_motor_set_speed_with_direction( bdc_motor_handle_t motor, float 
   *
   * @param args dc_motor_control_context_t类型数据
   */
-static void pid_loop_cb(void *args)
-{
-    dc_motor_control_context_t *ctx = (dc_motor_control_context_t *)args;
-    xSemaphoreTake( ctx->mutex, portMAX_DELAY);
+// static void pid_loop_cb(void *args)
+// {
+//     dc_motor_control_context_t *ctx = (dc_motor_control_context_t *)args;
+//     xSemaphoreTake( ctx->mutex, portMAX_DELAY);
 
-    pcnt_unit_handle_t pcnt_unit = ctx->pcnt_encoder;
-    pid_ctrl_block_handle_t pid_ctrl = ctx->pid_ctrl;
-    bdc_motor_handle_t motor = ctx->motor;
+//     pcnt_unit_handle_t pcnt_unit = ctx->pcnt_encoder;
+//     pid_ctrl_block_handle_t pid_ctrl = ctx->pid_ctrl;
+//     bdc_motor_handle_t motor = ctx->motor;
 
-    // get the result from rotary encoder
-    int cur_pulse_count = 0;
-    pcnt_unit_get_count(pcnt_unit, &cur_pulse_count);
-    int real_pulses = cur_pulse_count - ctx->last_pulses;
-    ctx->last_pulses = cur_pulse_count;
-    ctx->report_pulses = real_pulses;
+//     // get the result from rotary encoder
+//     int cur_pulse_count = 0;
+//     pcnt_unit_get_count(pcnt_unit, &cur_pulse_count);
+//     int real_pulses = cur_pulse_count - ctx->last_pulses;
+//     ctx->last_pulses = cur_pulse_count;
+//     ctx->report_pulses = real_pulses;
 
-    // calculate the speed error
-    float error = ctx->target_pulses - real_pulses;
-    float new_speed = 0;
+//     // calculate the speed error
+//     float error = ctx->target_pulses - real_pulses;
+//     float new_speed = 0;
 
-    // ESP_LOGI(TAG, "error:%f", error);
+//     // ESP_LOGI(TAG, "error:%f", error);
 
-    // set the new speed
-    pid_compute(pid_ctrl, error, &new_speed);
-    bdc_motor_set_speed_with_direction(motor, new_speed);
+//     // set the new speed
+//     pid_compute(pid_ctrl, error, &new_speed);
+//     bdc_motor_set_speed_with_direction(motor, new_speed);
 
-    xSemaphoreGive( ctx->mutex);
-}
+//     xSemaphoreGive( ctx->mutex);
+// }
 
 /**
   * @brief 直流电机控制初始化(PWM配置， 4x正交解码器配置, PID配置)
@@ -141,15 +141,15 @@ void dc_motor_control_init( dc_motor_control_config_t* control_config, dc_motor_
     control_context->mutex = xSemaphoreCreateMutex();
     ESP_LOGI( TAG, "初始化电机PID控制块完毕!!!");
 
-    ESP_LOGI( TAG, "初始化电机高分辨率定时器中!!!");
-    const esp_timer_create_args_t periodic_timer_args = {
-        .callback = pid_loop_cb,
-        .arg = control_context,
-        .name = "pid_loop"
-    };
-    esp_timer_handle_t pid_loop_timer = NULL;
-    ESP_ERROR_CHECK(esp_timer_create(&periodic_timer_args, &pid_loop_timer));
-    ESP_LOGI( TAG, "初始化电机高分辨率定时器完毕!!!");
+    // ESP_LOGI( TAG, "初始化电机高分辨率定时器中!!!");
+    // const esp_timer_create_args_t periodic_timer_args = {
+    //     .callback = pid_loop_cb,
+    //     .arg = control_context,
+    //     .name = "pid_loop"
+    // };
+    // esp_timer_handle_t pid_loop_timer = NULL;
+    // ESP_ERROR_CHECK(esp_timer_create(&periodic_timer_args, &pid_loop_timer));
+    // ESP_LOGI( TAG, "初始化电机高分辨率定时器完毕!!!");
 
     ESP_LOGI(TAG, "使能当前设置的电机");
     ESP_ERROR_CHECK(bdc_motor_enable(motor));

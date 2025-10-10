@@ -42,5 +42,7 @@ typedef struct {
 void dc_motor_control_init( dc_motor_control_config_t* control_config, dc_motor_control_context_t* control_context);
 /* 修改目标值(线程安全) */
 void dc_motor_control_set_target( dc_motor_control_context_t* control_context, int target_pulses);
+/* 修改电机的转速与方向 */
+void bdc_motor_set_speed_with_direction( bdc_motor_handle_t motor, float new_speed);
 
 #endif
