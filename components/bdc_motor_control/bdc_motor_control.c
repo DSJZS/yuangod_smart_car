@@ -82,7 +82,7 @@ void dc_motor_control_init( dc_motor_control_config_t* control_config, dc_motor_
     control_context->motor = motor;
     ESP_LOGI( TAG, "初始化有刷直流电机完毕!!!");
 
-    ESP_LOGI( TAG, "初始化电机正交解码器中!!!");
+    ESP_LOGI( TAG, "初始化电机4倍频正交解码器中!!!");
     pcnt_unit_config_t unit_config = {
         .high_limit = BDC_ENCODER_PCNT_HIGH_LIMIT,
         .low_limit = BDC_ENCODER_PCNT_LOW_LIMIT,
@@ -116,7 +116,7 @@ void dc_motor_control_init( dc_motor_control_config_t* control_config, dc_motor_
     ESP_ERROR_CHECK(pcnt_unit_clear_count(pcnt_unit));
     ESP_ERROR_CHECK(pcnt_unit_start(pcnt_unit));
     control_context->pcnt_encoder = pcnt_unit;
-    ESP_LOGI( TAG, "初始化电机正交解码器完毕!!!");
+    ESP_LOGI( TAG, "初始化电机4倍频正交解码器中!!!");
 
     ESP_LOGI( TAG, "初始化电机PID控制块中!!!");
     pid_ctrl_parameter_t pid_runtime_param = {
@@ -172,3 +172,24 @@ void dc_motor_control_set_target( dc_motor_control_context_t* control_context, i
     control_context->target_pulses = target_pulses;
     xSemaphoreGive( control_context->mutex);
 }
+
+/**
+  * @brief 更新脉冲值记录
+  *
+  * @param control_context 控制上下文
+  */
+ void dc_motor_control_get_pulse_cnt( dc_motor_control_context_t* control_context)
+ {
+    xSemaphoreTake( control_context->mutex, portMAX_DELAY);
+
+    pcnt_unit_handle_t pcnt_unit = control_context->pcnt_encoder;
+
+    // get the result from rotary encoder
+    int cur_pulse_count = 0;
+    pcnt_unit_get_count(pcnt_unit, &cur_pulse_count);
+    int real_pulses = cur_pulse_count - control_context->last_pulses;
+    control_context->last_pulses = cur_pulse_count;
+    control_context->report_pulses = real_pulses;
+
+    xSemaphoreGive( control_context->mutex);
+ }
