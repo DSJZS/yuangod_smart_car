@@ -1,0 +1,31 @@
+menu "Campus Network"
+
+    # Create some network option in menuconfig
+    config USE_CAMPUS_NETWORK
+        bool "Use the campus network to connect to the Internet"
+        default y
+        help
+            Add functions related to campus network connection and authentication to connect to the Internet.
+
+    config CAMPUS_NETWORK_SSID
+        string "CAMPUS NETWORK SSID"
+        depends on USE_CAMPUS_NETWORK
+        default "test_ssid"
+        help
+            SSID (network name) for the device to connect to.
+
+    config CAMPUS_NETWORK_ID
+        string "CAMPUS NETWORK ID"
+        depends on USE_CAMPUS_NETWORK
+        default "test_id"
+        help
+            Your campus network user ID.
+
+    config CAMPUS_NETWORK_PASSWORD
+        string "CAMPUS NETWORK PASSWORD"
+        depends on USE_CAMPUS_NETWORK
+        default "test_password"
+        help
+            Your campus network user password.
+
+endmenu
