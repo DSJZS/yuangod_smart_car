@@ -8,20 +8,6 @@
 
 static const char* TAG = "from -> "__FILE__;
 
-void bdc_motor_set_speed_with_direction( bdc_motor_handle_t motor, float new_speed)
-{
-    if ( new_speed > 0 ) {
-        bdc_motor_forward( motor);
-    } else if ( new_speed < 0 ) {
-        new_speed = -new_speed;
-        bdc_motor_reverse( motor);
-    } else {
-        bdc_motor_brake( motor);
-    }
-
-    bdc_motor_set_speed( motor, (uint32_t)new_speed);
-}
-
 /**
   * @brief pid控制回调(只能在任务中使用，不要在中断中使用， 线程安全)
   *
@@ -30,7 +16,7 @@ void bdc_motor_set_speed_with_direction( bdc_motor_handle_t motor, float new_spe
 // static void pid_loop_cb(void *args)
 // {
 //     dc_motor_control_context_t *ctx = (dc_motor_control_context_t *)args;
-//     xSemaphoreTake( ctx->mutex, portMAX_DELAY);
+//     xSemaphoreTakeRecursive( ctx->mutex, portMAX_DELAY);
 
 //     pcnt_unit_handle_t pcnt_unit = ctx->pcnt_encoder;
 //     pid_ctrl_block_handle_t pid_ctrl = ctx->pid_ctrl;
@@ -53,7 +39,7 @@ void bdc_motor_set_speed_with_direction( bdc_motor_handle_t motor, float new_spe
 //     pid_compute(pid_ctrl, error, &new_speed);
 //     bdc_motor_set_speed_with_direction(motor, new_speed);
 
-//     xSemaphoreGive( ctx->mutex);
+//     xSemaphoreGiveRecursive( ctx->mutex);
 // }
 
 /**
@@ -71,7 +57,7 @@ void dc_motor_control_init( dc_motor_control_config_t* control_config, dc_motor_
         .pwmb_gpio_num = control_config->pwm_gpio_b_num,
         .pwm_freq_hz = control_config->pwm_freq_hz,
     };
-
+    control_context->compare_max = BDC_MCPWM_TIMER_RESOLUTION_HZ / control_config->pwm_freq_hz;
     bdc_motor_mcpwm_config_t mcpwm_config = {
         .group_id = 0,
         .resolution_hz = BDC_MCPWM_TIMER_RESOLUTION_HZ,
@@ -138,7 +124,7 @@ void dc_motor_control_init( dc_motor_control_config_t* control_config, dc_motor_
     control_context->last_pulses = 0;
     control_context->report_pulses = 0;
     control_context->target_pulses = 0;
-    control_context->mutex = xSemaphoreCreateMutex();
+    control_context->mutex = xSemaphoreCreateRecursiveMutex();
     ESP_LOGD( TAG, "初始化电机PID控制块完毕!!!");
 
     // ESP_LOGD( TAG, "初始化电机高分辨率定时器中!!!");
@@ -170,19 +156,21 @@ void dc_motor_control_init( dc_motor_control_config_t* control_config, dc_motor_
   */
 void dc_motor_control_set_target( dc_motor_control_context_t* control_context, int target_pulses)
 {
-    xSemaphoreTake( control_context->mutex, portMAX_DELAY);
+    xSemaphoreTakeRecursive( control_context->mutex, portMAX_DELAY);
     control_context->target_pulses = target_pulses;
-    xSemaphoreGive( control_context->mutex);
+    xSemaphoreGiveRecursive( control_context->mutex);
 }
 
 /**
   * @brief 更新脉冲值记录
   *
   * @param control_context 控制上下文
+  * @return
+  *      - real_pulses: 最新的脉冲值 
   */
- void dc_motor_control_get_pulse_cnt( dc_motor_control_context_t* control_context)
- {
-    xSemaphoreTake( control_context->mutex, portMAX_DELAY);
+int dc_motor_control_get_pulse_cnt( dc_motor_control_context_t* control_context)
+{
+    xSemaphoreTakeRecursive( control_context->mutex, portMAX_DELAY);
 
     pcnt_unit_handle_t pcnt_unit = control_context->pcnt_encoder;
 
@@ -193,5 +181,52 @@ void dc_motor_control_set_target( dc_motor_control_context_t* control_context, i
     control_context->last_pulses = cur_pulse_count;
     control_context->report_pulses = real_pulses;
 
-    xSemaphoreGive( control_context->mutex);
- }
+    xSemaphoreGiveRecursive( control_context->mutex);
+    return real_pulses;
+}
+
+ /**
+   * @brief 更新电机的速度(带方向)
+   *
+   * @param control_context 控制上下文
+   * @param new_speed 新速度，分正负，正为正向，负为反向
+   */
+void bdc_motor_set_speed_with_direction( dc_motor_control_context_t* control_context, float new_speed)
+{
+    xSemaphoreTakeRecursive( control_context->mutex, portMAX_DELAY);
+    if ( new_speed > 0 ) {
+        bdc_motor_forward( control_context->motor);
+    } else if ( new_speed < 0 ) {
+        new_speed = -new_speed;
+        bdc_motor_reverse( control_context->motor);
+    } else {
+        bdc_motor_brake( control_context->motor);
+    }
+
+    /* 驱动底层是直接更改比较值来改变速度的，此处要限制速度大小，防止超出范围(不然驱动底层会报错并阻止set_speed操作) */
+    if( new_speed > control_context->compare_max )
+        new_speed = control_context->compare_max;
+
+    bdc_motor_set_speed( control_context->motor, (uint32_t)new_speed);
+    xSemaphoreGiveRecursive( control_context->mutex);
+}
+
+/**
+  * @brief 电机PID计算
+  *
+  * @param control_context 控制上下文
+  * @return
+  *      - new_speed: 计算而得的新速度
+  */
+float dc_motor_control_pid_compute( dc_motor_control_context_t* control_context)
+{
+    xSemaphoreTakeRecursive( control_context->mutex, portMAX_DELAY);
+    float error = control_context->target_pulses - control_context->report_pulses;
+    float new_speed = 0;
+
+    ESP_LOGD(TAG, "error:%f", error);
+
+    pid_compute( control_context->pid_ctrl, error, &new_speed);
+    xSemaphoreGiveRecursive( control_context->mutex);
+    return new_speed;
+}

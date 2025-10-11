@@ -35,6 +35,7 @@ typedef struct {
     int report_pulses;                  //  本轮脉冲计数
     int last_pulses;                    //  上轮脉冲计数
     int target_pulses;                  //  目标脉冲计数
+    uint32_t compare_max;               //  比较值的最大值
     SemaphoreHandle_t mutex;            //  互斥量(用于确保线程安全)
 } dc_motor_control_context_t;
 
@@ -43,8 +44,11 @@ void dc_motor_control_init( dc_motor_control_config_t* control_config, dc_motor_
 /* 修改目标脉冲值(线程安全) */
 void dc_motor_control_set_target( dc_motor_control_context_t* control_context, int target_pulses);
 /* 更新脉冲值记录(线程安全) */
-void dc_motor_control_get_pulse_cnt( dc_motor_control_context_t* control_context);
-/* 修改电机的转速与方向 */
-void bdc_motor_set_speed_with_direction( bdc_motor_handle_t motor, float new_speed);
+int dc_motor_control_get_pulse_cnt( dc_motor_control_context_t* control_context);
+/* 电机PID计算 */
+float dc_motor_control_pid_compute( dc_motor_control_context_t* control_context);
+/* 电机直接控制 */
+void bdc_motor_set_speed_with_direction( dc_motor_control_context_t* control_context, float new_speed);
+
 
 #endif
