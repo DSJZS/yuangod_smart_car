@@ -64,7 +64,7 @@ void bdc_motor_set_speed_with_direction( bdc_motor_handle_t motor, float new_spe
   */
 void dc_motor_control_init( dc_motor_control_config_t* control_config, dc_motor_control_context_t* control_context)
 {
-    ESP_LOGI( TAG, "初始化有刷直流电机中!!!");
+    ESP_LOGD( TAG, "初始化有刷直流电机中!!!");
 
     bdc_motor_config_t motor_config = {
         .pwma_gpio_num = control_config->pwm_gpio_a_num,
@@ -80,9 +80,9 @@ void dc_motor_control_init( dc_motor_control_config_t* control_config, dc_motor_
     bdc_motor_handle_t motor = NULL;
     ESP_ERROR_CHECK(bdc_motor_new_mcpwm_device(&motor_config, &mcpwm_config, &motor));
     control_context->motor = motor;
-    ESP_LOGI( TAG, "初始化有刷直流电机完毕!!!");
+    ESP_LOGD( TAG, "初始化有刷直流电机完毕!!!");
 
-    ESP_LOGI( TAG, "初始化电机4倍频正交解码器中!!!");
+    ESP_LOGD( TAG, "初始化电机4倍频正交解码器中!!!");
     pcnt_unit_config_t unit_config = {
         .high_limit = BDC_ENCODER_PCNT_HIGH_LIMIT,
         .low_limit = BDC_ENCODER_PCNT_LOW_LIMIT,
@@ -116,9 +116,9 @@ void dc_motor_control_init( dc_motor_control_config_t* control_config, dc_motor_
     ESP_ERROR_CHECK(pcnt_unit_clear_count(pcnt_unit));
     ESP_ERROR_CHECK(pcnt_unit_start(pcnt_unit));
     control_context->pcnt_encoder = pcnt_unit;
-    ESP_LOGI( TAG, "初始化电机4倍频正交解码器中!!!");
+    ESP_LOGD( TAG, "初始化电机4倍频正交解码器中!!!");
 
-    ESP_LOGI( TAG, "初始化电机PID控制块中!!!");
+    ESP_LOGD( TAG, "初始化电机PID控制块中!!!");
     pid_ctrl_parameter_t pid_runtime_param = {
         .kp = control_config->pid.kp,
         .ki = control_config->pid.ki,
@@ -139,9 +139,9 @@ void dc_motor_control_init( dc_motor_control_config_t* control_config, dc_motor_
     control_context->report_pulses = 0;
     control_context->target_pulses = 0;
     control_context->mutex = xSemaphoreCreateMutex();
-    ESP_LOGI( TAG, "初始化电机PID控制块完毕!!!");
+    ESP_LOGD( TAG, "初始化电机PID控制块完毕!!!");
 
-    // ESP_LOGI( TAG, "初始化电机高分辨率定时器中!!!");
+    // ESP_LOGD( TAG, "初始化电机高分辨率定时器中!!!");
     // const esp_timer_create_args_t periodic_timer_args = {
     //     .callback = pid_loop_cb,
     //     .arg = control_context,
@@ -149,15 +149,17 @@ void dc_motor_control_init( dc_motor_control_config_t* control_config, dc_motor_
     // };
     // esp_timer_handle_t pid_loop_timer = NULL;
     // ESP_ERROR_CHECK(esp_timer_create(&periodic_timer_args, &pid_loop_timer));
-    // ESP_LOGI( TAG, "初始化电机高分辨率定时器完毕!!!");
+    // ESP_LOGD( TAG, "初始化电机高分辨率定时器完毕!!!");
 
-    ESP_LOGI(TAG, "使能当前设置的电机");
+    ESP_LOGD(TAG, "使能当前设置的电机");
     ESP_ERROR_CHECK(bdc_motor_enable(motor));
-    ESP_LOGI(TAG, "将当前电机方向初始化为前进并设置默认速度为0");
+    ESP_LOGD(TAG, "将当前电机方向初始化为前进并设置默认速度为0");
     ESP_ERROR_CHECK(bdc_motor_forward(motor));
     ESP_ERROR_CHECK(bdc_motor_set_speed( motor, 0));
-    ESP_LOGI(TAG, "开启当前电机的速度控制高分辨率周期控制(通过task)");
+    ESP_LOGD(TAG, "开启当前电机的速度控制高分辨率周期控制(通过task)");
     // ESP_ERROR_CHECK(esp_timer_start_periodic(pid_loop_timer, control_config->pid.period_ms * 1000));
+
+    ESP_LOGI(TAG, "电机控制初始化完毕");
 }
 
 /**
