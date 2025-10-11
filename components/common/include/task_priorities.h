@@ -25,6 +25,10 @@
 
 /* 网络连接任务优先级 */
 #define NETWORK_TASK_PRIO   ( TASK_PRIORITY_CRITICAL )
+/* 数据发送任务优先级 */
+#define NETWORK_SEND_PRIO   ( TASK_PRIORITY_HIGH )
+/* 数据接受任务优先级 */
+#define NETWORK_RECEIVE_PRIO   ( TASK_PRIORITY_ABOVE_NORMAL )
 
 /* 电机转速控制任务优先级 */
 #define MOTOR_TASK_PRIO     ( TASK_PRIORITY_NORMAL )
