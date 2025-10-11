@@ -38,7 +38,6 @@ static void mpu6050_read( mpu6050_acce_value_t *const acce_value, mpu6050_gyro_v
 {
     mpu6050_get_acce(mpu6050_dev, acce_value);
     mpu6050_get_gyro(mpu6050_dev, gyro_value);
-
 }
 
 void imu_task(void* param)
