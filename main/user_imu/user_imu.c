@@ -40,7 +40,7 @@ static void mpu6050_read( mpu6050_acce_value_t *const acce_value, mpu6050_gyro_v
     mpu6050_get_gyro(mpu6050_dev, gyro_value);
 }
 
-void imu_task(void* param)
+static void imu_task(void* param)
 {
     const TickType_t xDelay = pdMS_TO_TICKS( IMU_TASK_PERIOD );
     TickType_t xLastWakeTime = xTaskGetTickCount();
