@@ -7,10 +7,16 @@
 /* 下述的周期单位固定为 ms */
 
 /* IMU数据读取任务周期 */
-#define IMU_TASK_PERIOD     ( 100 )
+#define IMU_TASK_PERIOD         ( 100 )
 
 /* 电机控制周期 */
-#define MOTOR_TASK_PERIOD   ( 50 )
+#define MOTOR_TASK_PERIOD       ( 50 )
+
+/* 底盘数据TCP发送周期 */
+#define TCP_SEND_TASK_PERIOD    ( 50 )
+
+/* 底盘数据TCP接受周期 */
+#define TCP_RECEIVE_TASK_PERIOD ( 1 )
 
 /*********************************** 任务周期配置 ***********************************/
 
