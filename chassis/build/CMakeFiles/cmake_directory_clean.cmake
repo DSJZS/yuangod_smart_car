@@ -1,0 +1,11 @@
+file(REMOVE_RECURSE
+  "config/sdkconfig.h"
+  "config/sdkconfig.cmake"
+  "bootloader/bootloader.elf"
+  "bootloader/bootloader.bin"
+  "bootloader/bootloader.map"
+  "yuangod_smart_car.bin"
+  "flash_project_args"
+  "yuangod_smart_car.map"
+  "project_elf_src_esp32s3.c"
+)

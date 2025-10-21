@@ -1,0 +1,287 @@
+�mI (�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x18 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3810,len:0x1870
+load:0x403c9700,len:0x4
+load:0x403c9704,len:0xcec
+load:0x403cc700,len:0x2ec4
+entry 0x403c9918
+[0;32mI (27) boot: ESP-IDF v5.2.5 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Oct 11 2025 12:44:37[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.2[0m
+[0;32mI (34) boot: efuse block revision: v1.3[0m
+[0;32mI (38) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (43) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32s3: SPI Flash Size : 8MB[0m
+[0;32mI (53) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (62) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (76) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (91) boot: End of partition table[0m
+[0;32mI (95) esp_image: segment 0: paddr=00010020 vaddr=3c0b0020 size=241e8h (147944) map[0m
+[0;32mI (130) esp_image: segment 1: paddr=00034210 vaddr=3fc9a700 size=04860h ( 18528) load[0m
+[0;32mI (134) esp_image: segment 2: paddr=00038a78 vaddr=40374000 size=075a0h ( 30112) load[0m
+[0;32mI (142) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=a79f8h (686584) map[0m
+[0;32mI (265) esp_image: segment 4: paddr=000e7a20 vaddr=4037b5a0 size=0f144h ( 61764) load[0m
+[0;32mI (279) esp_image: segment 5: paddr=000f6b6c vaddr=600fe010 size=00004h (     4) load[0m
+[0;32mI (288) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (289) boot: Disabling RNG early entropy source...[0m
+[0;32mI (300) cpu_start: Multicore app[0m
+[0;32mI (310) cpu_start: Pro cpu start user code[0m
+[0;32mI (310) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (310) cpu_start: Application information:[0m
+[0;32mI (313) cpu_start: Project name:     yuangod_smart_car[0m
+[0;32mI (319) cpu_start: App version:      df0411e-dirty[0m
+[0;32mI (324) cpu_start: Compile time:     Oct 19 2025 19:48:54[0m
+[0;32mI (330) cpu_start: ELF file SHA256:  29e147914...[0m
+[0;32mI (335) cpu_start: ESP-IDF:          v5.2.5[0m
+[0;32mI (340) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (345) cpu_start: Max chip rev:     v0.99 [0m
+[0;32mI (350) cpu_start: Chip rev:         v0.2[0m
+[0;32mI (355) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (362) heap_init: At 3FCA3130 len 000465E0 (281 KiB): RAM[0m
+[0;32mI (368) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (374) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (380) heap_init: At 600FE014 len 00001FD4 (7 KiB): RTCRAM[0m
+[0;32mI (387) spi_flash: detected chip: gd[0m
+[0;32mI (391) spi_flash: flash io: dio[0m
+[0;33mW (395) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (405) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (412) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (420) main_task: Started on CPU0[0m
+[0;32mI (424) main_task: Calling app_main()[0m
+[0;32mI (428) from -> ./main/app_main.c: 
+___  _ _     ____  _        _____ ____  ____ 
+\  \/// \ /\/  _ \/ \  /|  /  __//  _ \/  _ \
+ \  / | | ||| / \|| |\ ||  | |  _| / \|| | \|
+ / /  | \_/|| |-||| | \||  | |_//| \_/|| |_/|
+/_/   \____/\_/ \|\_/  \|  \____\____/\____/
+[0m
+[0;32mI (453) from -> ./main/app_main.c: 小车开始初始化![0m
+[0;32mI (460) from -> ./main/user_imu/user_imu.c: IMU 初始化完毕!!![0m
+[0;32mI (466) gpio: GPIO[33]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (475) gpio: GPIO[34]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (485) gpio: GPIO[12]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (494) gpio: GPIO[14]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (503) gpio: GPIO[14]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (512) gpio: GPIO[12]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (522) from -> ./components/bdc_motor_control/bdc_motor_control.c: 电机控制初始化完毕[0m
+[0;32mI (531) gpio: GPIO[35]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (540) gpio: GPIO[36]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (550) gpio: GPIO[20]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (559) gpio: GPIO[19]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (568) gpio: GPIO[19]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (577) gpio: GPIO[20]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (587) from -> ./components/bdc_motor_control/bdc_motor_control.c: 电机控制初始化完毕[0m
+[0;32mI (596) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (603) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (614) pp: pp rom version: e7ae62f[0m
+[0;32mI (614) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (620) wifi:wifi driver task: 3fcaff70, prio:23, stack:6656, core=0[0m
+[0;32mI (634) wifi:wifi firmware version: 01d22db[0m
+[0;32mI (634) wifi:wifi certification version: v7.0[0m
+[0;32mI (635) wifi:config NVS flash: enabled[0m
+[0;32mI (636) wifi:config nano formating: disabled[0m
+[0;32mI (640) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (645) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (646) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (649) wifi:[0;32mI (655) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m[0m
+Init management short buffer num: 32
+[0;32mI (666) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (670) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (674) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (679) wifi:Init static rx buffer num: 10[0m
+[0;32mI (682) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (687) wifi_init: rx ba win: 6[0m
+[0;32mI (690) wifi_init: tcpip mbox: 32[0m
+[0;32mI (694) wifi_init: udp mbox: 6[0m
+[0;32mI (696) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (698) wifi_init: tcp mbox: 6[0m
+[0;32mI (704) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (708) wifi_init: tcp tx win: 5760[0m
+[0;32mI (719) wifi_init: tcp rx win: 5760[0m
+[0;32mI (723) wifi_init: tcp mss: 1440[0m
+[0;32mI (727) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (731) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (737) WiFi SoftAP: ESP_WIFI_MODE_AP[0m
+[0;32mI (744) WiFi SoftAP: wifi_init_softap finished. SSID:yuangod_smart_car password:car_car_need_pass channel:1[0m
+[0;32mI (746) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (751) WiFi Sta: ESP_WIFI_MODE_STA[0m
+[0;32mI (757) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (763) WiFi Sta: wifi_init_sta finished.[0m
+[0;32mI (773) phy_init: phy_version 680,a6008b2,Jun  4 2024,16:41:10[0m
+[0;32mI (796) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (797) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (827) wifi:mode : sta (9c:13:9e:a1:cf:84) + softAP (9c:13:9e:a1:cf:85)[0m
+[0;32mI (828) wifi:enable tsf[0m
+[0;32mI (831) wifi:Total power save buffer number: 16[0m
+[0;32mI (831) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (834) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (839) WiFi Sta: Station started[0m
+[0;32mI (843) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (851) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (857) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (896) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (896) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (946) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (946) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (996) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (997) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (1046) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (1046) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (1096) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (1096) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (1146) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (1147) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (1196) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (1196) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (1246) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (1246) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (1296) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (1297) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (1346) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (1346) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (1396) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (1396) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (1446) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (1447) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (1496) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (1496) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (1546) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (1546) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (1596) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (1597) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (1646) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (1646) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (1696) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (1696) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (1746) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (1747) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (1796) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (1797) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (1846) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (1846) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (1896) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (1897) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (1946) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (1946) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (1996) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (1996) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (2046) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (2046) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (2096) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (2096) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (2146) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (2146) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (2196) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (2196) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (2246) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (2246) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (2296) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (2296) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (2346) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (2346) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (2396) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (2397) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (2446) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (2446) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (2496) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (2496) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (2546) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (2546) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (2596) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (2596) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (2646) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (2646) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (2696) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (2696) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (2746) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (2746) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (2796) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (2796) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (2846) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (2846) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (2896) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (2897) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (2946) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (2946) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (2996) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (2996) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (3046) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (3046) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (3096) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (3096) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (3146) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (3146) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (3196) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (3196) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (3246) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (3246) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (3296) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (3297) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (3346) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (3346) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (3396) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (3396) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (3446) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (3446) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (3496) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (3496) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (3546) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (3546) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (3596) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (3596) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (3646) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (3646) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (3674) wifi:ap channel adjust o:1,1 n:11,2[0m
+[0;32mI (3674) wifi:new:<11,0>, old:<1,1>, ap:<11,2>, sta:<11,0>, prof:1[0m
+[0;32mI (3675) wifi:state: init -> auth (b0)[0m
+[0;32mI (3688) wifi:state: auth -> assoc (0)[0m
+[0;32mI (3696) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (3696) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (3698) wifi:state: assoc -> run (10)[0m
+[0;32mI (3703) wifi:connected with DLNU-NET, aid = 2, channel 11, BW20, bssid = 24:de:c6:dd:1b:e0[0m
+[0;32mI (3710) wifi:security: Open Auth, phy: bgn, rssi: -43[0m
+[0;32mI (3717) wifi:pm start, type: 1[0m
+
+[0;32mI (3718) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (3726) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000[0m
+[0;32mI (3741) wifi:<ba-add>idx:0 (ifx:0, 24:de:c6:dd:1b:e0), tid:0, ssn:0, winSize:64[0m
+[0;32mI (3746) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (3748) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (3770) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (3796) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (3797) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (3846) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (3846) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (3896) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (3896) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (3946) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (3946) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (3996) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (3996) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (4046) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (4046) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (4096) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (4096) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (4146) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (4146) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (4196) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (4196) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (4246) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (4247) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (4296) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (4296) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (4346) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (4346) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (4396) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (4396) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (4446) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (4446) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m
+[0;32mI (4496) from -> ./main/user_motors/user_motors.c: left cnt = 0[0m
+[0;32mI (4496) from -> ./main/user_motors/user_motors.c: right cnt = 0[0m

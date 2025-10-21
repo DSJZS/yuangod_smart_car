@@ -1,0 +1,12 @@
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_network/user_network.c: In function 'network_send_task':
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_network/user_network.c:42:5: error: implicit declaration of function 'vTaskDelete' [-Werror=implicit-function-declaration]
+   42 |     vTaskDelete(NULL);
+      |     ^~~~~~~~~~~
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_network/user_network.c: In function 'network_setup':
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_network/user_network.c:66:5: error: implicit declaration of function 'xTaskCreatePinnedToCore' [-Werror=implicit-function-declaration]
+   66 |     xTaskCreatePinnedToCore( network_send_task, "tcp_send_task", 8192, NULL, NETWORK_SEND_PRIO, NULL, 1);
+      |     ^~~~~~~~~~~~~~~~~~~~~~~
+cc1: some warnings being treated as errors
+make[2]: *** [esp-idf/main/CMakeFiles/__idf_main.dir/build.make:132：esp-idf/main/CMakeFiles/__idf_main.dir/user_network/user_network.c.obj] 错误 1
+make[1]: *** [CMakeFiles/Makefile2:4931：esp-idf/main/CMakeFiles/__idf_main.dir/all] 错误 2
+make: *** [Makefile:136：all] 错误 2

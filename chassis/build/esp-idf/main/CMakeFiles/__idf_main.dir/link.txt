@@ -1,0 +1,2 @@
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin/xtensa-esp32s3-elf-ar qc libmain.a CMakeFiles/__idf_main.dir/app_main.c.obj CMakeFiles/__idf_main.dir/user_motors/user_motors.c.obj CMakeFiles/__idf_main.dir/user_imu/user_imu.c.obj CMakeFiles/__idf_main.dir/user_battery/user_battery.c.obj CMakeFiles/__idf_main.dir/user_network/user_network.c.obj
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin/xtensa-esp32s3-elf-ranlib libmain.a

@@ -1,0 +1,33 @@
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_network/user_network.c: In function 'network_socket_tcp_close':
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_network/user_network.c:40:18: warning: passing argument 1 of 'shutdown' makes integer from pointer without a cast [-Wint-conversion]
+   40 |         shutdown(socket_tcp, 0);
+      |                  ^~~~~~~~~~
+      |                  |
+      |                  int *
+In file included from /home/yuangod/project/esp32/esp-idf/components/lwip/port/esp32xx/include/sys/socket.h:15,
+                 from /home/yuangod/project/workspace/yuangod_smart_car/main/user_network/user_network.c:9:
+/home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:19:32: note: expected 'int' but argument is of type 'int *'
+   19 | static inline int shutdown(int s,int how)
+      |                            ~~~~^
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_network/user_network.c:41:15: warning: passing argument 1 of 'close' makes integer from pointer without a cast [-Wint-conversion]
+   41 |         close(socket_tcp);
+      |               ^~~~~~~~~~
+      |               |
+      |               int *
+In file included from /home/yuangod/project/esp32/esp-idf/components/newlib/platform_include/sys/unistd.h:11,
+                 from /home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/unistd.h:4,
+                 from /home/yuangod/project/esp32/esp-idf/components/lwip/port/include/lwipopts.h:14,
+                 from /home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+                 from /home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+                 from /home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:8:
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:28:20: note: expected 'int' but argument is of type 'int *'
+   28 | int     close (int __fildes);
+      |                ~~~~^~~~~~~~
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_network/user_network.c: In function 'network_setup':
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_network/user_network.c:99:13: warning: variable 'ret' set but not used [-Wunused-but-set-variable]
+   99 |     uint8_t ret = 0;
+      |             ^~~
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_network/user_network.c: At top level:
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_network/user_network.c:46:16: warning: 'network_socket_init' defined but not used [-Wunused-function]
+   46 | static uint8_t network_socket_init(void)
+      |                ^~~~~~~~~~~~~~~~~~~

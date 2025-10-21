@@ -1,0 +1,107 @@
+�  �ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x18 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3810,len:0x2174
+load:0x403c9700,len:0x4
+load:0x403c9704,len:0xe80
+load:0x403cc700,len:0x3258
+entry 0x403c9960
+[0;32mI (27) boot: ESP-IDF v5.2.5 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Oct 11 2025 10:30:39[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+D (30) bootloader_flash: non-XMC chip detected by SFDP Read (C8), skip.[0m
+D (37) bootloader_flash: mmu set block paddr=0x00000000 (was 0xffffffff)[0m
+[0;32mI (43) boot: chip revision: v0.2[0m
+[0;32mI (47) boot: efuse block revision: v1.3[0m
+D (52) boot.esp32s3: magic e9[0m
+D (55) boot.esp32s3: segments 04[0m
+D (58) boot.esp32s3: spi_mode 02[0m
+D (61) boot.esp32s3: spi_speed 0f[0m
+D (65) boot.esp32s3: spi_size 03[0m
+[0;32mI (68) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (73) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (78) boot.esp32s3: SPI Flash Size : 8MB[0m
+D (82) boot: Enabling RTCWDT(9000 ms)[0m
+[0;32mI (86) boot: Enabling RNG early entropy source...[0m
+D (91) bootloader_flash: rodata starts from paddr=0x00008000, size=0xc00, will be mapped to vaddr=0x3c000000[0m
+D (101) boot: mapped partition table 0x8000 at 0x3c008000[0m
+D (107) flash_parts: partition table verified, 4 entries[0m
+[0;32mI (112) boot: Partition Table:[0m
+[0;32mI (116) boot: ## Label            Usage          Type ST Offset   Length[0m
+D (123) boot: load partition table entry 0x3c008000[0m
+D (128) boot: type=1 subtype=2[0m
+[0;32mI (131) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+D (139) boot: load partition table entry 0x3c008020[0m
+D (144) boot: type=1 subtype=1[0m
+[0;32mI (147) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+D (154) boot: load partition table entry 0x3c008040[0m
+D (159) boot: type=0 subtype=0[0m
+[0;32mI (163) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (170) boot: End of partition table[0m
+D (174) boot: Trying partition index -1 offs 0x10000 size 0x100000[0m
+D (181) esp_image: reading image header @ 0x10000[0m
+D (185) bootloader_flash: mmu set block paddr=0x00010000 (was 0xffffffff)[0m
+D (192) esp_image: image header: 0xe9 0x05 0x02 0x03 403753c4[0m
+[0;32mI (198) esp_image: segment 0: paddr=00010020 vaddr=3c020020 size=0b66ch ( 46700) map[0m
+D (206) esp_image: free data page_count 0x00000200[0m
+D (211) bootloader_flash: rodata starts from paddr=0x00010020, size=0xb66c, will be mapped to vaddr=0x3c000000[0m
+D (230) bootloader_flash: mmu set block paddr=0x00010000 (was 0xffffffff)[0m
+[0;32mI (230) esp_image: segment 1: paddr=0001b694 vaddr=3fc93300 size=02900h ( 10496) load[0m
+D (237) esp_image: free data page_count 0x00000200[0m
+D (242) bootloader_flash: rodata starts from paddr=0x0001b694, size=0x2900, will be mapped to vaddr=0x3c000000[0m
+D (254) bootloader_flash: mmu set block paddr=0x00010000 (was 0xffffffff)[0m
+[0;32mI (259) esp_image: segment 2: paddr=0001df9c vaddr=40374000 size=0207ch (  8316) load[0m
+D (267) esp_image: free data page_count 0x00000200[0m
+D (272) bootloader_flash: rodata starts from paddr=0x0001df9c, size=0x207c, will be mapped to vaddr=0x3c000000[0m
+D (284) bootloader_flash: mmu set block paddr=0x00020000 (was 0xffffffff)[0m
+[0;32mI (289) esp_image: segment 3: paddr=00020020 vaddr=42000020 size=1a224h (107044) map[0m
+D (297) esp_image: free data page_count 0x00000200[0m
+D (302) bootloader_flash: rodata starts from paddr=0x00020020, size=0x1a224, will be mapped to vaddr=0x3c000000[0m
+D (331) bootloader_flash: mmu set block paddr=0x00030000 (was 0xffffffff)[0m
+[0;32mI (331) esp_image: segment 4: paddr=0003a24c vaddr=4037607c size=0d1e8h ( 53736) load[0m
+D (335) esp_image: free data page_count 0x00000200[0m
+D (340) bootloader_flash: rodata starts from paddr=0x0003a24c, size=0xd1e8, will be mapped to vaddr=0x3c000000[0m
+D (362) bootloader_flash: mmu set block paddr=0x00040000 (was 0xffffffff)[0m
+D (362) boot: Calculated hash: efe276b58b48b6979c78d74a95014c7e0689cf9ffece85c05ab7c607671be362[0m
+[0;32mI (372) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (373) boot: Disabling RNG early entropy source...[0m
+D (378) boot: Mapping segment 0 as DROM[0m
+D (382) boot: Mapping segment 3 as IROM[0m
+D (386) boot: calling set_cache_and_start_app[0m
+D (390) boot: configure drom and irom and start[0m
+D (395) boot: start: 0x403753c4[0m
+[0;32mI (409) cpu_start: Multicore app[0m
+[0;32mI (419) cpu_start: Pro cpu start user code[0m
+[0;32mI (419) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (419) cpu_start: Application information:[0m
+[0;32mI (422) cpu_start: Project name:     yuangod_smart_car[0m
+[0;32mI (428) cpu_start: App version:      b7929d4-dirty[0m
+[0;32mI (433) cpu_start: Compile time:     Oct 11 2025 10:30:45[0m
+[0;32mI (439) cpu_start: ELF file SHA256:  8553fc475...[0m
+[0;32mI (445) cpu_start: ESP-IDF:          v5.2.5[0m
+[0;32mI (449) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (454) cpu_start: Max chip rev:     v0.99 [0m
+[0;32mI (459) cpu_start: Chip rev:         v0.2[0m
+[0;32mI (464) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (471) heap_init: At 3FC964E0 len 00053230 (332 KiB): RAM[0m
+[0;32mI (477) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (483) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (489) heap_init: At 600FE010 len 00001FD8 (7 KiB): RTCRAM[0m
+[0;32mI (496) spi_flash: detected chip: gd[0m
+[0;32mI (500) spi_flash: flash io: dio[0m
+[0;33mW (504) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (514) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (521) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (529) main_task: Started on CPU0[0m
+[0;32mI (533) main_task: Calling app_main()[0m
+[0;32mI (537) from -> ./main/app_main.c: 
+___  _ _     ____  _        _____ ____  ____ 
+\  \/// \ /\/  _ \/ \  /|  /  __//  _ \/  _ \
+ \  / | | ||| / \|| |\ ||  | |  _| / \|| | \|
+ / /  | \_/|| |-||| | \||  | |_//| \_/|| |_/|
+/_/   \____/\_/ \|\_/  \|  \____\____/\____/
+[0m
+[0;32mI (562) from -> ./main/app_main.c: 小车开始初始化![0m
+[0;32mI (569) from -> ./main/app_main.c: 小车初始化完毕![0m

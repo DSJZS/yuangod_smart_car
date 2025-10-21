@@ -1,0 +1,13 @@
+[0;33m--- esp-idf-monitor 1.8.0 on /dev/ttyACM0 115200[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
+[0m--- 0x403752c8: [0;33mcall_start_cpu1[0m[0m at [0;32m/home/yuangod/project/esp32/esp-idf/components/esp_system/port/cpu_start.c[0m[0m:[1;31m183[0m
+[0m--- 0x40374000: [0;33m_WindowOverflow4[0m[0m at [0;32m/home/yuangod/project/esp32/esp-idf/components/xtensa/xtensa_vectors.S[0m[0m:[1;31m2027[0m
+[0m--- 0x4200dd64: [0;33m_GLOBAL__sub_I__ZN17__eh_globals_init7_S_initE[0m[0m at [0;32m/builds/idf/crosstool-NG/.build/xtensa-esp-elf/src/gcc/libstdc++-v3/libsupc++/eh_globals.cc[0m[0m:[1;31m162[0m
+[0m--- 0x4200c1c4: [0;33mesp_ipc_init[0m[0m at [0;32m/home/yuangod/project/esp32/esp-idf/components/esp_system/esp_ipc.c[0m[0m:[1;31m112[0m
+[0m--- 0x4200b410: [0;33mcheck_i2c_driver_conflict[0m[0m at [0;32m/home/yuangod/project/esp32/esp-idf/components/driver/i2c/i2c.c[0m[0m:[1;31m1685[0m
+[0m--- 0x40379b54: [0;33menable_timer_group0_for_calibration[0m[0m at [0;32m/home/yuangod/project/esp32/esp-idf/components/esp_hw_support/port/esp32s3/rtc_time.c[0m[0m:[1;31m199[0m
+[0m--- 0x420013e0: [0;33mesp_app_format_init_elf_sha256[0m[0m at [0;32m/home/yuangod/project/esp32/esp-idf/components/esp_app_format/esp_app_desc.c[0m[0m:[1;31m70[0m
+[0m--- 0x42006218: [0;33m__esp_system_init_fn_esp_timer_startup_init[0m[0m at [0;32m/home/yuangod/project/esp32/esp-idf/components/esp_timer/src/esp_timer.c[0m[0m:[1;31m578[0m
+[0m--- 0x42003ce0: [0;33m__esp_system_init_fn_esp_sleep_startup_init[0m[0m at [0;32m/home/yuangod/project/esp32/esp-idf/components/esp_hw_support/sleep_gpio.c[0m[0m:[1;31m189[0m
+[0m--- 0x420023a8: [0;33m__esp_system_init_fn_init_components0[0m[0m at [0;32m/home/yuangod/project/esp32/esp-idf/components/esp_system/startup.c[0m[0m:[1;31m516[0m
+[0m

@@ -1,0 +1,351 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x18 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3810,len:0x1870
+load:0x403c9700,len:0x4
+load:0x403c9704,len:0xcec
+load:0x403cc700,len:0x2ec4
+entry 0x403c9918
+[0;32mI (27) boot: ESP-IDF v5.2.5 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Oct 11 2025 10:34:00[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.2[0m
+[0;32mI (34) boot: efuse block revision: v1.3[0m
+[0;32mI (38) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (43) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32s3: SPI Flash Size : 8MB[0m
+[0;32mI (53) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (62) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (76) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (91) boot: End of partition table[0m
+[0;32mI (95) esp_image: segment 0: paddr=00010020 vaddr=3c020020 size=0d278h ( 53880) map[0m
+[0;32mI (113) esp_image: segment 1: paddr=0001d2a0 vaddr=3fc91f00 size=02944h ( 10564) load[0m
+[0;32mI (116) esp_image: segment 2: paddr=0001fbec vaddr=40374000 size=0042ch (  1068) load[0m
+[0;32mI (121) esp_image: segment 3: paddr=00020020 vaddr=42000020 size=1d524h (120100) map[0m
+[0;32mI (150) esp_image: segment 4: paddr=0003d54c vaddr=4037442c size=0d9ech ( 55788) load[0m
+[0;32mI (168) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (169) boot: Disabling RNG early entropy source...[0m
+[0;32mI (180) cpu_start: Multicore app[0m
+D (181) cpu_start: Pro cpu up[0m
+D (181) cpu_start: Starting app cpu, entry point is 0x403751cc[0m
+D (0) cpu_start: App cpu up[0m
+D (190) clk: RTC_SLOW_CLK calibration value: 3360576[0m
+[0;32mI (201) cpu_start: Pro cpu start user code[0m
+[0;32mI (202) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (202) cpu_start: Application information:[0m
+[0;32mI (205) cpu_start: Project name:     yuangod_smart_car[0m
+[0;32mI (210) cpu_start: App version:      1566a6a-dirty[0m
+[0;32mI (216) cpu_start: Compile time:     Oct 11 2025 11:18:44[0m
+[0;32mI (222) cpu_start: ELF file SHA256:  c7adef968...[0m
+[0;32mI (227) cpu_start: ESP-IDF:          v5.2.5[0m
+[0;32mI (232) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (237) cpu_start: Max chip rev:     v0.99 [0m
+[0;32mI (242) cpu_start: Chip rev:         v0.2[0m
+D (246) memory_layout: Checking 6 reserved memory ranges:[0m
+D (252) memory_layout: Reserved memory range 0x3fc84000 - 0x3fc91f00[0m
+D (258) memory_layout: Reserved memory range 0x3fc91f00 - 0x3fc95160[0m
+D (265) memory_layout: Reserved memory range 0x3fceee34 - 0x3fcf0000[0m
+D (271) memory_layout: Reserved memory range 0x40374000 - 0x40381f00[0m
+D (278) memory_layout: Reserved memory range 0x600fe000 - 0x600fe010[0m
+D (284) memory_layout: Reserved memory range 0x600fffe8 - 0x60100000[0m
+D (290) memory_layout: Building list of available memory regions:[0m
+D (297) memory_layout: Available memory region 0x3fc95160 - 0x3fca0000[0m
+D (303) memory_layout: Available memory region 0x3fca0000 - 0x3fcb0000[0m
+D (310) memory_layout: Available memory region 0x3fcb0000 - 0x3fcc0000[0m
+D (316) memory_layout: Available memory region 0x3fcc0000 - 0x3fcd0000[0m
+D (323) memory_layout: Available memory region 0x3fcd0000 - 0x3fce0000[0m
+D (330) memory_layout: Available memory region 0x3fce0000 - 0x3fce9710[0m
+D (336) memory_layout: Available memory region 0x3fce9710 - 0x3fceee34[0m
+D (343) memory_layout: Available memory region 0x3fcf0000 - 0x3fcf8000[0m
+D (349) memory_layout: Available memory region 0x600fe010 - 0x600fffe8[0m
+[0;32mI (356) heap_init: Initializing. RAM available for dynamic allocation:[0m
+D (363) heap_init: New heap initialised at 0x3fc95160[0m
+[0;32mI (368) heap_init: At 3FC95160 len 000545B0 (337 KiB): RAM[0m
+[0;32mI (374) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+D (381) heap_init: New heap initialised at 0x3fcf0000[0m
+[0;32mI (386) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+D (392) heap_init: New heap initialised at 0x600fe010[0m
+[0;32mI (397) heap_init: At 600FE010 len 00001FD8 (7 KiB): RTCRAM[0m
+D (403) intr_alloc: Connected src 39 to int 1 (cpu 0)[0m
+D (409) spi_flash: trying chip: issi[0m
+D (412) spi_flash: trying chip: gd[0m
+[0;32mI (415) spi_flash: detected chip: gd[0m
+[0;32mI (420) spi_flash: flash io: dio[0m
+D (424) cpu_start: calling init function: 0x420109b4[0m
+D (429) cpu_start: calling init function: 0x4200f028[0m
+D (434) cpu_start: calling init function: 0x4037964c[0m
+D (439) cpu_start: calling init function: 0x420016d4[0m
+D (444) cpu_start: calling init function: 0x4200665c on core: 0[0m
+D (450) intr_alloc: Connected src 59 to int 2 (cpu 0)[0m
+D (455) cpu_start: calling init function: 0x42004124 on core: 0[0m
+[0;32mI (461) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (468) sleep: Enable automatic switching of GPIO sleep configuration[0m
+D (475) cpu_start: calling init function: 0x4200269c on core: 0[0m
+D (481) intr_alloc: Connected src 79 to int 3 (cpu 0)[0m
+D (486) app_start: Starting scheduler on CPU0[0m
+D (490) intr_alloc: Connected src 57 to int 5 (cpu 0)[0m
+D (490) intr_alloc: Connected src 80 to int 0 (cpu 1)[0m
+D (495) app_start: Starting scheduler on CPU1[0m
+D (500) intr_alloc: Connected src 58 to int 1 (cpu 1)[0m
+[0;32mI (490) main_task: Started on CPU0[0m
+D (509) heap_init: New heap initialised at 0x3fce9710[0m
+D (514) intr_alloc: Connected src 52 to int 8 (cpu 0)[0m
+[0;32mI (519) main_task: Calling app_main()[0m
+[0;32mI (523) from -> ./main/app_main.c: 
+___  _ _     ____  _        _____ ____  ____ 
+\  \/// \ /\/  _ \/ \  /|  /  __//  _ \/  _ \
+ \  / | | ||| / \|| |\ ||  | |  _| / \|| | \|
+ / /  | \_/|| |-||| | \||  | |_//| \_/|| |_/|
+/_/   \____/\_/ \|\_/  \|  \____\____/\____/
+[0m
+[0;32mI (548) from -> ./main/app_main.c: 小车开始初始化![0m
+D (554) from -> ./components/bdc_motor_control/bdc_motor_control.c: 初始化有刷直流电机中!!![0m
+D (564) mcpwm: new group(0) at 0x3fc9a1cc[0m
+D (568) mcpwm: group (0) calc prescale:2, module calc prescale:8[0m
+D (574) mcpwm: group (0) clock resolution:80000000Hz[0m
+D (579) mcpwm: new timer(0,0) at 0x3fc9a138, resolution:10000000Hz, peak:400, count_mod:U[0m
+D (587) mcpwm: new operator (0,0) at 0x3fc9a228[0m
+D (592) mcpwm: connect operator (0) and timer (0) in group (0)[0m
+D (598) mcpwm: new operator comparator (0,0,0) at 0x3fc9a288[0m
+D (603) mcpwm: new operator comparator (0,0,1) at 0x3fc9a2b0[0m
+[0;32mI (609) gpio: GPIO[33]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+D (618) mcpwm: new generator (0,0,0) at 0x3fc9a2d8, GPIO 33[0m
+[0;32mI (624) gpio: GPIO[34]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+D (633) mcpwm: new generator (0,0,1) at 0x3fc9a2f0, GPIO 34[0m
+D (639) from -> ./components/bdc_motor_control/bdc_motor_control.c: 初始化有刷直流电机完毕!!![0m
+D (648) from -> ./components/bdc_motor_control/bdc_motor_control.c: 初始化电机4倍频正交解码器中!!![0m
+D (659) pcnt: new group (0) at 0x3fc9a3cc[0m
+D (663) intr_alloc: Connected src 41 to int 9 (cpu 0)[0m
+D (668) pcnt: new pcnt unit (0,0) at 0x3fc9a308, count range:[-1000,1000][0m
+[0;32mI (675) gpio: GPIO[12]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (684) gpio: GPIO[14]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+D (693) pcnt: new pcnt channel(0,0,0) at 0x3fc9a430[0m
+[0;32mI (698) gpio: GPIO[14]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (707) gpio: GPIO[12]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+D (717) pcnt: new pcnt channel(0,0,1) at 0x3fc9a444[0m
+D (722) from -> ./components/bdc_motor_control/bdc_motor_control.c: 初始化电机4倍频正交解码器中!!![0m
+D (732) from -> ./components/bdc_motor_control/bdc_motor_control.c: 初始化电机PID控制块中!!![0m
+D (741) from -> ./components/bdc_motor_control/bdc_motor_control.c: 初始化电机PID控制块完毕!!![0m
+D (751) from -> ./components/bdc_motor_control/bdc_motor_control.c: 使能当前设置的电机[0m
+D (759) from -> ./components/bdc_motor_control/bdc_motor_control.c: 将当前电机方向初始化为前进并设置默认速度为0[0m
+D (771) from -> ./components/bdc_motor_control/bdc_motor_control.c: 开启当前电机的速度控制高分辨率周期控制(通过task)[0m
+[0;32mI (784) from -> ./components/bdc_motor_control/bdc_motor_control.c: 电机控制初始化完毕[0m
+D (793) from -> ./components/bdc_motor_control/bdc_motor_control.c: 初始化有刷直流电机中!!![0m
+D (803) mcpwm: group (0) calc prescale:2, module calc prescale:8[0m
+D (808) mcpwm: group (0) clock resolution:80000000Hz[0m
+D (814) mcpwm: new timer(0,1) at 0x3fc9a520, resolution:10000000Hz, peak:400, count_mod:U[0m
+D (822) mcpwm: new operator (0,1) at 0x3fc9a55c[0m
+D (826) mcpwm: connect operator (1) and timer (1) in group (0)[0m
+D (832) mcpwm: new operator comparator (0,1,0) at 0x3fc9a5bc[0m
+D (838) mcpwm: new operator comparator (0,1,1) at 0x3fc9a5e4[0m
+[0;32mI (844) gpio: GPIO[35]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+D (853) mcpwm: new generator (0,1,0) at 0x3fc9a60c, GPIO 35[0m
+[0;32mI (859) gpio: GPIO[36]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+D (868) mcpwm: new generator (0,1,1) at 0x3fc9a624, GPIO 36[0m
+D (874) from -> ./components/bdc_motor_control/bdc_motor_control.c: 初始化有刷直流电机完毕!!![0m
+D (883) from -> ./components/bdc_motor_control/bdc_motor_control.c: 初始化电机4倍频正交解码器中!!![0m
+D (893) intr_alloc: Connected src 41 to int 9 (cpu 0)[0m
+D (898) pcnt: new pcnt unit (0,1) at 0x3fc9a63c, count range:[-1000,1000][0m
+[0;32mI (905) gpio: GPIO[20]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (915) gpio: GPIO[19]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+D (924) pcnt: new pcnt channel(0,1,0) at 0x3fc9a6d4[0m
+[0;32mI (929) gpio: GPIO[19]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (938) gpio: GPIO[20]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+D (947) pcnt: new pcnt channel(0,1,1) at 0x3fc9a6e8[0m
+D (952) from -> ./components/bdc_motor_control/bdc_motor_control.c: 初始化电机4倍频正交解码器中!!![0m
+D (962) from -> ./components/bdc_motor_control/bdc_motor_control.c: 初始化电机PID控制块中!!![0m
+D (972) from -> ./components/bdc_motor_control/bdc_motor_control.c: 初始化电机PID控制块完毕!!![0m
+D (981) from -> ./components/bdc_motor_control/bdc_motor_control.c: 使能当前设置的电机[0m
+D (990) from -> ./components/bdc_motor_control/bdc_motor_control.c: 将当前电机方向初始化为前进并设置默认速度为0[0m
+D (1002) from -> ./components/bdc_motor_control/bdc_motor_control.c: 开启当前电机的速度控制高分辨率周期控制(通过task)[0m
+[0;32mI (1014) from -> ./components/bdc_motor_control/bdc_motor_control.c: 电机控制初始化完毕[0m
+[0;32mI (1024) from -> ./main/app_main.c: 小车初始化完毕![0m
+left cnt = 0left cnt = 0D (1030) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (1040) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (1074) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (1074) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (1124) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (1124) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (1174) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (1174) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (1224) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (1224) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (1274) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (1274) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (1324) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (1324) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (1374) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (1374) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (1424) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (1424) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (1474) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (1474) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (1524) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (1524) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (1574) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (1574) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (1624) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (1624) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (1674) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (1674) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (1724) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (1724) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (1774) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (1774) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (1824) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (1824) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (1874) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (1874) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (1924) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (1924) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (1974) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (1974) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (2024) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (2024) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (2074) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (2074) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (2124) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (2124) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (2174) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (2174) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (2224) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (2224) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (2274) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (2274) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (2324) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (2324) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (2374) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (2374) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (2424) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (2424) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (2474) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (2474) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (2524) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (2524) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (2574) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (2574) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (2624) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (2624) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (2674) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (2674) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (2724) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (2724) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (2774) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (2774) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (2824) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (2824) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (2874) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (2874) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (2924) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (2924) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (2974) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (2974) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (3024) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (3024) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (3074) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (3074) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (3124) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (3124) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (3174) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (3174) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (3224) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (3224) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (3274) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (3274) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (3324) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (3324) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (3374) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (3374) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (3424) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (3424) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (3474) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (3474) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (3524) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (3524) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (3574) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (3574) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (3624) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (3624) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (3674) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (3674) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (3724) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (3724) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (3774) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (3774) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (3824) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (3824) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (3874) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (3874) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (3924) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (3924) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (3974) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (3974) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (4024) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (4024) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (4074) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (4074) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (4124) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (4124) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (4174) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (4174) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (4224) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (4224) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (4274) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (4274) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (4324) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (4324) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (4374) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (4374) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (4424) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (4424) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (4474) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (4474) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (4524) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (4524) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (4574) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (4574) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (4624) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (4624) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (4674) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (4674) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (4724) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (4724) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (4774) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (4774) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (4824) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (4824) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (4874) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (4874) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (4924) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (4924) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (4974) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (4974) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (5024) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (5024) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (5074) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (5074) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (5124) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (5124) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (5174) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (5174) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (5224) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (5224) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (5274) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (5274) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (5324) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (5324) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (5374) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (5374) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (5424) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (5424) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (5474) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (5474) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (5524) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (5524) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+left cnt = 0left cnt = 0D (5574) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m
+D (5574) from -> ./components/bdc_motor_control/bdc_motor_control.c: error:0.000000[0m

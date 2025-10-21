@@ -1,0 +1,17 @@
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_motors/user_motors.c: In function 'pid_loop':
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_motors/user_motors.c:16:9: warning: unused variable 'real_pulses' [-Wunused-variable]
+   16 |     int real_pulses = 0;
+      |         ^~~~~~~~~~~
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_motors/user_motors.c: In function 'motor_pulses2mps':
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_motors/user_motors.c:92:1: error: control reaches end of non-void function [-Werror=return-type]
+   92 | }
+      | ^
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_motors/user_motors.c: In function 'motor_mps2pulses':
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_motors/user_motors.c:97:1: error: control reaches end of non-void function [-Werror=return-type]
+   97 | }
+      | ^
+cc1: some warnings being treated as errors
+make[2]: *** [esp-idf/main/CMakeFiles/__idf_main.dir/build.make:90：esp-idf/main/CMakeFiles/__idf_main.dir/user_motors/user_motors.c.obj] 错误 1
+make[2]: *** 正在等待未完成的任务....
+make[1]: *** [CMakeFiles/Makefile2:4931：esp-idf/main/CMakeFiles/__idf_main.dir/all] 错误 2
+make: *** [Makefile:136：all] 错误 2

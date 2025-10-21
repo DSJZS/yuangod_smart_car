@@ -1,0 +1,124 @@
+[  0%] Built target sections.ld.in
+[  0%] Built target _project_elf_src
+[  0%] Built target memory.ld
+[  0%] Built target custom_bundle
+[  0%] Built target partition_table_bin
+[  0%] Built target __idf_esp_https_ota
+[  0%] Performing build step for 'bootloader'
+[  1%] Built target __idf_esp_http_server
+[  1%] Built target _project_elf_src
+[  2%] Built target __idf_esp_http_client
+[  5%] Built target __idf_log
+[ 15%] Built target __idf_esp_rom
+[  2%] Built target __idf_tcp_transport
+[ 17%] Built target __idf_esp_common
+[  3%] Built target __idf_esp_gdbstub
+[  3%] Built target __idf_esp_eth
+[ 27%] Built target __idf_esp_hw_support
+[ 28%] Built target __idf_esp_system
+[  5%] Built target __idf_esp_adc
+[ 37%] Built target __idf_efuse
+[  5%] Built target __idf_esp-tls
+[  5%] Built target __idf_http_parser
+[ 57%] Built target __idf_bootloader_support
+[ 58%] Built target __idf_esp_bootloader_format
+[  6%] Built target __idf_esp_wifi
+[ 60%] Built target __idf_spi_flash
+[  6%] Built target __idf_esp_coex
+[ 67%] Built target __idf_hal
+[ 68%] Built target __idf_micro-ecc
+[ 15%] Built target __idf_wpa_supplicant
+[ 91%] Built target __idf_soc
+[ 16%] Built target __idf_esp_netif
+[ 94%] Built target __idf_xtensa
+[ 96%] Built target __idf_main
+[ 98%] Built target bootloader.elf
+[ 25%] Built target __idf_lwip
+[100%] Built target gen_project_binary
+[ 25%] Built target __idf_vfs
+[ 26%] Built target __idf_esp_phy
+Bootloader binary size 0x5480 bytes. 0x2b80 bytes (34%) free.
+[100%] Built target bootloader_check_size
+[ 27%] Built target __idf_nvs_flash
+[100%] Built target app
+[ 27%] Built target __idf_esp_event
+[ 27%] No install step for 'bootloader'
+[ 27%] Completed 'bootloader'
+[ 28%] Built target __idf_esp_timer
+[ 29%] Built target __idf_esp_common
+[ 29%] Built target bootloader
+[ 29%] Built target __idf_cxx
+[ 31%] Built target __idf_newlib
+[ 33%] Built target __idf_freertos
+[ 38%] Built target __idf_esp_hw_support
+[ 40%] Built target __idf_soc
+[ 41%] Built target __idf_heap
+[ 42%] Built target __idf_log
+[ 47%] Built target __idf_hal
+[ 49%] Built target __idf_esp_rom
+[ 52%] Built target __idf_esp_system
+[ 53%] Built target __idf_pthread
+[ 55%] Built target __idf_spi_flash
+[ 56%] Built target __idf_app_update
+[ 56%] Built target __idf_esp_partition
+[ 58%] Built target __idf_bootloader_support
+[ 58%] Built target __idf_esp_app_format
+[ 58%] Built target __idf_esp_bootloader_format
+[ 60%] Built target mbedtls
+[ 61%] Built target mbedx509
+[ 71%] Built target mbedcrypto
+[ 72%] Built target p256m
+[ 72%] Built target everest
+[ 72%] Built target __idf_mbedtls
+[ 72%] Built target __idf_esp_pm
+[ 78%] Built target __idf_driver
+[ 79%] Built target __idf_esp_mm
+[ 80%] Built target __idf_efuse
+[ 80%] Built target __idf_esp_ringbuf
+[ 80%] Built target __idf_xtensa
+[ 80%] Built target __idf_protobuf-c
+[ 80%] Built target __idf_esp_hid
+[ 82%] Built target __idf_console
+[ 82%] Building C object esp-idf/softap_sta/CMakeFiles/__idf_softap_sta.dir/campus_network.c.obj
+[ 83%] Built target __idf_espcoredump
+[ 83%] Built target __idf_app_trace
+[ 83%] Built target __idf_json
+[ 85%] Built target __idf_unity
+[ 86%] Built target __idf_spiffs
+[ 84%] Built target __idf_sdmmc
+[ 87%] Built target __idf_mqtt
+[ 88%] Built target __idf_wear_levelling
+[ 89%] Built target __idf_esp_lcd
+[ 89%] Built target __idf_adc_battery_estimation
+[ 90%] Built target __idf_perfmon
+[ 91%] Built target __idf_touch_element
+[ 91%] Built target __idf_nvs_sec_provider
+[ 92%] Built target __idf_usb
+[ 92%] Built target __idf_bdc_motor
+[ 92%] Built target __idf_pid_ctrl
+[ 92%] Built target __idf_cmock
+[ 92%] Built target __idf_mpu6050
+[ 93%] Built target __idf_protocomm
+[ 94%] Built target __idf_fatfs
+[ 94%] Building C object esp-idf/bdc_motor_control/CMakeFiles/__idf_bdc_motor_control.dir/bdc_motor_control.c.obj
+[ 94%] Building C object esp-idf/esp_local_ctrl/CMakeFiles/__idf_esp_local_ctrl.dir/src/esp_local_ctrl_transport_httpd.c.obj
+[ 94%] Building C object esp-idf/esp_local_ctrl/CMakeFiles/__idf_esp_local_ctrl.dir/proto-c/esp_local_ctrl.pb-c.c.obj
+[ 94%] Building C object esp-idf/esp_local_ctrl/CMakeFiles/__idf_esp_local_ctrl.dir/src/esp_local_ctrl_handler.c.obj
+[ 94%] Building C object esp-idf/esp_local_ctrl/CMakeFiles/__idf_esp_local_ctrl.dir/src/esp_local_ctrl.c.obj
+[ 94%] Building C object esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/proto-c/wifi_config.pb-c.c.obj
+[ 94%] Building C object esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/src/manager.c.obj
+[ 94%] Building C object esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/src/wifi_scan.c.obj
+[ 94%] Building C object esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/src/wifi_ctrl.c.obj
+[ 94%] Building C object esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/src/wifi_config.c.obj
+[ 94%] Building C object esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/src/scheme_console.c.obj
+[ 95%] Building C object esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/src/handlers.c.obj
+[ 95%] Building C object esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/proto-c/wifi_scan.pb-c.c.obj
+[ 95%] Building C object esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/proto-c/wifi_ctrl.pb-c.c.obj
+[ 95%] Building C object esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/proto-c/wifi_constants.pb-c.c.obj
+[ 95%] Building C object esp-idf/wifi_provisioning/CMakeFiles/__idf_wifi_provisioning.dir/src/scheme_softap.c.obj
+[ 95%] Linking C static library libbdc_motor_control.a
+[ 95%] Built target __idf_bdc_motor_control
+[ 95%] Linking C static library libesp_local_ctrl.a
+[ 95%] Built target __idf_esp_local_ctrl
+[ 95%] Linking C static library libwifi_provisioning.a
+[ 95%] Built target __idf_wifi_provisioning

@@ -1,0 +1,125 @@
+[  0%] Built target memory.ld
+[  0%] Built target custom_bundle
+[  1%] Built target _project_elf_src
+[  1%] Built target partition_table_bin
+[  1%] Built target sections.ld.in
+[  1%] Performing build step for 'bootloader'
+[  1%] Built target __idf_esp_https_ota
+[  2%] Built target __idf_esp_http_server
+[  5%] Built target __idf_log
+[  4%] Built target _project_elf_src
+[  2%] Built target __idf_esp_http_client
+[ 15%] Built target __idf_esp_rom
+[  2%] Built target __idf_tcp_transport
+[ 17%] Built target __idf_esp_common
+[  2%] Built target __idf_esp_gdbstub
+[ 27%] Built target __idf_esp_hw_support
+[  2%] Built target __idf_esp_eth
+[ 28%] Built target __idf_esp_system
+[  3%] Built target __idf_esp_adc
+[ 37%] Built target __idf_efuse
+[  4%] Built target __idf_esp-tls
+[ 57%] Built target __idf_bootloader_support
+[  4%] Built target __idf_http_parser
+[ 58%] Built target __idf_esp_bootloader_format
+[  5%] Built target __idf_esp_wifi
+[ 60%] Built target __idf_spi_flash
+[  6%] Built target __idf_esp_coex
+[ 67%] Built target __idf_hal
+[ 68%] Built target __idf_micro-ecc
+[ 15%] Built target __idf_wpa_supplicant
+[ 91%] Built target __idf_soc
+[ 16%] Built target __idf_esp_netif
+[ 94%] Built target __idf_xtensa
+[ 96%] Built target __idf_main
+[ 98%] Built target bootloader.elf
+[ 25%] Built target __idf_lwip
+[100%] Built target gen_project_binary
+[ 26%] Built target __idf_vfs
+[ 27%] Built target __idf_esp_phy
+Bootloader binary size 0x5480 bytes. 0x2b80 bytes (34%) free.
+[100%] Built target bootloader_check_size
+[ 28%] Built target __idf_nvs_flash
+[100%] Built target app
+[ 28%] No install step for 'bootloader'
+[ 29%] Built target __idf_esp_event
+[ 29%] Completed 'bootloader'
+[ 29%] Built target __idf_esp_timer
+[ 29%] Built target bootloader
+[ 29%] Built target __idf_esp_common
+[ 29%] Built target __idf_cxx
+[ 31%] Built target __idf_newlib
+[ 33%] Built target __idf_freertos
+[ 38%] Built target __idf_esp_hw_support
+[ 41%] Built target __idf_soc
+[ 42%] Built target __idf_heap
+[ 42%] Built target __idf_log
+[ 47%] Built target __idf_hal
+[ 48%] Built target __idf_esp_rom
+[ 52%] Built target __idf_esp_system
+[ 52%] Built target __idf_pthread
+[ 54%] Built target __idf_spi_flash
+[ 55%] Built target __idf_app_update
+[ 55%] Built target __idf_esp_partition
+[ 57%] Built target __idf_bootloader_support
+[ 57%] Built target __idf_esp_app_format
+[ 57%] Built target __idf_esp_bootloader_format
+[ 59%] Built target mbedtls
+[ 60%] Built target mbedx509
+[ 70%] Built target mbedcrypto
+[ 71%] Built target p256m
+[ 71%] Built target everest
+[ 71%] Built target __idf_mbedtls
+[ 71%] Built target __idf_esp_pm
+[ 77%] Built target __idf_driver
+[ 77%] Built target __idf_esp_mm
+[ 78%] Built target __idf_efuse
+[ 79%] Built target __idf_esp_ringbuf
+[ 79%] Built target __idf_xtensa
+[ 80%] Built target __idf_json
+[ 81%] Built target __idf_wear_levelling
+[ 82%] Built target __idf_unity
+[ 83%] Built target __idf_esp_hid
+[ 83%] Built target __idf_protobuf-c
+[ 83%] Built target __idf_mpu6050
+[ 85%] Built target __idf_esp_lcd
+[ 86%] Built target __idf_console
+[ 87%] Built target __idf_mqtt
+[ 88%] Built target __idf_sdmmc
+[ 89%] Built target __idf_espcoredump
+[ 90%] Built target __idf_perfmon
+[ 90%] Built target __idf_adc_battery_estimation
+[ 90%] Built target __idf_app_trace
+[ 90%] Built target __idf_nvs_sec_provider
+[ 92%] Built target __idf_spiffs
+[ 92%] Built target __idf_touch_element
+[ 92%] Built target __idf_usb
+[ 92%] Built target __idf_pid_ctrl
+[ 92%] Built target __idf_bdc_motor
+[ 92%] Built target __idf_cmock
+[ 92%] Built target __idf_campus_network
+[ 93%] Built target __idf_fatfs
+[ 95%] Built target __idf_protocomm
+[ 95%] Building C object esp-idf/bdc_motor_control/CMakeFiles/__idf_bdc_motor_control.dir/bdc_motor_control.c.obj
+[ 96%] Built target __idf_esp_local_ctrl
+[ 97%] Built target __idf_wifi_provisioning
+[ 97%] Linking C static library libbdc_motor_control.a
+[ 97%] Built target __idf_bdc_motor_control
+[ 97%] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/user_motors/user_motors.c.obj
+[ 97%] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/app_main.c.obj
+[ 97%] Linking C static library libmain.a
+[ 98%] Built target __idf_main
+[ 98%] Generating ld/sections.ld
+[ 98%] Built target __ldgen_output_sections.ld
+[100%] Linking CXX executable yuangod_smart_car.elf
+[100%] Built target yuangod_smart_car.elf
+[100%] Generating binary image from built executable
+esptool.py v4.10.0
+Creating esp32s3 image...
+Merged 2 ELF sections
+Successfully created esp32s3 image.
+Generated /home/yuangod/project/workspace/yuangod_smart_car/build/yuangod_smart_car.bin
+[100%] Built target gen_project_binary
+yuangod_smart_car.bin binary size 0x37cf0 bytes. Smallest app partition is 0x100000 bytes. 0xc8310 bytes (78%) free.
+[100%] Built target app_check_size
+[100%] Built target app

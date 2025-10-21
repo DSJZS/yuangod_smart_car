@@ -1,0 +1,1902 @@
+In file included from /home/yuangod/project/esp32/esp-idf/components/log/include/esp_log.h:12,
+                 from /home/yuangod/project/workspace/yuangod_smart_car/components/softap_sta/campus_network.c:2:
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/inttypes.h: In function 'campus_network_login':
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/inttypes.h:315:3: error: storage class specified for parameter 'imaxdiv_t'
+  315 | } imaxdiv_t;
+      |   ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/inttypes.h:323:18: error: storage class specified for parameter 'imaxabs'
+  323 | extern intmax_t  imaxabs(intmax_t);
+      |                  ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/inttypes.h:324:18: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'imaxdiv'
+  324 | extern imaxdiv_t imaxdiv(intmax_t __numer, intmax_t __denomer);
+      |                  ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/inttypes.h:325:18: error: storage class specified for parameter 'strtoimax'
+  325 | extern intmax_t  strtoimax(const char *__restrict, char **__restrict, int);
+      |                  ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/inttypes.h:326:18: error: storage class specified for parameter '_strtoimax_r'
+  326 | extern intmax_t  _strtoimax_r(struct _reent *, const char *__restrict, char **__restrict, int);
+      |                  ^~~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/inttypes.h:327:18: error: storage class specified for parameter 'strtoumax'
+  327 | extern uintmax_t strtoumax(const char *__restrict, char **__restrict, int);
+      |                  ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/inttypes.h:328:18: error: storage class specified for parameter '_strtoumax_r'
+  328 | extern uintmax_t _strtoumax_r(struct _reent *, const char *__restrict, char **__restrict, int);
+      |                  ^~~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/inttypes.h:329:18: error: storage class specified for parameter 'wcstoimax'
+  329 | extern intmax_t  wcstoimax(const wchar_t *__restrict, wchar_t **__restrict, int);
+      |                  ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/inttypes.h:330:18: error: storage class specified for parameter '_wcstoimax_r'
+  330 | extern intmax_t  _wcstoimax_r(struct _reent *, const wchar_t *__restrict, wchar_t **__restrict, int);
+      |                  ^~~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/inttypes.h:331:18: error: storage class specified for parameter 'wcstoumax'
+  331 | extern uintmax_t wcstoumax(const wchar_t *__restrict, wchar_t **__restrict, int);
+      |                  ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/inttypes.h:332:18: error: storage class specified for parameter '_wcstoumax_r'
+  332 | extern uintmax_t _wcstoumax_r(struct _reent *, const wchar_t *__restrict, wchar_t **__restrict, int);
+      |                  ^~~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/inttypes.h:335:18: error: storage class specified for parameter 'strtoimax_l'
+  335 | extern intmax_t  strtoimax_l(const char *__restrict, char **_restrict, int, locale_t);
+      |                  ^~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/inttypes.h:336:18: error: storage class specified for parameter 'strtoumax_l'
+  336 | extern uintmax_t strtoumax_l(const char *__restrict, char **_restrict, int, locale_t);
+      |                  ^~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/inttypes.h:337:18: error: storage class specified for parameter 'wcstoimax_l'
+  337 | extern intmax_t  wcstoimax_l(const wchar_t *__restrict, wchar_t **_restrict, int, locale_t);
+      |                  ^~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/inttypes.h:338:18: error: storage class specified for parameter 'wcstoumax_l'
+  338 | extern uintmax_t wcstoumax_l(const wchar_t *__restrict, wchar_t **_restrict, int, locale_t);
+      |                  ^~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/log/include/esp_log.h:31:3: error: storage class specified for parameter 'esp_log_level_t'
+   31 | } esp_log_level_t;
+      |   ^~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/log/include/esp_log.h:33:15: error: storage class specified for parameter 'vprintf_like_t'
+   33 | typedef int (*vprintf_like_t)(const char *, va_list);
+      |               ^~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/log/include/esp_log.h:42:24: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'esp_log_default_level'
+   42 | extern esp_log_level_t esp_log_default_level;
+      |                        ^~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/log/include/esp_log.h:87:41: error: expected declaration specifiers or '...' before 'esp_log_level_t'
+   87 | void esp_log_level_set(const char* tag, esp_log_level_t level);
+      |                                         ^~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/log/include/esp_log.h:97:1: error: expected declaration specifiers before 'esp_log_level_t'
+   97 | esp_log_level_t esp_log_level_get(const char* tag);
+      | ^~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/log/include/esp_log.h:113:1: error: expected declaration specifiers before 'vprintf_like_t'
+  113 | vprintf_like_t esp_log_set_vprintf(vprintf_like_t func);
+      | ^~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/log/include/esp_log.h:162:20: error: expected declaration specifiers or '...' before 'esp_log_level_t'
+  162 | void esp_log_write(esp_log_level_t level, const char* tag, const char* format, ...) __attribute__ ((format (printf, 3, 4)));
+      |                    ^~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/log/include/esp_log.h:171:21: error: expected declaration specifiers or '...' before 'esp_log_level_t'
+  171 | void esp_log_writev(esp_log_level_t level, const char* tag, const char* format, va_list args);
+      |                     ^~~~~~~~~~~~~~~
+In file included from /home/yuangod/project/esp32/esp-idf/components/log/include/esp_log.h:175:
+/home/yuangod/project/esp32/esp-idf/components/log/include/esp_log_internal.h:11:90: error: expected declaration specifiers or '...' before 'esp_log_level_t'
+   11 | void esp_log_buffer_hex_internal(const char *tag, const void *buffer, uint16_t buff_len, esp_log_level_t level);
+      |                                                                                          ^~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/log/include/esp_log_internal.h:12:91: error: expected declaration specifiers or '...' before 'esp_log_level_t'
+   12 | void esp_log_buffer_char_internal(const char *tag, const void *buffer, uint16_t buff_len, esp_log_level_t level);
+      |                                                                                           ^~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/log/include/esp_log_internal.h:13:95: error: expected declaration specifiers or '...' before 'esp_log_level_t'
+   13 | void esp_log_buffer_hexdump_internal( const char *tag, const void *buffer, uint16_t buff_len, esp_log_level_t log_level);
+      |                                                                                               ^~~~~~~~~~~~~~~
+In file included from /home/yuangod/project/esp32/esp-idf/components/newlib/platform_include/sys/unistd.h:9,
+                 from /home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/unistd.h:4,
+                 from /home/yuangod/project/esp32/esp-idf/components/lwip/port/include/lwipopts.h:14,
+                 from /home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:51,
+                 from /home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:42,
+                 from /home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:8,
+                 from /home/yuangod/project/esp32/esp-idf/components/lwip/port/esp32xx/include/sys/socket.h:15,
+                 from /home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:13,
+                 from /home/yuangod/project/workspace/yuangod_smart_car/components/softap_sta/campus_network.c:4:
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:28:25: error: storage class specified for parameter 'u_int8_t'
+   28 | typedef __uint8_t       u_int8_t;
+      |                         ^~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:31:25: error: storage class specified for parameter 'u_int16_t'
+   31 | typedef __uint16_t      u_int16_t;
+      |                         ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:34:25: error: storage class specified for parameter 'u_int32_t'
+   34 | typedef __uint32_t      u_int32_t;
+      |                         ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:37:25: error: storage class specified for parameter 'u_int64_t'
+   37 | typedef __uint64_t      u_int64_t;
+      |                         ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:39:20: error: storage class specified for parameter 'register_t'
+   39 | typedef __intptr_t register_t;
+      |                    ^~~~~~~~~~
+In file included from /home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/select.h:14,
+                 from /home/yuangod/project/esp32/esp-idf/components/newlib/platform_include/sys/select.h:13,
+                 from /home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:50:
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_sigset.h:41:23: error: storage class specified for parameter '__sigset_t'
+   41 | typedef unsigned long __sigset_t;
+      |                       ^~~~~~~~~~
+In file included from /home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/select.h:15:
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_timeval.h:37:25: error: storage class specified for parameter 'suseconds_t'
+   37 | typedef __suseconds_t   suseconds_t;
+      |                         ^~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_timeval.h:42:25: error: storage class specified for parameter 'time_t'
+   42 | typedef _TIME_T_        time_t;
+      |                         ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_timeval.h:55:9: error: expected specifier-qualifier-list before 'time_t'
+   55 |         time_t          tv_sec;         /* seconds */
+      |         ^~~~~~
+In file included from /home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/timespec.h:38,
+                 from /home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/select.h:16:
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_timespec.h:48:9: error: expected specifier-qualifier-list before 'time_t'
+   48 |         time_t  tv_sec;         /* seconds */
+      |         ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/select.h:20:25: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'sigset_t'
+   20 | typedef __sigset_t      sigset_t;
+      |                         ^~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/select.h:38:25: error: storage class specified for parameter '__fd_mask'
+   38 | typedef unsigned long   __fd_mask;
+      |                         ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/select.h:40:25: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'fd_mask'
+   40 | typedef __fd_mask       fd_mask;
+      |                         ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/select.h:53:9: error: expected specifier-qualifier-list before '__fd_mask'
+   53 |         __fd_mask       __fds_bits[_howmany(FD_SETSIZE, _NFDBITS)];
+      |         ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/select.h:54:3: error: storage class specified for parameter 'fd_set'
+   54 | } fd_set;
+      |   ^~~~~~
+In file included from /home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/stdio.h:35,
+                 from /home/yuangod/project/esp32/esp-idf/components/esp_common/include/esp_err.h:10,
+                 from /home/yuangod/project/esp32/esp-idf/components/esp_event/include/esp_event.h:10,
+                 from /home/yuangod/project/workspace/yuangod_smart_car/components/softap_sta/include/campus_network.h:4,
+                 from /home/yuangod/project/workspace/yuangod_smart_car/components/softap_sta/campus_network.c:1:
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/select.h:80:12: error: expected declaration specifiers or '...' before 'fd_set'
+   80 | int select __P ((int __n, fd_set *__readfds, fd_set *__writefds,
+      |            ^~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/select.h:80:12: error: expected declaration specifiers or '...' before 'fd_set'
+   80 | int select __P ((int __n, fd_set *__readfds, fd_set *__writefds,
+      |            ^~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/select.h:80:12: error: expected declaration specifiers or '...' before 'fd_set'
+   80 | int select __P ((int __n, fd_set *__readfds, fd_set *__writefds,
+      |            ^~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/select.h:83:13: error: expected declaration specifiers or '...' before 'fd_set'
+   83 | int pselect __P ((int __n, fd_set *__readfds, fd_set *__writefds,
+      |             ^~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/select.h:83:13: error: expected declaration specifiers or '...' before 'fd_set'
+   83 | int pselect __P ((int __n, fd_set *__readfds, fd_set *__writefds,
+      |             ^~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/select.h:83:13: error: expected declaration specifiers or '...' before 'fd_set'
+   83 | int pselect __P ((int __n, fd_set *__readfds, fd_set *__writefds,
+      |             ^~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/select.h:83:13: error: unknown type name 'sigset_t'
+   83 | int pselect __P ((int __n, fd_set *__readfds, fd_set *__writefds,
+      |             ^~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:55:25: error: storage class specified for parameter 'in_addr_t'
+   55 | typedef __uint32_t      in_addr_t;      /* base type for internet address */
+      |                         ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:60:25: error: storage class specified for parameter 'in_port_t'
+   60 | typedef __uint16_t      in_port_t;
+      |                         ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:64:25: error: storage class specified for parameter 'u_register_t'
+   64 | typedef __uintptr_t     u_register_t;
+      |                         ^~~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:71:25: error: storage class specified for parameter 'u_char'
+   71 | typedef unsigned char   u_char;
+      |                         ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:75:25: error: storage class specified for parameter 'u_short'
+   75 | typedef unsigned short  u_short;
+      |                         ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:79:25: error: storage class specified for parameter 'u_int'
+   79 | typedef unsigned int    u_int;
+      |                         ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:83:25: error: storage class specified for parameter 'u_long'
+   83 | typedef unsigned long   u_long;
+      |                         ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:91:25: error: storage class specified for parameter 'ushort'
+   91 | typedef unsigned short  ushort;         /* System V compatibility */
+      |                         ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:92:25: error: storage class specified for parameter 'uint'
+   92 | typedef unsigned int    uint;           /* System V compatibility */
+      |                         ^~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:93:25: error: storage class specified for parameter 'ulong'
+   93 | typedef unsigned long   ulong;          /* System V compatibility */
+      |                         ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:97:25: error: storage class specified for parameter 'blkcnt_t'
+   97 | typedef __blkcnt_t      blkcnt_t;
+      |                         ^~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:102:25: error: storage class specified for parameter 'blksize_t'
+  102 | typedef __blksize_t     blksize_t;
+      |                         ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:107:25: error: storage class specified for parameter 'clock_t'
+  107 | typedef _CLOCK_T_       clock_t;
+      |                         ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:118:25: error: storage class specified for parameter 'daddr_t'
+  118 | typedef __daddr_t       daddr_t;
+      |                         ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:121:17: error: storage class specified for parameter 'caddr_t'
+  121 | typedef char *  caddr_t;
+      |                 ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:126:25: error: storage class specified for parameter 'fsblkcnt_t'
+  126 | typedef __fsblkcnt_t    fsblkcnt_t;
+      |                         ^~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:127:25: error: storage class specified for parameter 'fsfilcnt_t'
+  127 | typedef __fsfilcnt_t    fsfilcnt_t;
+      |                         ^~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:132:25: error: storage class specified for parameter 'id_t'
+  132 | typedef __id_t          id_t;           /* can hold a uid_t or pid_t */
+      |                         ^~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:137:25: error: storage class specified for parameter 'ino_t'
+  137 | typedef __ino_t         ino_t;          /* inode number */
+      |                         ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:159:25: error: storage class specified for parameter 'dev_t'
+  159 | typedef __dev_t         dev_t;          /* device number or struct cdev */
+      |                         ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:163:25: error: storage class specified for parameter 'uid_t'
+  163 | typedef __uid_t         uid_t;          /* user id */
+      |                         ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:167:25: error: storage class specified for parameter 'gid_t'
+  167 | typedef __gid_t         gid_t;          /* group id */
+      |                         ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:172:25: error: storage class specified for parameter 'pid_t'
+  172 | typedef __pid_t         pid_t;          /* process id */
+      |                         ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:177:25: error: storage class specified for parameter 'key_t'
+  177 | typedef __key_t         key_t;          /* IPC key */
+      |                         ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:187:25: error: storage class specified for parameter 'mode_t'
+  187 | typedef __mode_t        mode_t;         /* permissions */
+      |                         ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:192:25: error: storage class specified for parameter 'nlink_t'
+  192 | typedef __nlink_t       nlink_t;        /* link count */
+      |                         ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:197:25: error: storage class specified for parameter 'clockid_t'
+  197 | typedef __clockid_t     clockid_t;
+      |                         ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:203:25: error: storage class specified for parameter 'timer_t'
+  203 | typedef __timer_t       timer_t;
+      |                         ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:209:25: error: storage class specified for parameter 'useconds_t'
+  209 | typedef __useconds_t    useconds_t;     /* microseconds (unsigned) */
+      |                         ^~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:218:25: error: storage class specified for parameter 'sbintime_t'
+  218 | typedef __int64_t       sbintime_t;
+      |                         ^~~~~~~~~~
+In file included from /home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/types.h:221:
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_pthreadtypes.h:32:20: error: storage class specified for parameter 'pthread_t'
+   32 | typedef __uint32_t pthread_t;            /* identify a thread */
+      |                    ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_pthreadtypes.h:75:3: error: storage class specified for parameter 'pthread_attr_t'
+   75 | } pthread_attr_t;
+      |   ^~~~~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_pthreadtypes.h:154:20: error: storage class specified for parameter 'pthread_mutex_t'
+  154 | typedef __uint32_t pthread_mutex_t;      /* identify a mutex */
+      |                    ^~~~~~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_pthreadtypes.h:169:3: error: storage class specified for parameter 'pthread_mutexattr_t'
+  169 | } pthread_mutexattr_t;
+      |   ^~~~~~~~~~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_pthreadtypes.h:176:20: error: storage class specified for parameter 'pthread_cond_t'
+  176 | typedef __uint32_t pthread_cond_t;       /* identify a condition variable */
+      |                    ^~~~~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_pthreadtypes.h:182:3: error: expected specifier-qualifier-list before 'clock_t'
+  182 |   clock_t  clock;             /* specifiy clock for timeouts */
+      |   ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_pthreadtypes.h:186:3: error: storage class specified for parameter 'pthread_condattr_t'
+  186 | } pthread_condattr_t;         /* a condition attribute object */
+      |   ^~~~~~~~~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_pthreadtypes.h:190:20: error: storage class specified for parameter 'pthread_key_t'
+  190 | typedef __uint32_t pthread_key_t;        /* thread-specific data keys */
+      |                    ^~~~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_pthreadtypes.h:195:3: error: storage class specified for parameter 'pthread_once_t'
+  195 | } pthread_once_t;       /* dynamic package initialization */
+      |   ^~~~~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_pthreadtypes.h:221:20: error: storage class specified for parameter 'pthread_rwlock_t'
+  221 | typedef __uint32_t pthread_rwlock_t;         /* POSIX RWLock Object */
+      |                    ^~~~~~~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_pthreadtypes.h:230:3: error: storage class specified for parameter 'pthread_rwlockattr_t'
+  230 | } pthread_rwlockattr_t;
+      |   ^~~~~~~~~~~~~~~~~~~~
+In file included from /home/yuangod/project/esp32/esp-idf/components/newlib/platform_include/sys/unistd.h:11:
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:16:15: error: storage class specified for parameter 'environ'
+   16 | extern char **environ;
+      |               ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:23:36: error: expected declaration specifiers or '...' before 'mode_t'
+   23 | int     chmod (const char *__path, mode_t __mode);
+      |                                    ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:24:36: error: expected declaration specifiers or '...' before 'uid_t'
+   24 | int     chown (const char *__path, uid_t __owner, gid_t __group);
+      |                                    ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:24:51: error: expected declaration specifiers or '...' before 'gid_t'
+   24 | int     chown (const char *__path, uid_t __owner, gid_t __group);
+      |                                                   ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:78:31: error: expected declaration specifiers or '...' before 'mode_t'
+   78 | int     fchmod (int __fildes, mode_t __mode);
+      |                               ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:81:31: error: expected declaration specifiers or '...' before 'uid_t'
+   81 | int     fchown (int __fildes, uid_t __owner, gid_t __group);
+      |                               ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:81:46: error: expected declaration specifiers or '...' before 'gid_t'
+   81 | int     fchown (int __fildes, uid_t __owner, gid_t __group);
+      |                                              ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:84:52: error: expected declaration specifiers or '...' before 'uid_t'
+   84 | int     fchownat (int __dirfd, const char *__path, uid_t __owner, gid_t __group, int __flags);
+      |                                                    ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:84:67: error: expected declaration specifiers or '...' before 'gid_t'
+   84 | int     fchownat (int __dirfd, const char *__path, uid_t __owner, gid_t __group, int __flags);
+      |                                                                   ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:89:1: error: expected declaration specifiers before 'pid_t'
+   89 | pid_t   fork (void);
+      | ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:105:1: error: expected declaration specifiers before 'gid_t'
+  105 | gid_t   getegid (void);
+      | ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:106:1: error: expected declaration specifiers before 'uid_t'
+  106 | uid_t   geteuid (void);
+      | ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:107:1: error: expected declaration specifiers before 'gid_t'
+  107 | gid_t   getgid (void);
+      | ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:108:38: error: expected declaration specifiers or '...' before 'gid_t'
+  108 | int     getgroups (int __gidsetsize, gid_t __grouplist[]);
+      |                                      ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:121:25: error: expected declaration specifiers or '...' before 'uid_t'
+  121 | int    getpeereid (int, uid_t *, gid_t *);
+      |                         ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:121:34: error: expected declaration specifiers or '...' before 'gid_t'
+  121 | int    getpeereid (int, uid_t *, gid_t *);
+      |                                  ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:124:1: error: expected declaration specifiers before 'pid_t'
+  124 | pid_t   getpgid (pid_t);
+      | ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:126:1: error: expected declaration specifiers before 'pid_t'
+  126 | pid_t   getpgrp (void);
+      | ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:127:1: error: expected declaration specifiers before 'pid_t'
+  127 | pid_t   getpid (void);
+      | ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:128:1: error: expected declaration specifiers before 'pid_t'
+  128 | pid_t   getppid (void);
+      | ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:130:1: error: expected declaration specifiers before 'pid_t'
+  130 | pid_t   getsid (pid_t);
+      | ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:132:1: error: expected declaration specifiers before 'uid_t'
+  132 | uid_t   getuid (void);
+      | ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:147:37: error: expected declaration specifiers or '...' before 'uid_t'
+  147 | int     lchown (const char *__path, uid_t __owner, gid_t __group);
+      |                                     ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:147:52: error: expected declaration specifiers or '...' before 'gid_t'
+  147 | int     lchown (const char *__path, uid_t __owner, gid_t __group);
+      |                                                    ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:192:18: error: expected declaration specifiers or '...' before 'gid_t'
+  192 | int     setegid (gid_t __gid);
+      |                  ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:193:18: error: expected declaration specifiers or '...' before 'uid_t'
+  193 | int     seteuid (uid_t __uid);
+      |                  ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:195:17: error: expected declaration specifiers or '...' before 'gid_t'
+  195 | int     setgid (gid_t __gid);
+      |                 ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:197:45: error: expected ';', ',' or ')' before '*' token
+  197 | int     setgroups (int ngroups, const gid_t *grouplist);
+      |                                             ^
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:202:18: error: expected declaration specifiers or '...' before 'pid_t'
+  202 | int     setpgid (pid_t __pid, pid_t __pgid);
+      |                  ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:202:31: error: expected declaration specifiers or '...' before 'pid_t'
+  202 | int     setpgid (pid_t __pid, pid_t __pgid);
+      |                               ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:207:19: error: expected declaration specifiers or '...' before 'gid_t'
+  207 | int     setregid (gid_t __rgid, gid_t __egid);
+      |                   ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:207:33: error: expected declaration specifiers or '...' before 'gid_t'
+  207 | int     setregid (gid_t __rgid, gid_t __egid);
+      |                                 ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:208:19: error: expected declaration specifiers or '...' before 'uid_t'
+  208 | int     setreuid (uid_t __ruid, uid_t __euid);
+      |                   ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:208:33: error: expected declaration specifiers or '...' before 'uid_t'
+  208 | int     setreuid (uid_t __ruid, uid_t __euid);
+      |                                 ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:210:1: error: expected declaration specifiers before 'pid_t'
+  210 | pid_t   setsid (void);
+      | ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:211:17: error: expected declaration specifiers or '...' before 'uid_t'
+  211 | int     setuid (uid_t __uid);
+      |                 ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:220:1: error: expected declaration specifiers before 'pid_t'
+  220 | pid_t   tcgetpgrp (int __fildes);
+      | ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:221:34: error: expected declaration specifiers or '...' before 'pid_t'
+  221 | int     tcsetpgrp (int __fildes, pid_t __pgrp_id);
+      |                                  ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:226:17: error: expected declaration specifiers or '...' before 'useconds_t'
+  226 | int     usleep (useconds_t __useconds);
+      |                 ^~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:238:14: error: storage class specified for parameter 'optarg'
+  238 | extern char *optarg;                    /* getopt(3) external variables */
+      |              ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:239:12: error: storage class specified for parameter 'optind'
+  239 | extern int optind, opterr, optopt;
+      |            ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:239:20: error: storage class specified for parameter 'opterr'
+  239 | extern int optind, opterr, optopt;
+      |                    ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:239:28: error: storage class specified for parameter 'optopt'
+  239 | extern int optind, opterr, optopt;
+      |                            ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:241:12: error: storage class specified for parameter 'optreset'
+  241 | extern int optreset;                    /* getopt(3) external variable */
+      |            ^~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:245:1: error: expected declaration specifiers before 'pid_t'
+  245 | pid_t   vfork (void);
+      | ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:280:1: error: expected declaration specifiers before 'useconds_t'
+  280 | useconds_t ualarm (useconds_t __useconds, useconds_t __interval);
+      | ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/newlib/platform_include/sys/unistd.h:17:5: error: redefinition of parameter 'truncate'
+   17 | int truncate(const char *, off_t __length);
+      |     ^~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:272:9: note: previous definition of 'truncate' with type 'int (*)(const char *, off_t)' {aka 'int (*)(const char *, long int)'}
+  272 | int     truncate (const char *, off_t __length);
+      |         ^~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/newlib/platform_include/sys/unistd.h:18:5: error: redefinition of parameter 'gethostname'
+   18 | int gethostname(char *__name, size_t __len);
+      |     ^~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:286:9: note: previous definition of 'gethostname' with type 'int (*)(char *, size_t)' {aka 'int (*)(char *, unsigned int)'}
+  286 |  int    gethostname (char *__name, size_t __len);
+      |         ^~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/newlib/platform_include/sys/unistd.h:19:5: error: redefinition of parameter 'getentropy'
+   19 | int getentropy(void *buffer, size_t length);
+      |     ^~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/unistd.h:103:9: note: previous definition of 'getentropy' with type 'int (*)(void *, size_t)' {aka 'int (*)(void *, unsigned int)'}
+  103 | int     getentropy (void *, size_t);
+      |         ^~~~~~~~~~
+In file included from /home/yuangod/project/esp32/esp-idf/components/newlib/platform_include/time.h:11,
+                 from /home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/stat.h:9,
+                 from /home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_default_fcntl.h:211,
+                 from /home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/fcntl.h:3,
+                 from /home/yuangod/project/esp32/esp-idf/components/lwip/port/include/lwipopts.h:15:
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:56:1: error: expected declaration specifiers before 'clock_t'
+   56 | clock_t    clock (void);
+      | ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:57:22: error: expected declaration specifiers or '...' before 'time_t'
+   57 | double     difftime (time_t _time2, time_t _time1);
+      |                      ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:57:37: error: expected declaration specifiers or '...' before 'time_t'
+   57 | double     difftime (time_t _time2, time_t _time1);
+      |                                     ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:58:1: error: expected declaration specifiers before 'time_t'
+   58 | time_t     mktime (struct tm *_timeptr);
+      | ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:59:1: error: expected declaration specifiers before 'time_t'
+   59 | time_t     time (time_t *_timer);
+      | ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:62:32: error: expected ';', ',' or ')' before '*' token
+   62 | char      *ctime (const time_t *_time);
+      |                                ^
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:63:33: error: expected ';', ',' or ')' before '*' token
+   63 | struct tm *gmtime (const time_t *_timer);
+      |                                 ^
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:64:36: error: expected ';', ',' or ')' before '*' token
+   64 | struct tm *localtime (const time_t *_timer);
+      |                                    ^
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:71:15: error: storage class specified for parameter 'strftime_l'
+   71 | extern size_t strftime_l (char *__restrict _s, size_t _maxsize,
+      |               ^~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:78:39: error: expected ';', ',' or ')' before '*' token
+   78 | char      *ctime_r      (const time_t *, char *);
+      |                                       ^
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:79:39: error: expected ';', ',' or ')' before '*' token
+   79 | struct tm *gmtime_r     (const time_t *__restrict,
+      |                                       ^
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:81:39: error: expected ';', ',' or ')' before '*' token
+   81 | struct tm *localtime_r  (const time_t *__restrict,
+      |                                       ^
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:134:22: error: storage class specified for parameter '_timezone'
+  134 | extern __IMPORT long _timezone;
+      |                      ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:135:21: error: storage class specified for parameter '_daylight'
+  135 | extern __IMPORT int _daylight;
+      |                     ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:138:23: error: storage class specified for parameter '_tzname'
+  138 | extern __IMPORT char *_tzname[2];
+      |                       ^~~~~~~
+In file included from /home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/signal.h:6,
+                 from /home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:158:
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:56:3: error: expected specifier-qualifier-list before 'pthread_attr_t'
+   56 |   pthread_attr_t  *sigev_notify_attributes;    /* Notification Attributes */
+      |   ^~~~~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:73:3: error: storage class specified for parameter 'siginfo_t'
+   73 | } siginfo_t;
+      |   ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:120:16: error: storage class specified for parameter '_sig_func_ptr'
+  120 | typedef void (*_sig_func_ptr)(int);
+      |                ^~~~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:124:9: error: expected specifier-qualifier-list before '_sig_func_ptr'
+  124 |         _sig_func_ptr sa_handler;
+      |         ^~~~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:158:3: error: storage class specified for parameter 'stack_t'
+  158 | } stack_t;
+      |   ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:165:29: error: unknown type name 'sigset_t'
+  165 | int sigprocmask (int, const sigset_t *, sigset_t *);
+      |                             ^~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:165:41: error: unknown type name 'sigset_t'; did you mean 'List_t'?
+  165 | int sigprocmask (int, const sigset_t *, sigset_t *);
+      |                                         ^~~~~~~~
+      |                                         List_t
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:169:33: error: unknown type name 'sigset_t'
+  169 | int pthread_sigmask (int, const sigset_t *, sigset_t *);
+      |                                 ^~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:169:45: error: unknown type name 'sigset_t'; did you mean 'List_t'?
+  169 | int pthread_sigmask (int, const sigset_t *, sigset_t *);
+      |                                             ^~~~~~~~
+      |                                             List_t
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:177:17: error: expected ')' before 'int'
+  177 | int kill (pid_t, int);
+      |                 ^~~~
+      |                 )
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:181:19: error: expected ')' before 'int'
+  181 | int killpg (pid_t, int);
+      |                   ^~~~
+      |                   )
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:185:16: error: unknown type name 'sigset_t'; did you mean 'List_t'?
+  185 | int sigaddset (sigset_t *, const int);
+      |                ^~~~~~~~
+      |                List_t
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:186:16: error: unknown type name 'sigset_t'; did you mean 'List_t'?
+  186 | int sigdelset (sigset_t *, const int);
+      |                ^~~~~~~~
+      |                List_t
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:187:24: error: unknown type name 'sigset_t'
+  187 | int sigismember (const sigset_t *, int);
+      |                        ^~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:188:17: error: unknown type name 'sigset_t'; did you mean 'List_t'?
+  188 | int sigfillset (sigset_t *);
+      |                 ^~~~~~~~
+      |                 List_t
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:189:18: error: unknown type name 'sigset_t'; did you mean 'List_t'?
+  189 | int sigemptyset (sigset_t *);
+      |                  ^~~~~~~~
+      |                  List_t
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:190:17: error: unknown type name 'sigset_t'; did you mean 'List_t'?
+  190 | int sigpending (sigset_t *);
+      |                 ^~~~~~~~
+      |                 List_t
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:191:23: error: unknown type name 'sigset_t'
+  191 | int sigsuspend (const sigset_t *);
+      |                       ^~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:192:20: error: unknown type name 'sigset_t'
+  192 | int sigwait (const sigset_t *, int *);
+      |                    ^~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:223:32: error: expected ';', ',' or ')' before '*' token
+  223 | int sigaltstack (const stack_t *__restrict, stack_t *__restrict);
+      |                                ^
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:227:29: error: expected ')' before 'int'
+  227 | int pthread_kill (pthread_t, int);
+      |                             ^~~~
+      |                             )
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:235:24: error: unknown type name 'sigset_t'
+  235 | int sigwaitinfo (const sigset_t *, siginfo_t *);
+      |                        ^~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:235:36: error: expected declaration specifiers or '...' before 'siginfo_t'
+  235 | int sigwaitinfo (const sigset_t *, siginfo_t *);
+      |                                    ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:236:25: error: unknown type name 'sigset_t'
+  236 | int sigtimedwait (const sigset_t *, siginfo_t *, const struct timespec *);
+      |                         ^~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:236:37: error: expected declaration specifiers or '...' before 'siginfo_t'
+  236 | int sigtimedwait (const sigset_t *, siginfo_t *, const struct timespec *);
+      |                                     ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/signal.h:238:21: error: expected ')' before 'int'
+  238 | int sigqueue (pid_t, int, const union sigval);
+      |                     ^~~~
+      |                     )
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/signal.h:10:17: error: storage class specified for parameter 'sig_atomic_t'
+   10 | typedef int     sig_atomic_t;           /* Atomic entity type (ANSI) */
+      |                 ^~~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/signal.h:12:23: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'sig_t'
+   12 | typedef _sig_func_ptr sig_t;            /* BSD naming */
+      |                       ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/signal.h:15:23: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'sighandler_t'
+   15 | typedef _sig_func_ptr sighandler_t;     /* glibc naming */
+      |                       ^~~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/signal.h:24:1: error: expected declaration specifiers before '_sig_func_ptr'
+   24 | _sig_func_ptr _signal_r (struct _reent *, int, _sig_func_ptr);
+      | ^~~~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/signal.h:28:1: error: expected declaration specifiers before '_sig_func_ptr'
+   28 | _sig_func_ptr signal (int, _sig_func_ptr);
+      | ^~~~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:166:20: error: expected declaration specifiers or '...' before 'clockid_t'
+  166 | int clock_settime (clockid_t clock_id, const struct timespec *tp);
+      |                    ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:167:20: error: expected declaration specifiers or '...' before 'clockid_t'
+  167 | int clock_gettime (clockid_t clock_id, struct timespec *tp);
+      |                    ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:168:19: error: expected declaration specifiers or '...' before 'clockid_t'
+  168 | int clock_getres (clockid_t clock_id, struct timespec *res);
+      |                   ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:172:19: error: expected declaration specifiers or '...' before 'clockid_t'
+  172 | int timer_create (clockid_t clock_id,
+      |                   ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:174:9: error: expected declaration specifiers or '...' before 'timer_t'
+  174 |         timer_t *__restrict timerid);
+      |         ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:178:19: error: expected declaration specifiers or '...' before 'timer_t'
+  178 | int timer_delete (timer_t timerid);
+      |                   ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:182:20: error: expected declaration specifiers or '...' before 'timer_t'
+  182 | int timer_settime (timer_t timerid, int flags,
+      |                    ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:185:20: error: expected declaration specifiers or '...' before 'timer_t'
+  185 | int timer_gettime (timer_t timerid, struct itimerspec *value);
+      |                    ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:186:23: error: expected declaration specifiers or '...' before 'timer_t'
+  186 | int timer_getoverrun (timer_t timerid);
+      |                       ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/time.h:203:22: error: expected declaration specifiers or '...' before 'clockid_t'
+  203 | int clock_nanosleep (clockid_t clock_id, int flags,
+      |                      ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/newlib/platform_include/time.h:25:19: error: expected declaration specifiers or '...' before 'clockid_t'
+   25 | int clock_settime(clockid_t clock_id, const struct timespec *tp);
+      |                   ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/newlib/platform_include/time.h:26:19: error: expected declaration specifiers or '...' before 'clockid_t'
+   26 | int clock_gettime(clockid_t clock_id, struct timespec *tp);
+      |                   ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/newlib/platform_include/time.h:27:18: error: expected declaration specifiers or '...' before 'clockid_t'
+   27 | int clock_getres(clockid_t clock_id, struct timespec *res);
+      |                  ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/stat.h:29:3: error: expected specifier-qualifier-list before 'dev_t'
+   29 |   dev_t         st_dev;
+      |   ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/stat.h:137:36: error: expected declaration specifiers or '...' before 'mode_t'
+  137 | int     chmod (const char *__path, mode_t __mode );
+      |                                    ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/stat.h:138:27: error: expected declaration specifiers or '...' before 'mode_t'
+  138 | int     fchmod (int __fd, mode_t __mode);
+      |                           ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/stat.h:140:35: error: expected declaration specifiers or '...' before 'mode_t'
+  140 | int     mkdir (const char *_path, mode_t __mode );
+      |                                   ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/stat.h:141:37: error: expected declaration specifiers or '...' before 'mode_t'
+  141 | int     mkfifo (const char *__path, mode_t __mode );
+      |                                     ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/stat.h:143:1: error: expected declaration specifiers before 'mode_t'
+  143 | mode_t  umask (mode_t __mask );
+      | ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/stat.h:151:38: error: expected declaration specifiers or '...' before 'mode_t'
+  151 | int     fchmodat (int, const char *, mode_t, int);
+      |                                      ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/stat.h:153:37: error: expected declaration specifiers or '...' before 'mode_t'
+  153 | int     mkdirat (int, const char *, mode_t);
+      |                                     ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/stat.h:154:38: error: expected declaration specifiers or '...' before 'mode_t'
+  154 | int     mkfifoat (int, const char *, mode_t);
+      |                                      ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/stat.h:155:37: error: expected declaration specifiers or '...' before 'mode_t'
+  155 | int     mknodat (int, const char *, mode_t, dev_t);
+      |                                     ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/stat.h:155:45: error: expected declaration specifiers or '...' before 'dev_t'
+  155 | int     mknodat (int, const char *, mode_t, dev_t);
+      |                                             ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_default_fcntl.h:213:12: error: storage class specified for parameter 'open'
+  213 | extern int open (const char *, int, ...);
+      |            ^~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_default_fcntl.h:215:12: error: storage class specified for parameter 'openat'
+  215 | extern int openat (int, const char *, int, ...);
+      |            ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_default_fcntl.h:217:33: error: expected declaration specifiers or '...' before 'mode_t'
+  217 | extern int creat (const char *, mode_t);
+      |                                 ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_default_fcntl.h:218:12: error: storage class specified for parameter 'fcntl'
+  218 | extern int fcntl (int, int, ...);
+      |            ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_default_fcntl.h:220:12: error: storage class specified for parameter 'flock'
+  220 | extern int flock (int, int);
+      |            ^~~~~
+In file included from /home/yuangod/project/esp32/esp-idf/components/newlib/platform_include/sys/time.h:21,
+                 from /home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_default_fcntl.h:223:
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:66:9: error: expected specifier-qualifier-list before 'time_t'
+   66 |         time_t  sec;
+      |         ^~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:72:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+   72 | {
+      | ^
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:83:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+   83 | {
+      | ^
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:95:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+   95 | {
+      | ^
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:106:34: error: expected declaration specifiers or '...' before 'u_int'
+  106 | bintime_mul(struct bintime *_bt, u_int _x)
+      |                                  ^~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:119:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  119 | {
+      | ^
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:147:17: error: expected declaration specifiers or '...' before 'sbintime_t'
+  147 | sbintime_getsec(sbintime_t _sbt)
+      |                 ^~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:154:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'bttosbt'
+  154 | bttosbt(const struct bintime _bt)
+      | ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:161:9: error: expected declaration specifiers or '...' before 'sbintime_t'
+  161 | sbttobt(sbintime_t _sbt)
+      |         ^~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:192:9: error: expected declaration specifiers or '...' before 'sbintime_t'
+  192 | sbttons(sbintime_t _sbt)
+      |         ^~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:206:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'nstosbt'
+  206 | nstosbt(int64_t _ns)
+      | ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:220:9: error: expected declaration specifiers or '...' before 'sbintime_t'
+  220 | sbttous(sbintime_t _sbt)
+      |         ^~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:227:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'ustosbt'
+  227 | ustosbt(int64_t _us)
+      | ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:241:9: error: expected declaration specifiers or '...' before 'sbintime_t'
+  241 | sbttoms(sbintime_t _sbt)
+      |         ^~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:248:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'mstosbt'
+  248 | mstosbt(int64_t _ms)
+      | ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:277:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  277 | {
+      | ^
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:286:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  286 | {
+      | ^
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:295:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  295 | {
+      | ^
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:303:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  303 | {
+      | ^
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:311:9: error: expected declaration specifiers or '...' before 'sbintime_t'
+  311 | sbttots(sbintime_t _sbt)
+      |         ^~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:321:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'tstosbt'
+  321 | tstosbt(struct timespec _ts)
+      | ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:328:9: error: expected declaration specifiers or '...' before 'sbintime_t'
+  328 | sbttotv(sbintime_t _sbt)
+      |         ^~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:338:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'tvtosbt'
+  338 | tvtosbt(struct timeval _tv)
+      | ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_default_fcntl.h:224:12: error: storage class specified for parameter 'futimesat'
+  224 | extern int futimesat (int, const char *, const struct timeval [2]);
+      |            ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/_default_fcntl.h:224:12: error: redefinition of parameter 'futimesat'
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/time.h:436:5: note: previous definition of 'futimesat' with type 'int (*)(int,  const char *, const struct timeval *)'
+  436 | int futimesat (int, const char *, const struct timeval [2]);
+      |     ^~~~~~~~~
+In file included from /home/yuangod/project/esp32/esp-idf/components/lwip/port/include/lwipopts.h:19:
+/home/yuangod/project/esp32/esp-idf/components/newlib/platform_include/sys/poll.h:26:1: warning: empty declaration
+   26 | struct pollfd {
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/newlib/platform_include/sys/poll.h:32:22: error: storage class specified for parameter 'nfds_t'
+   32 | typedef unsigned int nfds_t;
+      |                      ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/newlib/platform_include/sys/poll.h:34:30: error: expected declaration specifiers or '...' before 'nfds_t'
+   34 | int poll(struct pollfd *fds, nfds_t nfds, int timeout);
+      |                              ^~~~~~
+In file included from /home/yuangod/project/esp32/esp-idf/components/lwip/port/include/lwipopts.h:24:
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/include/sockets_ext.h:18:1: warning: empty declaration
+   18 | struct lwip_sock;
+      | ^~~~~~
+In file included from /home/yuangod/project/esp32/esp-idf/components/lwip/port/include/lwipopts.h:25:
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/freertos/include/arch/sys_arch.h:21:27: error: storage class specified for parameter 'sys_sem_t'
+   21 | typedef SemaphoreHandle_t sys_sem_t;
+      |                           ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/freertos/include/arch/sys_arch.h:22:27: error: storage class specified for parameter 'sys_mutex_t'
+   22 | typedef SemaphoreHandle_t sys_mutex_t;
+      |                           ^~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/freertos/include/arch/sys_arch.h:23:22: error: storage class specified for parameter 'sys_thread_t'
+   23 | typedef TaskHandle_t sys_thread_t;
+      |                      ^~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/freertos/include/arch/sys_arch.h:28:4: error: storage class specified for parameter 'sys_mbox_t'
+   28 | }* sys_mbox_t;
+      |    ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/freertos/include/arch/sys_arch.h:69:6: error: redefinition of parameter 'sys_delay_ms'
+   69 | void sys_delay_ms(uint32_t ms);
+      |      ^~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/freertos/include/arch/sys_arch.h:35:6: note: previous definition of 'sys_delay_ms' with type 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'}
+   35 | void sys_delay_ms(uint32_t ms);
+      |      ^~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/freertos/include/arch/sys_arch.h:70:1: error: expected declaration specifiers before 'sys_sem_t'
+   70 | sys_sem_t* sys_thread_sem_init(void);
+      | ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/freertos/include/arch/sys_arch.h:72:1: error: expected declaration specifiers before 'sys_sem_t'
+   72 | sys_sem_t* sys_thread_sem_get(void);
+      | ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/freertos/include/arch/sys_arch.h:80:3: error: storage class specified for parameter 'sys_thread_core_lock_t'
+   80 | } sys_thread_core_lock_t;
+      |   ^~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/freertos/include/arch/sys_arch.h:83:18: error: expected declaration specifiers or '...' before 'sys_thread_core_lock_t'
+   83 | sys_thread_tcpip(sys_thread_core_lock_t type);
+      |                  ^~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/include/lwipopts.h:387:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  387 | {
+      | ^
+In file included from /home/yuangod/project/esp32/esp-idf/components/newlib/platform_include/errno.h:10,
+                 from /home/yuangod/project/esp32/esp-idf/components/lwip/port/esp32xx/include/arch/cc.h:12,
+                 from /home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:48,
+                 from /home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/debug.h:40,
+                 from /home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/opt.h:52:
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/errno.h:5:13: error: storage class specified for parameter 'error_t'
+    5 | typedef int error_t;
+      |             ^~~~~~~
+In file included from /home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/errno.h:9:
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/errno.h:19:13: error: storage class specified for parameter '__errno'
+   19 | extern int *__errno (void);
+      |             ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/errno.h:26:36: error: storage class specified for parameter '_sys_errlist'
+   26 | extern __IMPORT const char * const _sys_errlist[];
+      |                                    ^~~~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/sys/errno.h:27:21: error: storage class specified for parameter '_sys_nerr'
+   27 | extern __IMPORT int _sys_nerr;
+      |                     ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/esp32xx/include/arch/cc.h:37:18: error: storage class specified for parameter 'u8_t'
+   37 | typedef uint8_t  u8_t;
+      |                  ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/esp32xx/include/arch/cc.h:38:18: error: storage class specified for parameter 's8_t'
+   38 | typedef int8_t   s8_t;
+      |                  ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/esp32xx/include/arch/cc.h:39:18: error: storage class specified for parameter 'u16_t'
+   39 | typedef uint16_t u16_t;
+      |                  ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/esp32xx/include/arch/cc.h:40:18: error: storage class specified for parameter 's16_t'
+   40 | typedef int16_t  s16_t;
+      |                  ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/esp32xx/include/arch/cc.h:41:18: error: storage class specified for parameter 'u32_t'
+   41 | typedef uint32_t u32_t;
+      |                  ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/esp32xx/include/arch/cc.h:42:18: error: storage class specified for parameter 's32_t'
+   42 | typedef int32_t  s32_t;
+      |                  ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/esp32xx/include/arch/cc.h:45:13: error: storage class specified for parameter 'sys_prot_t'
+   45 | typedef int sys_prot_t;
+      |             ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:125:19: error: storage class specified for parameter 'u8_t'
+  125 | typedef uint8_t   u8_t;
+      |                   ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:125:19: error: redefinition of parameter 'u8_t'
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/esp32xx/include/arch/cc.h:37:18: note: previous definition of 'u8_t' with type 'uint8_t' {aka 'unsigned char'}
+   37 | typedef uint8_t  u8_t;
+      |                  ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:126:19: error: storage class specified for parameter 's8_t'
+  126 | typedef int8_t    s8_t;
+      |                   ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:126:19: error: redefinition of parameter 's8_t'
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/esp32xx/include/arch/cc.h:38:18: note: previous definition of 's8_t' with type 'int8_t' {aka 'signed char'}
+   38 | typedef int8_t   s8_t;
+      |                  ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:127:19: error: storage class specified for parameter 'u16_t'
+  127 | typedef uint16_t  u16_t;
+      |                   ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:127:19: error: redefinition of parameter 'u16_t'
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/esp32xx/include/arch/cc.h:39:18: note: previous definition of 'u16_t' with type 'uint16_t' {aka 'short unsigned int'}
+   39 | typedef uint16_t u16_t;
+      |                  ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:128:19: error: storage class specified for parameter 's16_t'
+  128 | typedef int16_t   s16_t;
+      |                   ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:128:19: error: redefinition of parameter 's16_t'
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/esp32xx/include/arch/cc.h:40:18: note: previous definition of 's16_t' with type 'int16_t' {aka 'short int'}
+   40 | typedef int16_t  s16_t;
+      |                  ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:129:19: error: storage class specified for parameter 'u32_t'
+  129 | typedef uint32_t  u32_t;
+      |                   ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:129:19: error: redefinition of parameter 'u32_t'
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/esp32xx/include/arch/cc.h:41:18: note: previous definition of 'u32_t' with type 'uint32_t' {aka 'long unsigned int'}
+   41 | typedef uint32_t u32_t;
+      |                  ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:130:19: error: storage class specified for parameter 's32_t'
+  130 | typedef int32_t   s32_t;
+      |                   ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:130:19: error: redefinition of parameter 's32_t'
+/home/yuangod/project/esp32/esp-idf/components/lwip/port/esp32xx/include/arch/cc.h:42:18: note: previous definition of 's32_t' with type 'int32_t' {aka 'long int'}
+   42 | typedef int32_t  s32_t;
+      |                  ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:132:19: error: storage class specified for parameter 'u64_t'
+  132 | typedef uint64_t  u64_t;
+      |                   ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:133:19: error: storage class specified for parameter 's64_t'
+  133 | typedef int64_t   s64_t;
+      |                   ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:135:19: error: storage class specified for parameter 'mem_ptr_t'
+  135 | typedef uintptr_t mem_ptr_t;
+      |                   ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:202:13: error: storage class specified for parameter 'ssize_t'
+  202 | typedef int ssize_t;
+      |             ^~~~~~~
+In file included from /home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/arch.h:228:
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/ctype.h:39:12: error: storage class specified for parameter 'isalnum_l'
+   39 | extern int isalnum_l (int __c, locale_t __l);
+      |            ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/ctype.h:40:12: error: storage class specified for parameter 'isalpha_l'
+   40 | extern int isalpha_l (int __c, locale_t __l);
+      |            ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/ctype.h:41:12: error: storage class specified for parameter 'isblank_l'
+   41 | extern int isblank_l (int __c, locale_t __l);
+      |            ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/ctype.h:42:12: error: storage class specified for parameter 'iscntrl_l'
+   42 | extern int iscntrl_l (int __c, locale_t __l);
+      |            ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/ctype.h:43:12: error: storage class specified for parameter 'isdigit_l'
+   43 | extern int isdigit_l (int __c, locale_t __l);
+      |            ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/ctype.h:44:12: error: storage class specified for parameter 'isgraph_l'
+   44 | extern int isgraph_l (int __c, locale_t __l);
+      |            ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/ctype.h:45:12: error: storage class specified for parameter 'islower_l'
+   45 | extern int islower_l (int __c, locale_t __l);
+      |            ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/ctype.h:46:12: error: storage class specified for parameter 'isprint_l'
+   46 | extern int isprint_l (int __c, locale_t __l);
+      |            ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/ctype.h:47:12: error: storage class specified for parameter 'ispunct_l'
+   47 | extern int ispunct_l (int __c, locale_t __l);
+      |            ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/ctype.h:48:12: error: storage class specified for parameter 'isspace_l'
+   48 | extern int isspace_l (int __c, locale_t __l);
+      |            ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/ctype.h:49:12: error: storage class specified for parameter 'isupper_l'
+   49 | extern int isupper_l (int __c, locale_t __l);
+      |            ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/ctype.h:50:12: error: storage class specified for parameter 'isxdigit_l'
+   50 | extern int isxdigit_l(int __c, locale_t __l);
+      |            ^~~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/ctype.h:51:12: error: storage class specified for parameter 'tolower_l'
+   51 | extern int tolower_l (int __c, locale_t __l);
+      |            ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/ctype.h:52:12: error: storage class specified for parameter 'toupper_l'
+   52 | extern int toupper_l (int __c, locale_t __l);
+      |            ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/ctype.h:56:12: error: storage class specified for parameter 'isascii_l'
+   56 | extern int isascii_l (int __c, locale_t __l);
+      |            ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/ctype.h:57:12: error: storage class specified for parameter 'toascii_l'
+   57 | extern int toascii_l (int __c, locale_t __l);
+      |            ^~~~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/ctype.h:70:33: error: storage class specified for parameter '_ctype_'
+   70 | extern  __IMPORT const char     _ctype_[];
+      |                                 ^~~~~~~
+/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/xtensa-esp-elf/sys-include/ctype.h:116:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  116 | {
+      | ^
+In file included from /home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:41,
+                 from /home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:46:
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/def.h:96:1: error: expected declaration specifiers before 'u16_t'
+   96 | u16_t lwip_htons(u16_t x);
+      | ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/def.h:101:1: error: expected declaration specifiers before 'u32_t'
+  101 | u32_t lwip_htonl(u32_t x);
+      | ^~~~~
+In file included from /home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:43:
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip4_addr.h:52:3: error: expected specifier-qualifier-list before 'u32_t'
+   52 |   u32_t addr;
+      |   ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip4_addr.h:51:1: warning: empty declaration
+   51 | struct ip4_addr {
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip4_addr.h:57:25: error: storage class specified for parameter 'ip4_addr_t'
+   57 | typedef struct ip4_addr ip4_addr_t;
+      |                         ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip4_addr.h:60:1: warning: empty declaration
+   60 | struct netif;
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip4_addr.h:151:1: error: expected declaration specifiers before 'u8_t'
+  151 | u8_t ip4_addr_isbroadcast_u32(u32_t addr, const struct netif *netif);
+      | ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip4_addr.h:154:1: error: expected declaration specifiers before 'u8_t'
+  154 | u8_t ip4_addr_netmask_valid(u32_t netmask);
+      | ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip4_addr.h:204:1: error: expected declaration specifiers before 'u32_t'
+  204 | u32_t ipaddr_addr(const char *cp);
+      | ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip4_addr.h:205:34: error: expected declaration specifiers or '...' before 'ip4_addr_t'
+  205 | int ip4addr_aton(const char *cp, ip4_addr_t *addr);
+      |                                  ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip4_addr.h:207:26: error: type defaults to 'int' in declaration of 'ip4_addr_t' [-Werror=implicit-int]
+  207 | char *ip4addr_ntoa(const ip4_addr_t *addr);
+      |                          ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip4_addr.h:207:37: error: expected ';', ',' or ')' before '*' token
+  207 | char *ip4addr_ntoa(const ip4_addr_t *addr);
+      |                                     ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip4_addr.h:208:28: error: type defaults to 'int' in declaration of 'ip4_addr_t' [-Werror=implicit-int]
+  208 | char *ip4addr_ntoa_r(const ip4_addr_t *addr, char *buf, int buflen);
+      |                            ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip4_addr.h:208:39: error: expected ';', ',' or ')' before '*' token
+  208 | char *ip4addr_ntoa_r(const ip4_addr_t *addr, char *buf, int buflen);
+      |                                       ^
+In file included from /home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip6_addr.h:50,
+                 from /home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:44:
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip6_zone.h:136:1: warning: empty declaration
+  136 | enum lwip_ipv6_scope_type
+      | ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip6_addr.h:60:3: error: expected specifier-qualifier-list before 'u32_t'
+   60 |   u32_t addr[4];
+      |   ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip6_addr.h:59:1: warning: empty declaration
+   59 | struct ip6_addr {
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip6_addr.h:67:25: error: storage class specified for parameter 'ip6_addr_t'
+   67 | typedef struct ip6_addr ip6_addr_t;
+      |                         ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip6_addr.h:339:34: error: expected declaration specifiers or '...' before 'ip6_addr_t'
+  339 | int ip6addr_aton(const char *cp, ip6_addr_t *addr);
+      |                                  ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip6_addr.h:341:26: error: type defaults to 'int' in declaration of 'ip6_addr_t' [-Werror=implicit-int]
+  341 | char *ip6addr_ntoa(const ip6_addr_t *addr);
+      |                          ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip6_addr.h:341:37: error: expected ';', ',' or ')' before '*' token
+  341 | char *ip6addr_ntoa(const ip6_addr_t *addr);
+      |                                     ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip6_addr.h:342:28: error: type defaults to 'int' in declaration of 'ip6_addr_t' [-Werror=implicit-int]
+  342 | char *ip6addr_ntoa_r(const ip6_addr_t *addr, char *buf, int buflen);
+      |                            ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip6_addr.h:342:39: error: expected ';', ',' or ')' before '*' token
+  342 | char *ip6addr_ntoa_r(const ip6_addr_t *addr, char *buf, int buflen);
+      |                                       ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:54:1: warning: empty declaration
+   54 | enum lwip_ip_addr_type {
+      | ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:71:5: error: expected specifier-qualifier-list before 'ip6_addr_t'
+   71 |     ip6_addr_t ip6;
+      |     ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:75:3: error: expected specifier-qualifier-list before 'u8_t'
+   75 |   u8_t type;
+      |   ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:76:3: error: storage class specified for parameter 'ip_addr_t'
+   76 | } ip_addr_t;
+      |   ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:78:24: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'ip_addr_any_type'
+   78 | extern const ip_addr_t ip_addr_any_type;
+      |                        ^~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:244:25: error: type defaults to 'int' in declaration of 'ip_addr_t' [-Werror=implicit-int]
+  244 | char *ipaddr_ntoa(const ip_addr_t *addr);
+      |                         ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:244:35: error: expected ';', ',' or ')' before '*' token
+  244 | char *ipaddr_ntoa(const ip_addr_t *addr);
+      |                                   ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:245:27: error: type defaults to 'int' in declaration of 'ip_addr_t' [-Werror=implicit-int]
+  245 | char *ipaddr_ntoa_r(const ip_addr_t *addr, char *buf, int buflen);
+      |                           ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:245:37: error: expected ';', ',' or ')' before '*' token
+  245 | char *ipaddr_ntoa_r(const ip_addr_t *addr, char *buf, int buflen);
+      |                                     ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:246:33: error: expected declaration specifiers or '...' before 'ip_addr_t'
+  246 | int ipaddr_aton(const char *cp, ip_addr_t *addr);
+      |                                 ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:374:24: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'ip_addr_any'
+  374 | extern const ip_addr_t ip_addr_any;
+      |                        ^~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:375:24: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'ip_addr_broadcast'
+  375 | extern const ip_addr_t ip_addr_broadcast;
+      |                        ^~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/ip_addr.h:410:24: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'ip6_addr_any'
+  410 | extern const ip_addr_t ip6_addr_any;
+      |                        ^~~~~~~~~~~~
+In file included from /home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:44,
+                 from /home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:47:
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/err.h:89:3: error: storage class specified for parameter 'err_enum_t'
+   89 | } err_enum_t;
+      |   ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/err.h:96:14: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'err_t'
+   96 | typedef s8_t err_t;
+      |              ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/err.h:110:18: error: unknown type name 'err_t'
+  110 | int err_to_errno(err_t err);
+      |                  ^~~~~
+In file included from /home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:49:
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:112:3: error: storage class specified for parameter 'pbuf_layer'
+  112 | } pbuf_layer;
+      |   ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:168:3: error: storage class specified for parameter 'pbuf_type'
+  168 | } pbuf_type;
+      |   ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:200:3: error: expected specifier-qualifier-list before 'u16_t'
+  200 |   u16_t tot_len;
+      |   ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:186:1: warning: empty declaration
+  186 | struct pbuf {
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:232:1: warning: empty declaration
+  232 | struct pbuf_rom {
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:242:16: error: storage class specified for parameter 'pbuf_free_custom_fn'
+  242 | typedef void (*pbuf_free_custom_fn)(struct pbuf *p);
+      |                ^~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:249:3: error: expected specifier-qualifier-list before 'pbuf_free_custom_fn'
+  249 |   pbuf_free_custom_fn custom_free_function;
+      |   ^~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:245:1: warning: empty declaration
+  245 | struct pbuf_custom {
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:275:25: error: expected declaration specifiers or '...' before 'pbuf_layer'
+  275 | struct pbuf *pbuf_alloc(pbuf_layer l, u16_t length, pbuf_type type);
+      |                         ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:275:39: error: expected declaration specifiers or '...' before 'u16_t'
+  275 | struct pbuf *pbuf_alloc(pbuf_layer l, u16_t length, pbuf_type type);
+      |                                       ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:275:53: error: expected declaration specifiers or '...' before 'pbuf_type'
+  275 | struct pbuf *pbuf_alloc(pbuf_layer l, u16_t length, pbuf_type type);
+      |                                                     ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:276:50: error: expected declaration specifiers or '...' before 'u16_t'
+  276 | struct pbuf *pbuf_alloc_reference(void *payload, u16_t length, pbuf_type type);
+      |                                                  ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:276:64: error: expected declaration specifiers or '...' before 'pbuf_type'
+  276 | struct pbuf *pbuf_alloc_reference(void *payload, u16_t length, pbuf_type type);
+      |                                                                ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:278:34: error: expected declaration specifiers or '...' before 'pbuf_layer'
+  278 | struct pbuf *pbuf_alloced_custom(pbuf_layer l, u16_t length, pbuf_type type,
+      |                                  ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:278:48: error: expected declaration specifiers or '...' before 'u16_t'
+  278 | struct pbuf *pbuf_alloced_custom(pbuf_layer l, u16_t length, pbuf_type type,
+      |                                                ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:278:62: error: expected declaration specifiers or '...' before 'pbuf_type'
+  278 | struct pbuf *pbuf_alloced_custom(pbuf_layer l, u16_t length, pbuf_type type,
+      |                                                              ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:280:34: error: expected declaration specifiers or '...' before 'u16_t'
+  280 |                                  u16_t payload_mem_len);
+      |                                  ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:282:35: error: expected declaration specifiers or '...' before 'u16_t'
+  282 | void pbuf_realloc(struct pbuf *p, u16_t size);
+      |                                   ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:286:1: error: expected declaration specifiers before 'u8_t'
+  286 | u8_t pbuf_header(struct pbuf *p, s16_t header_size);
+      | ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:287:1: error: expected declaration specifiers before 'u8_t'
+  287 | u8_t pbuf_header_force(struct pbuf *p, s16_t header_size);
+      | ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:288:1: error: expected declaration specifiers before 'u8_t'
+  288 | u8_t pbuf_add_header(struct pbuf *p, size_t header_size_increment);
+      | ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:289:1: error: expected declaration specifiers before 'u8_t'
+  289 | u8_t pbuf_add_header_force(struct pbuf *p, size_t header_size_increment);
+      | ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:290:1: error: expected declaration specifiers before 'u8_t'
+  290 | u8_t pbuf_remove_header(struct pbuf *p, size_t header_size);
+      | ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:291:47: error: expected declaration specifiers or '...' before 'u16_t'
+  291 | struct pbuf *pbuf_free_header(struct pbuf *q, u16_t size);
+      |                                               ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:293:1: error: expected declaration specifiers before 'u8_t'
+  293 | u8_t pbuf_free(struct pbuf *p);
+      | ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:294:1: error: expected declaration specifiers before 'u16_t'
+  294 | u16_t pbuf_clen(const struct pbuf *p);
+      | ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:298:1: error: unknown type name 'err_t'
+  298 | err_t pbuf_copy(struct pbuf *p_to, const struct pbuf *p_from);
+      | ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:299:1: error: unknown type name 'err_t'
+  299 | err_t pbuf_copy_partial_pbuf(struct pbuf *p_to, const struct pbuf *p_from, u16_t copy_len, u16_t offset);
+      | ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:299:76: error: expected declaration specifiers or '...' before 'u16_t'
+  299 | err_t pbuf_copy_partial_pbuf(struct pbuf *p_to, const struct pbuf *p_from, u16_t copy_len, u16_t offset);
+      |                                                                            ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:299:92: error: expected declaration specifiers or '...' before 'u16_t'
+  299 | err_t pbuf_copy_partial_pbuf(struct pbuf *p_to, const struct pbuf *p_from, u16_t copy_len, u16_t offset);
+      |                                                                                            ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:300:1: error: expected declaration specifiers before 'u16_t'
+  300 | u16_t pbuf_copy_partial(const struct pbuf *p, void *dataptr, u16_t len, u16_t offset);
+      | ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:301:79: error: expected declaration specifiers or '...' before 'u16_t'
+  301 | void *pbuf_get_contiguous(const struct pbuf *p, void *buffer, size_t bufsize, u16_t len, u16_t offset);
+      |                                                                               ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:301:90: error: expected declaration specifiers or '...' before 'u16_t'
+  301 | void *pbuf_get_contiguous(const struct pbuf *p, void *buffer, size_t bufsize, u16_t len, u16_t offset);
+      |                                                                                          ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:302:1: error: unknown type name 'err_t'
+  302 | err_t pbuf_take(struct pbuf *buf, const void *dataptr, u16_t len);
+      | ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:302:56: error: expected declaration specifiers or '...' before 'u16_t'
+  302 | err_t pbuf_take(struct pbuf *buf, const void *dataptr, u16_t len);
+      |                                                        ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:303:1: error: unknown type name 'err_t'
+  303 | err_t pbuf_take_at(struct pbuf *buf, const void *dataptr, u16_t len, u16_t offset);
+      | ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:303:59: error: expected declaration specifiers or '...' before 'u16_t'
+  303 | err_t pbuf_take_at(struct pbuf *buf, const void *dataptr, u16_t len, u16_t offset);
+      |                                                           ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:303:70: error: expected declaration specifiers or '...' before 'u16_t'
+  303 | err_t pbuf_take_at(struct pbuf *buf, const void *dataptr, u16_t len, u16_t offset);
+      |                                                                      ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:304:41: error: expected declaration specifiers or '...' before 'u16_t'
+  304 | struct pbuf *pbuf_skip(struct pbuf* in, u16_t in_offset, u16_t* out_offset);
+      |                                         ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:304:58: error: expected declaration specifiers or '...' before 'u16_t'
+  304 | struct pbuf *pbuf_skip(struct pbuf* in, u16_t in_offset, u16_t* out_offset);
+      |                                                          ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:305:44: error: expected declaration specifiers or '...' before 'pbuf_layer'
+  305 | struct pbuf *pbuf_coalesce(struct pbuf *p, pbuf_layer layer);
+      |                                            ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:306:25: error: expected declaration specifiers or '...' before 'pbuf_layer'
+  306 | struct pbuf *pbuf_clone(pbuf_layer l, pbuf_type type, struct pbuf *p);
+      |                         ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:306:39: error: expected declaration specifiers or '...' before 'pbuf_type'
+  306 | struct pbuf *pbuf_clone(pbuf_layer l, pbuf_type type, struct pbuf *p);
+      |                                       ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:315:1: error: expected declaration specifiers before 'u8_t'
+  315 | u8_t pbuf_get_at(const struct pbuf* p, u16_t offset);
+      | ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:316:43: error: expected declaration specifiers or '...' before 'u16_t'
+  316 | int pbuf_try_get_at(const struct pbuf* p, u16_t offset);
+      |                                           ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:317:34: error: expected declaration specifiers or '...' before 'u16_t'
+  317 | void pbuf_put_at(struct pbuf* p, u16_t offset, u8_t data);
+      |                                  ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:317:48: error: expected declaration specifiers or '...' before 'u8_t'
+  317 | void pbuf_put_at(struct pbuf* p, u16_t offset, u8_t data);
+      |                                                ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:318:1: error: expected declaration specifiers before 'u16_t'
+  318 | u16_t pbuf_memcmp(const struct pbuf* p, u16_t offset, const void* s2, u16_t n);
+      | ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:319:1: error: expected declaration specifiers before 'u16_t'
+  319 | u16_t pbuf_memfind(const struct pbuf* p, const void* mem, u16_t mem_len, u16_t start_offset);
+      | ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/pbuf.h:320:1: error: expected declaration specifiers before 'u16_t'
+  320 | u16_t pbuf_strstr(const struct pbuf* p, const char* substr);
+      | ^~~~~
+In file included from /home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/stats.h:42,
+                 from /home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:50:
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/mem.h:50:16: error: storage class specified for parameter 'mem_size_t'
+   50 | typedef size_t mem_size_t;
+      |                ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/mem.h:73:27: error: expected declaration specifiers or '...' before 'mem_size_t'
+   73 | void *mem_trim(void *mem, mem_size_t size);
+      |                           ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/mem.h:74:18: error: expected declaration specifiers or '...' before 'mem_size_t'
+   74 | void *mem_malloc(mem_size_t size);
+      |                  ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/mem.h:75:18: error: expected declaration specifiers or '...' before 'mem_size_t'
+   75 | void *mem_calloc(mem_size_t count, mem_size_t size);
+      |                  ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/mem.h:75:36: error: expected declaration specifiers or '...' before 'mem_size_t'
+   75 | void *mem_calloc(mem_size_t count, mem_size_t size);
+      |                                    ^~~~~~~~~~
+In file included from /home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/stats.h:43:
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/memp.h:56:3: error: storage class specified for parameter 'memp_t'
+   56 | } memp_t;
+      |   ^~~~~~
+In file included from /home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/memp.h:58:
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/priv/memp_priv.h:119:3: error: expected specifier-qualifier-list before 'u16_t'
+  119 |   u16_t size;
+      |   ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/priv/memp_priv.h:108:1: warning: empty declaration
+  108 | struct memp_desc {
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/memp.h:61:38: error: storage class specified for parameter 'memp_pools'
+   61 | extern const struct memp_desc* const memp_pools[MEMP_MAX];
+      |                                      ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/memp.h:147:19: error: expected declaration specifiers or '...' before 'memp_t'
+  147 | void *memp_malloc(memp_t type);
+      |                   ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/memp.h:149:17: error: expected declaration specifiers or '...' before 'memp_t'
+  149 | void  memp_free(memp_t type, void *mem);
+      |                 ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:113:1: warning: empty declaration
+  113 | enum lwip_internal_netif_client_data_index
+      | ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:152:1: warning: empty declaration
+  152 | struct netif;
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:156:1: warning: empty declaration
+  156 | enum netif_mac_filter_action {
+      | ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:168:16: error: expected declaration specifiers or '...' before '*' token
+  168 | typedef err_t (*netif_init_fn)(struct netif *netif);
+      |                ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:178:16: error: expected declaration specifiers or '...' before '*' token
+  178 | typedef err_t (*netif_input_fn)(struct pbuf *p, struct netif *inp);
+      |                ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:189:16: error: expected declaration specifiers or '...' before '*' token
+  189 | typedef err_t (*netif_output_fn)(struct netif *netif, struct pbuf *p,
+      |                ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:202:16: error: expected declaration specifiers or '...' before '*' token
+  202 | typedef err_t (*netif_output_ip6_fn)(struct netif *netif, struct pbuf *p,
+      |                ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:212:16: error: expected declaration specifiers or '...' before '*' token
+  212 | typedef err_t (*netif_linkoutput_fn)(struct netif *netif, struct pbuf *p);
+      |                ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:214:16: error: storage class specified for parameter 'netif_status_callback_fn'
+  214 | typedef void (*netif_status_callback_fn)(struct netif *netif);
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:217:16: error: expected declaration specifiers or '...' before '*' token
+  217 | typedef err_t (*netif_igmp_mac_filter_fn)(struct netif *netif,
+      |                ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:222:16: error: expected declaration specifiers or '...' before '*' token
+  222 | typedef err_t (*netif_mld_mac_filter_fn)(struct netif *netif,
+      |                ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:244:14: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'netif_addr_idx_t'
+  244 | typedef u8_t netif_addr_idx_t;
+      |              ^~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:268:3: error: expected specifier-qualifier-list before 'ip_addr_t'
+  268 |   ip_addr_t ip_addr;
+      |   ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:260:1: warning: empty declaration
+  260 | struct netif {
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:412:22: error: storage class specified for parameter 'netif_list'
+  412 | extern struct netif *netif_list;
+      |                      ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:416:22: error: storage class specified for parameter 'netif_default'
+  416 | extern struct netif *netif_default;
+      |                      ^~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:420:66: error: unknown type name 'netif_init_fn'
+  420 | struct netif *netif_add_noaddr(struct netif *netif, void *state, netif_init_fn init, netif_input_fn input);
+      |                                                                  ^~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:420:86: error: unknown type name 'netif_input_fn'
+  420 | struct netif *netif_add_noaddr(struct netif *netif, void *state, netif_init_fn init, netif_input_fn input);
+      |                                                                                      ^~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:424:35: error: type defaults to 'int' in declaration of 'ip4_addr_t' [-Werror=implicit-int]
+  424 |                             const ip4_addr_t *ipaddr, const ip4_addr_t *netmask, const ip4_addr_t *gw,
+      |                                   ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:424:46: error: expected ';', ',' or ')' before '*' token
+  424 |                             const ip4_addr_t *ipaddr, const ip4_addr_t *netmask, const ip4_addr_t *gw,
+      |                                              ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:426:48: error: type defaults to 'int' in declaration of 'ip4_addr_t' [-Werror=implicit-int]
+  426 | void netif_set_addr(struct netif *netif, const ip4_addr_t *ipaddr, const ip4_addr_t *netmask,
+      |                                                ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:426:59: error: expected ';', ',' or ')' before '*' token
+  426 | void netif_set_addr(struct netif *netif, const ip4_addr_t *ipaddr, const ip4_addr_t *netmask,
+      |                                                           ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:442:50: error: type defaults to 'int' in declaration of 'ip4_addr_t' [-Werror=implicit-int]
+  442 | void netif_set_ipaddr(struct netif *netif, const ip4_addr_t *ipaddr);
+      |                                                  ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:442:61: error: expected ';', ',' or ')' before '*' token
+  442 | void netif_set_ipaddr(struct netif *netif, const ip4_addr_t *ipaddr);
+      |                                                             ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:443:51: error: type defaults to 'int' in declaration of 'ip4_addr_t' [-Werror=implicit-int]
+  443 | void netif_set_netmask(struct netif *netif, const ip4_addr_t *netmask);
+      |                                                   ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:443:62: error: expected ';', ',' or ')' before '*' token
+  443 | void netif_set_netmask(struct netif *netif, const ip4_addr_t *netmask);
+      |                                                              ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:444:46: error: type defaults to 'int' in declaration of 'ip4_addr_t' [-Werror=implicit-int]
+  444 | void netif_set_gw(struct netif *netif, const ip4_addr_t *gw);
+      |                                              ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:444:57: error: expected ';', ',' or ')' before '*' token
+  444 | void netif_set_gw(struct netif *netif, const ip4_addr_t *gw);
+      |                                                         ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:507:1: error: unknown type name 'err_t'
+  507 | err_t netif_loop_output(struct netif *netif, struct pbuf *p);
+      | ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:514:1: error: unknown type name 'err_t'
+  514 | err_t netif_input(struct pbuf *p, struct netif *inp);
+      | ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:521:46: error: expected declaration specifiers or '...' before 's8_t'
+  521 | void netif_ip6_addr_set(struct netif *netif, s8_t addr_idx, const ip6_addr_t *addr6);
+      |                                              ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:521:67: error: type defaults to 'int' in declaration of 'ip6_addr_t' [-Werror=implicit-int]
+  521 | void netif_ip6_addr_set(struct netif *netif, s8_t addr_idx, const ip6_addr_t *addr6);
+      |                                                                   ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:521:78: error: expected ';', ',' or ')' before '*' token
+  521 | void netif_ip6_addr_set(struct netif *netif, s8_t addr_idx, const ip6_addr_t *addr6);
+      |                                                                              ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:522:52: error: expected declaration specifiers or '...' before 's8_t'
+  522 | void netif_ip6_addr_set_parts(struct netif *netif, s8_t addr_idx, u32_t i0, u32_t i1, u32_t i2, u32_t i3);
+      |                                                    ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:522:67: error: expected declaration specifiers or '...' before 'u32_t'
+  522 | void netif_ip6_addr_set_parts(struct netif *netif, s8_t addr_idx, u32_t i0, u32_t i1, u32_t i2, u32_t i3);
+      |                                                                   ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:522:77: error: expected declaration specifiers or '...' before 'u32_t'
+  522 | void netif_ip6_addr_set_parts(struct netif *netif, s8_t addr_idx, u32_t i0, u32_t i1, u32_t i2, u32_t i3);
+      |                                                                             ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:522:87: error: expected declaration specifiers or '...' before 'u32_t'
+  522 | void netif_ip6_addr_set_parts(struct netif *netif, s8_t addr_idx, u32_t i0, u32_t i1, u32_t i2, u32_t i3);
+      |                                                                                       ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:522:97: error: expected declaration specifiers or '...' before 'u32_t'
+  522 | void netif_ip6_addr_set_parts(struct netif *netif, s8_t addr_idx, u32_t i0, u32_t i1, u32_t i2, u32_t i3);
+      |                                                                                                 ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:524:52: error: expected declaration specifiers or '...' before 's8_t'
+  524 | void netif_ip6_addr_set_state(struct netif* netif, s8_t addr_idx, u8_t state);
+      |                                                    ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:524:67: error: expected declaration specifiers or '...' before 'u8_t'
+  524 | void netif_ip6_addr_set_state(struct netif* netif, s8_t addr_idx, u8_t state);
+      |                                                                   ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:525:1: error: expected declaration specifiers before 's8_t'
+  525 | s8_t netif_get_ip6_addr_match(struct netif *netif, const ip6_addr_t *ip6addr);
+      | ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:526:62: error: expected declaration specifiers or '...' before 'u8_t'
+  526 | void netif_create_ip6_linklocal_address(struct netif *netif, u8_t from_mac_48bit);
+      |                                                              ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:527:1: error: unknown type name 'err_t'
+  527 | err_t netif_add_ip6_address(struct netif *netif, const ip6_addr_t *ip6addr, s8_t *chosen_idx);
+      | ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:527:56: error: type defaults to 'int' in declaration of 'ip6_addr_t' [-Werror=implicit-int]
+  527 | err_t netif_add_ip6_address(struct netif *netif, const ip6_addr_t *ip6addr, s8_t *chosen_idx);
+      |                                                        ^~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:527:67: error: expected ';', ',' or ')' before '*' token
+  527 | err_t netif_add_ip6_address(struct netif *netif, const ip6_addr_t *ip6addr, s8_t *chosen_idx);
+      |                                                                   ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:558:1: error: expected declaration specifiers before 'u8_t'
+  558 | u8_t netif_name_to_index(const char *name);
+      | ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:559:28: error: expected declaration specifiers or '...' before 'u8_t'
+  559 | char * netif_index_to_name(u8_t idx, char *name);
+      |                            ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:560:34: error: expected declaration specifiers or '...' before 'u8_t'
+  560 | struct netif* netif_get_by_index(u8_t idx);
+      |                                  ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:571:15: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'netif_nsc_reason_t'
+  571 | typedef u16_t netif_nsc_reason_t;
+      |               ^~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:607:5: error: expected specifier-qualifier-list before 'u8_t'
+  607 |     u8_t state;
+      |     ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:613:5: error: expected specifier-qualifier-list before 'u8_t'
+  613 |     u8_t state;
+      |     ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:619:20: error: expected ':', ',', ';', '}' or '__attribute__' before '*' token
+  619 |     const ip_addr_t* old_address;
+      |                    ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:627:5: error: expected specifier-qualifier-list before 's8_t'
+  627 |     s8_t addr_index;
+      |     ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:635:5: error: expected specifier-qualifier-list before 's8_t'
+  635 |     s8_t addr_index;
+      |     ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:641:3: error: storage class specified for parameter 'netif_ext_callback_args_t'
+  641 | } netif_ext_callback_args_t;
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:651:60: error: unknown type name 'netif_nsc_reason_t'
+  651 | typedef void (*netif_ext_callback_fn)(struct netif* netif, netif_nsc_reason_t reason, const netif_ext_callback_args_t* args);
+      |                                                            ^~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:651:93: error: type defaults to 'int' in declaration of 'netif_ext_callback_args_t' [-Werror=implicit-int]
+  651 | typedef void (*netif_ext_callback_fn)(struct netif* netif, netif_nsc_reason_t reason, const netif_ext_callback_args_t* args);
+      |                                                                                             ^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:651:118: error: expected ';', ',' or ')' before '*' token
+  651 | typedef void (*netif_ext_callback_fn)(struct netif* netif, netif_nsc_reason_t reason, const netif_ext_callback_args_t* args);
+      |                                                                                                                      ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:654:1: warning: empty declaration
+  654 | struct netif_ext_callback;
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:657:3: error: unknown type name 'netif_ext_callback_fn'
+  657 |   netif_ext_callback_fn callback_fn;
+      |   ^~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:659:3: error: storage class specified for parameter 'netif_ext_callback_t'
+  659 | } netif_ext_callback_t;
+      |   ^~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:662:29: error: expected declaration specifiers or '...' before 'netif_ext_callback_t'
+  662 | void netif_add_ext_callback(netif_ext_callback_t* callback, netif_ext_callback_fn fn);
+      |                             ^~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:662:61: error: unknown type name 'netif_ext_callback_fn'
+  662 | void netif_add_ext_callback(netif_ext_callback_t* callback, netif_ext_callback_fn fn);
+      |                                                             ^~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:663:32: error: expected declaration specifiers or '...' before 'netif_ext_callback_t'
+  663 | void netif_remove_ext_callback(netif_ext_callback_t* callback);
+      |                                ^~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:664:53: error: unknown type name 'netif_nsc_reason_t'
+  664 | void netif_invoke_ext_callback(struct netif* netif, netif_nsc_reason_t reason, const netif_ext_callback_args_t* args);
+      |                                                     ^~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:664:86: error: type defaults to 'int' in declaration of 'netif_ext_callback_args_t' [-Werror=implicit-int]
+  664 | void netif_invoke_ext_callback(struct netif* netif, netif_nsc_reason_t reason, const netif_ext_callback_args_t* args);
+      |                                                                                      ^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/netif.h:664:111: error: expected ';', ',' or ')' before '*' token
+  664 | void netif_invoke_ext_callback(struct netif* netif, netif_nsc_reason_t reason, const netif_ext_callback_args_t* args);
+      |                                                                                                               ^
+In file included from /home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:49:
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/inet.h:55:15: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'in_addr_t'
+   55 | typedef u32_t in_addr_t;
+      |               ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/inet.h:59:3: error: expected specifier-qualifier-list before 'in_addr_t'
+   59 |   in_addr_t s_addr;
+      |   ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/inet.h:58:1: warning: empty declaration
+   58 | struct in_addr {
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/inet.h:64:5: error: expected specifier-qualifier-list before 'u32_t'
+   64 |     u32_t u32_addr[4];
+      |     ^~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/inet.h:62:1: warning: empty declaration
+   62 | struct in6_addr {
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/inet.h:86:30: error: storage class specified for parameter 'in6addr_any'
+   86 | extern const struct in6_addr in6addr_any;
+      |                              ^~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:61:14: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'sa_family_t'
+   61 | typedef u8_t sa_family_t;
+      |              ^~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:66:15: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'in_port_t'
+   66 | typedef u16_t in_port_t;
+      |               ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:72:3: error: expected specifier-qualifier-list before 'u8_t'
+   72 |   u8_t            sin_len;
+      |   ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:71:1: warning: empty declaration
+   71 | struct sockaddr_in {
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:83:3: error: expected specifier-qualifier-list before 'u8_t'
+   83 |   u8_t            sin6_len;      /* length of this structure    */
+      |   ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:82:1: warning: empty declaration
+   82 | struct sockaddr_in6 {
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:93:3: error: expected specifier-qualifier-list before 'u8_t'
+   93 |   u8_t        sa_len;
+      |   ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:92:1: warning: empty declaration
+   92 | struct sockaddr {
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:99:3: error: expected specifier-qualifier-list before 'u8_t'
+   99 |   u8_t        s2_len;
+      |   ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:98:1: warning: empty declaration
+   98 | struct sockaddr_storage {
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:111:15: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'socklen_t'
+  111 | typedef u32_t socklen_t;
+      |               ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:121:1: warning: empty declaration
+  121 | struct iovec {
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:129:3: error: unknown type name 'socklen_t'
+  129 |   socklen_t     msg_namelen;
+      |   ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:133:3: error: unknown type name 'socklen_t'
+  133 |   socklen_t     msg_controllen;
+      |   ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:127:1: warning: empty declaration
+  127 | struct msghdr {
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:143:3: error: unknown type name 'socklen_t'
+  143 |   socklen_t  cmsg_len;   /* number of bytes, including header */
+      |   ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:142:1: warning: empty declaration
+  142 | struct cmsghdr {
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:183:1: warning: empty declaration
+  183 | struct ifreq {
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:226:1: warning: empty declaration
+  226 | struct linger {
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:322:3: error: storage class specified for parameter 'ip_mreq'
+  322 | } ip_mreq;
+      |   ^~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:326:1: warning: empty declaration
+  326 | struct in_pktinfo {
+      | ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:344:3: error: storage class specified for parameter 'ipv6_mreq'
+  344 | } ipv6_mreq;
+      |   ^~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:576:47: error: unknown type name 'socklen_t'; did you mean 'locale_t'?
+  576 | int lwip_accept(int s, struct sockaddr *addr, socklen_t *addrlen);
+      |                                               ^~~~~~~~~
+      |                                               locale_t
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:577:51: error: unknown type name 'socklen_t'; did you mean 'locale_t'?
+  577 | int lwip_bind(int s, const struct sockaddr *name, socklen_t namelen);
+      |                                                   ^~~~~~~~~
+      |                                                   locale_t
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:579:53: error: unknown type name 'socklen_t'; did you mean 'locale_t'?
+  579 | int lwip_getpeername (int s, struct sockaddr *name, socklen_t *namelen);
+      |                                                     ^~~~~~~~~
+      |                                                     locale_t
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:580:53: error: unknown type name 'socklen_t'; did you mean 'locale_t'?
+  580 | int lwip_getsockname (int s, struct sockaddr *name, socklen_t *namelen);
+      |                                                     ^~~~~~~~~
+      |                                                     locale_t
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:581:67: error: unknown type name 'socklen_t'; did you mean 'locale_t'?
+  581 | int lwip_getsockopt (int s, int level, int optname, void *optval, socklen_t *optlen);
+      |                                                                   ^~~~~~~~~
+      |                                                                   locale_t
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:582:73: error: unknown type name 'socklen_t'; did you mean 'locale_t'?
+  582 | int lwip_setsockopt (int s, int level, int optname, const void *optval, socklen_t optlen);
+      |                                                                         ^~~~~~~~~
+      |                                                                         locale_t
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:584:54: error: unknown type name 'socklen_t'; did you mean 'locale_t'?
+  584 | int lwip_connect(int s, const struct sockaddr *name, socklen_t namelen);
+      |                                                      ^~~~~~~~~
+      |                                                      locale_t
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:586:1: error: expected declaration specifiers before 'ssize_t'
+  586 | ssize_t lwip_recv(int s, void *mem, size_t len, int flags);
+      | ^~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:587:1: error: expected declaration specifiers before 'ssize_t'
+  587 | ssize_t lwip_read(int s, void *mem, size_t len);
+      | ^~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:588:1: error: expected declaration specifiers before 'ssize_t'
+  588 | ssize_t lwip_readv(int s, const struct iovec *iov, int iovcnt);
+      | ^~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:589:1: error: expected declaration specifiers before 'ssize_t'
+  589 | ssize_t lwip_recvfrom(int s, void *mem, size_t len, int flags,
+      | ^~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:591:1: error: expected declaration specifiers before 'ssize_t'
+  591 | ssize_t lwip_recvmsg(int s, struct msghdr *message, int flags);
+      | ^~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:592:1: error: expected declaration specifiers before 'ssize_t'
+  592 | ssize_t lwip_send(int s, const void *dataptr, size_t size, int flags);
+      | ^~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:593:1: error: expected declaration specifiers before 'ssize_t'
+  593 | ssize_t lwip_sendmsg(int s, const struct msghdr *message, int flags);
+      | ^~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:594:1: error: expected declaration specifiers before 'ssize_t'
+  594 | ssize_t lwip_sendto(int s, const void *dataptr, size_t size, int flags,
+      | ^~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:597:1: error: expected declaration specifiers before 'ssize_t'
+  597 | ssize_t lwip_write(int s, const void *dataptr, size_t size);
+      | ^~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:598:1: error: expected declaration specifiers before 'ssize_t'
+  598 | ssize_t lwip_writev(int s, const struct iovec *iov, int iovcnt);
+      | ^~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:600:30: error: expected declaration specifiers or '...' before 'fd_set'
+  600 | int lwip_select(int maxfdp1, fd_set *readset, fd_set *writeset, fd_set *exceptset,
+      |                              ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:600:47: error: expected declaration specifiers or '...' before 'fd_set'
+  600 | int lwip_select(int maxfdp1, fd_set *readset, fd_set *writeset, fd_set *exceptset,
+      |                                               ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:600:65: error: expected declaration specifiers or '...' before 'fd_set'
+  600 | int lwip_select(int maxfdp1, fd_set *readset, fd_set *writeset, fd_set *exceptset,
+      |                                                                 ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:604:35: error: expected declaration specifiers or '...' before 'nfds_t'
+  604 | int lwip_poll(struct pollfd *fds, nfds_t nfds, int timeout);
+      |                                   ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/lwip/src/include/lwip/sockets.h:608:64: error: unknown type name 'socklen_t'; did you mean 'locale_t'?
+  608 | const char *lwip_inet_ntop(int af, const void *src, char *dst, socklen_t size);
+      |                                                                ^~~~~~~~~
+      |                                                                locale_t
+/home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:15:54: error: unknown type name 'socklen_t'; did you mean 'locale_t'?
+   15 | static inline int accept(int s,struct sockaddr *addr,socklen_t *addrlen)
+      |                                                      ^~~~~~~~~
+      |                                                      locale_t
+/home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:17:59: error: unknown type name 'socklen_t'; did you mean 'locale_t'?
+   17 | static inline int bind(int s,const struct sockaddr *name, socklen_t namelen)
+      |                                                           ^~~~~~~~~
+      |                                                           locale_t
+/home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:20:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+   20 | { return lwip_shutdown(s,how); }
+      | ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:21:59: error: unknown type name 'socklen_t'; did you mean 'locale_t'?
+   21 | static inline int getpeername(int s,struct sockaddr *name,socklen_t *namelen)
+      |                                                           ^~~~~~~~~
+      |                                                           locale_t
+/home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:23:59: error: unknown type name 'socklen_t'; did you mean 'locale_t'?
+   23 | static inline int getsockname(int s,struct sockaddr *name,socklen_t *namelen)
+      |                                                           ^~~~~~~~~
+      |                                                           locale_t
+/home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:25:76: error: unknown type name 'socklen_t'; did you mean 'locale_t'?
+   25 | static inline int setsockopt(int s,int level,int optname,const void *opval,socklen_t optlen)
+      |                                                                            ^~~~~~~~~
+      |                                                                            locale_t
+/home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:27:70: error: unknown type name 'socklen_t'; did you mean 'locale_t'?
+   27 | static inline int getsockopt(int s,int level,int optname,void *opval,socklen_t *optlen)
+      |                                                                      ^~~~~~~~~
+      |                                                                      locale_t
+/home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:30:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+   30 | { return lwip_close(s); }
+      | ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:31:61: error: unknown type name 'socklen_t'; did you mean 'locale_t'?
+   31 | static inline int connect(int s,const struct sockaddr *name,socklen_t namelen)
+      |                                                             ^~~~~~~~~
+      |                                                             locale_t
+/home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:34:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+   34 | { return lwip_listen(s,backlog); }
+      | ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:35:23: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'recvmsg'
+   35 | static inline ssize_t recvmsg(int sockfd, struct msghdr *msg, int flags)
+      |                       ^~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:37:23: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'recv'
+   37 | static inline ssize_t recv(int s,void *mem,size_t len,int flags)
+      |                       ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:39:23: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'recvfrom'
+   39 | static inline ssize_t recvfrom(int s,void *mem,size_t len,int flags,struct sockaddr *from,socklen_t *fromlen)
+      |                       ^~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:41:23: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'send'
+   41 | static inline ssize_t send(int s,const void *dataptr,size_t size,int flags)
+      |                       ^~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:43:23: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'sendmsg'
+   43 | static inline ssize_t sendmsg(int s,const struct msghdr *message,int flags)
+      |                       ^~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:45:23: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'sendto'
+   45 | static inline ssize_t sendto(int s,const void *dataptr,size_t size,int flags,const struct sockaddr *to,socklen_t tolen)
+      |                       ^~~~~~
+/home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:48:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+   48 | { return lwip_socket(domain,type,protocol); }
+      | ^
+/home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:49:73: error: unknown type name 'socklen_t'; did you mean 'locale_t'?
+   49 | static inline const char *inet_ntop(int af, const void *src, char *dst, socklen_t size)
+      |                                                                         ^~~~~~~~~
+      |                                                                         locale_t
+/home/yuangod/project/esp32/esp-idf/components/lwip/include/lwip/sockets.h:52:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+   52 | { return lwip_inet_pton(af, src, dst); }
+      | ^
+In file included from /home/yuangod/project/esp32/esp-idf/components/lwip/port/esp32xx/include/sys/socket.h:20:
+/home/yuangod/project/esp32/esp-idf/components/newlib/platform_include/net/if.h:29:15: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'socklen_t'
+   29 | typedef u32_t socklen_t;
+      |               ^~~~~~~~~
+In file included from /home/yuangod/project/esp32/esp-idf/components/esp_event/include/esp_event.h:17:
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:22:24: error: storage class specified for parameter 'ESP_HTTP_CLIENT_EVENT'
+   22 | ESP_EVENT_DECLARE_BASE(ESP_HTTP_CLIENT_EVENT);
+      |                        ^~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_event/include/esp_event_base.h:16:66: note: in definition of macro 'ESP_EVENT_DECLARE_BASE'
+   16 | #define ESP_EVENT_DECLARE_BASE(id) extern esp_event_base_t const id
+      |                                                                  ^~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:24:33: error: storage class specified for parameter 'esp_http_client_handle_t'
+   24 | typedef struct esp_http_client *esp_http_client_handle_t;
+      |                                 ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:25:39: error: storage class specified for parameter 'esp_http_client_event_handle_t'
+   25 | typedef struct esp_http_client_event *esp_http_client_event_handle_t;
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:41:3: error: storage class specified for parameter 'esp_http_client_event_id_t'
+   41 | } esp_http_client_event_id_t;
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:47:5: error: expected specifier-qualifier-list before 'esp_http_client_event_id_t'
+   47 |     esp_http_client_event_id_t event_id;    /*!< event_id, to know the cause of the event */
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:54:3: error: storage class specified for parameter 'esp_http_client_event_t'
+   54 | } esp_http_client_event_t;
+      |   ^~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:60:5: error: expected specifier-qualifier-list before 'esp_http_client_handle_t'
+   60 |     esp_http_client_handle_t client;    /*!< Client handle */
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:62:3: error: storage class specified for parameter 'esp_http_client_on_data_t'
+   62 | } esp_http_client_on_data_t;
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:68:5: error: expected specifier-qualifier-list before 'esp_http_client_handle_t'
+   68 |     esp_http_client_handle_t client;    /*!< Client handle */
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:70:3: error: storage class specified for parameter 'esp_http_client_redirect_event_data_t'
+   70 | } esp_http_client_redirect_event_data_t;
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:79:3: error: storage class specified for parameter 'esp_http_client_transport_t'
+   79 | } esp_http_client_transport_t;
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:89:3: error: storage class specified for parameter 'esp_http_client_proto_ver_t'
+   89 | } esp_http_client_proto_ver_t;
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:91:43: error: expected declaration specifiers or '...' before 'esp_http_client_event_t'
+   91 | typedef esp_err_t (*http_event_handle_cb)(esp_http_client_event_t *evt);
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:115:3: error: storage class specified for parameter 'esp_http_client_method_t'
+  115 | } esp_http_client_method_t;
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:124:3: error: storage class specified for parameter 'esp_http_client_auth_type_t'
+  124 | } esp_http_client_auth_type_t;
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:135:5: error: expected specifier-qualifier-list before 'esp_http_client_auth_type_t'
+  135 |     esp_http_client_auth_type_t auth_type;           /*!< Http authentication type, see `esp_http_client_auth_type_t` */
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:181:3: error: storage class specified for parameter 'esp_http_client_config_t'
+  181 | } esp_http_client_config_t;
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:206:3: error: storage class specified for parameter 'HttpStatus_Code'
+  206 | } HttpStatus_Code;
+      |   ^~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:230:1: error: expected declaration specifiers before 'esp_http_client_handle_t'
+  230 | esp_http_client_handle_t esp_http_client_init(const esp_http_client_config_t *config);
+      | ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:255:35: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  255 | esp_err_t esp_http_client_perform(esp_http_client_handle_t client);
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:267:42: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  267 | esp_err_t esp_http_client_cancel_request(esp_http_client_handle_t client);
+      |                                          ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:279:35: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  279 | esp_err_t esp_http_client_set_url(esp_http_client_handle_t client, const char *url);
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:293:42: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  293 | esp_err_t esp_http_client_set_post_field(esp_http_client_handle_t client, const char *data, int len);
+      |                                          ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:303:36: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  303 | int esp_http_client_get_post_field(esp_http_client_handle_t client, char **data);
+      |                                    ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:317:38: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  317 | esp_err_t esp_http_client_set_header(esp_http_client_handle_t client, const char *key, const char *value);
+      |                                      ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:333:38: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  333 | esp_err_t esp_http_client_get_header(esp_http_client_handle_t client, const char *key, char **value);
+      |                                      ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:347:40: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  347 | esp_err_t esp_http_client_get_username(esp_http_client_handle_t client, char **value);
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:361:40: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  361 | esp_err_t esp_http_client_set_username(esp_http_client_handle_t client, const char *username);
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:375:40: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  375 | esp_err_t esp_http_client_get_password(esp_http_client_handle_t client, char **value);
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:389:40: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  389 | esp_err_t esp_http_client_set_password(esp_http_client_handle_t client, const char *password);
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:401:40: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  401 | esp_err_t esp_http_client_set_authtype(esp_http_client_handle_t client, esp_http_client_auth_type_t auth_type);
+      |                                        ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:401:73: error: expected declaration specifiers or '...' before 'esp_http_client_auth_type_t'
+  401 | esp_err_t esp_http_client_set_authtype(esp_http_client_handle_t client, esp_http_client_auth_type_t auth_type);
+      |                                                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:415:41: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  415 | esp_err_t esp_http_client_get_user_data(esp_http_client_handle_t client, void **data);
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:429:41: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  429 | esp_err_t esp_http_client_set_user_data(esp_http_client_handle_t client, void *data);
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:440:31: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  440 | int esp_http_client_get_errno(esp_http_client_handle_t client);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:452:38: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  452 | esp_err_t esp_http_client_set_method(esp_http_client_handle_t client, esp_http_client_method_t method);
+      |                                      ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:452:71: error: expected declaration specifiers or '...' before 'esp_http_client_method_t'
+  452 | esp_err_t esp_http_client_set_method(esp_http_client_handle_t client, esp_http_client_method_t method);
+      |                                                                       ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:464:42: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  464 | esp_err_t esp_http_client_set_timeout_ms(esp_http_client_handle_t client, int timeout_ms);
+      |                                          ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:476:41: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  476 | esp_err_t esp_http_client_delete_header(esp_http_client_handle_t client, const char *key);
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:488:32: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  488 | esp_err_t esp_http_client_open(esp_http_client_handle_t client, int write_len);
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:501:27: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  501 | int esp_http_client_write(esp_http_client_handle_t client, const char *buffer, int len);
+      |                           ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:514:39: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  514 | int64_t esp_http_client_fetch_headers(esp_http_client_handle_t client);
+      |                                       ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:524:42: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  524 | bool esp_http_client_is_chunked_response(esp_http_client_handle_t client);
+      |                                          ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:539:26: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  539 | int esp_http_client_read(esp_http_client_handle_t client, char *buffer, int len);
+      |                          ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:549:37: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  549 | int esp_http_client_get_status_code(esp_http_client_handle_t client);
+      |                                     ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:561:44: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  561 | int64_t esp_http_client_get_content_length(esp_http_client_handle_t client);
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:572:33: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  572 | esp_err_t esp_http_client_close(esp_http_client_handle_t client);
+      |                                 ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:586:35: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  586 | esp_err_t esp_http_client_cleanup(esp_http_client_handle_t client);
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:598:1: error: expected declaration specifiers before 'esp_http_client_transport_t'
+  598 | esp_http_client_transport_t esp_http_client_get_transport_type(esp_http_client_handle_t client);
+      | ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:612:43: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  612 | esp_err_t esp_http_client_set_redirection(esp_http_client_handle_t client);
+      |                                           ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:624:50: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  624 | esp_err_t esp_http_client_reset_redirect_counter(esp_http_client_handle_t client);
+      |                                                  ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:639:41: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  639 | esp_err_t esp_http_client_set_auth_data(esp_http_client_handle_t client, const char *auth_data, int len);
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:650:31: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  650 | void esp_http_client_add_auth(esp_http_client_handle_t client);
+      |                               ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:661:48: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  661 | bool esp_http_client_is_complete_data_received(esp_http_client_handle_t client);
+      |                                                ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:675:35: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  675 | int esp_http_client_read_response(esp_http_client_handle_t client, char *buffer, int len);
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:690:42: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  690 | esp_err_t esp_http_client_flush_response(esp_http_client_handle_t client, int *len);
+      |                                          ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:704:35: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  704 | esp_err_t esp_http_client_get_url(esp_http_client_handle_t client, char *url, const int len);
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/esp32/esp-idf/components/esp_http_client/include/esp_http_client.h:717:44: error: expected declaration specifiers or '...' before 'esp_http_client_handle_t'
+  717 | esp_err_t esp_http_client_get_chunk_length(esp_http_client_handle_t client, int *len);
+      |                                            ^~~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/workspace/yuangod_smart_car/components/softap_sta/campus_network.c:10:41: error: expected declaration specifiers or '...' before 'esp_http_client_event_t'
+   10 | static esp_err_t can_http_event_handler(esp_http_client_event_t *evt)
+      |                                         ^~~~~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/workspace/yuangod_smart_car/components/softap_sta/campus_network.c:45:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+   45 | {
+      | ^
+/home/yuangod/project/workspace/yuangod_smart_car/components/softap_sta/campus_network.c:107:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+  107 | {
+      | ^
+/home/yuangod/project/workspace/yuangod_smart_car/components/softap_sta/include/campus_network.h:16:6: error: old-style parameter declarations in prototyped function definition
+   16 | void campus_network_login( login_info_t* login)
+      |      ^~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/workspace/yuangod_smart_car/components/softap_sta/campus_network.c:110: error: expected '{' at end of input
+cc1: some warnings being treated as errors
+make[2]: *** [esp-idf/softap_sta/CMakeFiles/__idf_softap_sta.dir/build.make:90：esp-idf/softap_sta/CMakeFiles/__idf_softap_sta.dir/campus_network.c.obj] 错误 1
+make[1]: *** [CMakeFiles/Makefile2:5089：esp-idf/softap_sta/CMakeFiles/__idf_softap_sta.dir/all] 错误 2
+make: *** [Makefile:136：all] 错误 2

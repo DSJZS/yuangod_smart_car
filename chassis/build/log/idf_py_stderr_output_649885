@@ -1,0 +1,7 @@
+In file included from /home/yuangod/project/workspace/yuangod_smart_car/main/user_battery/user_battery.c:3:
+/home/yuangod/project/esp32/esp-idf/components/driver/deprecated/driver/adc.h:19:2: warning: #warning "legacy adc driver is deprecated, please migrate to use esp_adc/adc_oneshot.h and esp_adc/adc_continuous.h for oneshot mode and continuous mode drivers respectively" [-Wcpp]
+   19 | #warning "legacy adc driver is deprecated, please migrate to use esp_adc/adc_oneshot.h and esp_adc/adc_continuous.h for oneshot mode and continuous mode drivers respectively"
+      |  ^~~~~~~
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_motors/user_motors.c:9:20: warning: 'TAG' defined but not used [-Wunused-variable]
+    9 | static const char* TAG = "from -> "__FILE__;
+      |                    ^~~

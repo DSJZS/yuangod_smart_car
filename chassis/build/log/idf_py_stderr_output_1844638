@@ -1,0 +1,3 @@
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_motors/user_motors.c:9:20: warning: 'TAG' defined but not used [-Wunused-variable]
+    9 | static const char* TAG = "from -> "__FILE__;
+      |                    ^~~

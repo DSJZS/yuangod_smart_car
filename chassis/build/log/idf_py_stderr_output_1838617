@@ -1,0 +1,8 @@
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_network/user_network.c: In function 'network_setup':
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_network/user_network.c:209:13: warning: variable 'ret' set but not used [-Wunused-but-set-variable]
+  209 |     uint8_t ret = 0;
+      |             ^~~
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_network/user_network.c: At top level:
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_network/user_network.c:147:16: warning: 'network_socket_init' defined but not used [-Wunused-function]
+  147 | static uint8_t network_socket_init(void)
+      |                ^~~~~~~~~~~~~~~~~~~

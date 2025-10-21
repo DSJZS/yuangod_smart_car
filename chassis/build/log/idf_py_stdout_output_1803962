@@ -1,0 +1,219 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x3 (RTC_SW_SYS_RST),boot:0x18 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40375b23
+SPIW started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x18 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3810,len:0x1870
+load:0x403c9700,len:0x4
+load:0x403c9704,len:0xcec
+load:0x403cc700,len:0x2ec4
+entry 0x403c9918
+[0;32mI (27) boot: ESP-IDF v5.2.5 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Oct 11 2025 12:44:37[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (30) boot: chip revision: v0.2[0m
+[0;32mI (34) boot: efuse block revision: v1.3[0m
+[0;32mI (38) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (43) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32s3: SPI Flash Size : 8MB[0m
+[0;32mI (53) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (62) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (76) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (84) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (91) boot: End of partition table[0m
+[0;32mI (95) esp_image: segment 0: paddr=00010020 vaddr=3c0a0020 size=1fa18h (129560) map[0m
+[0;32mI (127) esp_image: segment 1: paddr=0002fa40 vaddr=3fc99200 size=005d8h (  1496) load[0m
+[0;32mI (127) esp_image: segment 2: paddr=00030020 vaddr=42000020 size=9d524h (644388) map[0m
+[0;32mI (246) esp_image: segment 3: paddr=000cd54c vaddr=3fc997d8 size=041d8h ( 16856) load[0m
+[0;32mI (250) esp_image: segment 4: paddr=000d172c vaddr=40374000 size=1516ch ( 86380) load[0m
+[0;32mI (279) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (279) boot: Disabling RNG early entropy source...[0m
+[0;32mI (291) cpu_start: Multicore app[0m
+[0;32mI (300) cpu_start: Pro cpu start user code[0m
+[0;32mI (300) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (301) cpu_start: Application information:[0m
+[0;32mI (303) cpu_start: Project name:     yuangod_smart_car[0m
+[0;32mI (309) cpu_start: App version:      686e3ac-dirty[0m
+[0;32mI (315) cpu_start: Compile time:     Oct 19 2025 18:43:45[0m
+[0;32mI (321) cpu_start: ELF file SHA256:  98fcbc721...[0m
+[0;32mI (326) cpu_start: ESP-IDF:          v5.2.5[0m
+[0;32mI (331) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (336) cpu_start: Max chip rev:     v0.99 [0m
+[0;32mI (341) cpu_start: Chip rev:         v0.2[0m
+[0;32mI (345) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (353) heap_init: At 3FCA1A90 len 00047C80 (287 KiB): RAM[0m
+[0;32mI (359) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (365) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (371) heap_init: At 600FE010 len 00001FD8 (7 KiB): RTCRAM[0m
+[0;32mI (378) spi_flash: detected chip: gd[0m
+[0;32mI (381) spi_flash: flash io: dio[0m
+[0;32mI (386) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (392) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (400) main_task: Started on CPU0[0m
+[0;32mI (404) main_task: Calling app_main()[0m
+[0;32mI (408) from -> ./main/app_main.c: 
+___  _ _     ____  _        _____ ____  ____ 
+\  \/// \ /\/  _ \/ \  /|  /  __//  _ \/  _ \
+ \  / | | ||| / \|| |\ ||  | |  _| / \|| | \|
+ / /  | \_/|| |-||| | \||  | |_//| \_/|| |_/|
+/_/   \____/\_/ \|\_/  \|  \____\____/\____/
+[0m
+[0;32mI (433) from -> ./main/app_main.c: 小车开始初始化![0m
+[0;32mI (456) pp: pp rom version: e7ae62f[0m
+[0;32mI (457) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (458) wifi:wifi driver task: 3fcabbcc, prio:23, stack:6656, core=0[0m
+[0;32mI (470) wifi:wifi firmware version: 01d22db[0m
+[0;32mI (471) wifi:wifi certification version: v7.0[0m
+[0;32mI (471) wifi:config NVS flash: enabled[0m
+[0;32mI (472) wifi:config nano formating: disabled[0m
+[0;32mI (476) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (481) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (485) wifi:Init management short buffer num: 32[0m
+[0;32mI (489) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (493) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (497) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (501) wifi:Init static rx buffer num: 10[0m
+[0;32mI (505) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (510) wifi_init: rx ba win: 6[0m
+[0;32mI (513) wifi_init: tcpip mbox: 32[0m
+[0;32mI (517) wifi_init: udp mbox: 6[0m
+[0;32mI (521) wifi_init: tcp mbox: 6[0m
+[0;32mI (524) wifi_init: tcp tx win: 5760[0m
+[0;32mI (529) wifi_init: tcp rx win: 5760[0m
+[0;32mI (533) wifi_init: tcp mss: 1440[0m
+[0;32mI (537) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (541) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (546) WiFi SoftAP: ESP_WIFI_MODE_AP[0m
+[0;32mI (553) WiFi SoftAP: wifi_init_softap finished. SSID:yuangod_smart_car password:car_car_need_pass channel:1[0m
+[0;32mI (561) WiFi Sta: ESP_WIFI_MODE_STA[0m
+[0;32mI (566) WiFi Sta: wifi_init_sta finished.[0m
+[0;32mI (570) phy_init: phy_version 680,a6008b2,Jun  4 2024,16:41:10[0m
+�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x3 (RTC_SW_SYS_RST),boot:0x18 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40375b23
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3810,len:0x1870
+load:0x403c9700,len:0x4
+load:0x403c9704,len:0xcec
+load:0x403cc700,len:0x2ec4
+entry 0x403c9918
+[0;32mI (31) boot: ESP-IDF v5.2.5 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time Oct 11 2025 12:44:37[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (34) boot: chip revision: v0.2[0m
+[0;32mI (38) boot: efuse block revision: v1.3[0m
+[0;32mI (43) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (48) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (52) boot.esp32s3: SPI Flash Size : 8MB[0m
+[0;32mI (57) boot: Enabling RNG early entropy source...[0m
+[0;32mI (62) boot: Partition Table:[0m
+[0;32mI (66) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (73) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (81) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (88) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (96) boot: End of partition table[0m
+[0;32mI (100) esp_image: segment 0: paddr=00010020 vaddr=3c0a0020 size=1fa18h (129560) map[0m
+[0;32mI (131) esp_image: segment 1: paddr=0002fa40 vaddr=3fc99200 size=005d8h (  1496) load[0m
+[0;32mI (132) esp_image: segment 2: paddr=00030020 vaddr=42000020 size=9d524h (644388) map[0m
+[0;32mI (250) esp_image: segment 3: paddr=000cd54c vaddr=3fc997d8 size=041d8h ( 16856) load[0m
+[0;32mI (254) esp_image: segment 4: paddr=000d172c vaddr=40374000 size=1516ch ( 86380) load[0m
+[0;32mI (284) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (284) boot: Disabling RNG early entropy source...[0m
+[0;32mI (295) cpu_start: Multicore app[0m
+[0;32mI (305) cpu_start: Pro cpu start user code[0m
+[0;32mI (305) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (305) cpu_start: Application information:[0m
+[0;32mI (308) cpu_start: Project name:     yuangod_smart_car[0m
+[0;32mI (314) cpu_start: App version:      686e3ac-dirty[0m
+[0;32mI (319) cpu_start: Compile time:     Oct 19 2025 18:43:45[0m
+[0;32mI (325) cpu_start: ELF file SHA256:  98fcbc721...[0m
+[0;32mI (331) cpu_start: ESP-IDF:          v5.2.5[0m
+[0;32mI (336) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (340) cpu_start: Max chip rev:     v0.99 [0m
+[0;32mI (345) cpu_start: Chip rev:         v0.2[0m
+[0;32mI (350) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (357) heap_init: At 3FCA1A90 len 00047C80 (287 KiB): RAM[0m
+[0;32mI (363) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (369) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (375) heap_init: At 600FE010 len 00001FD8 (7 KiB): RTCRAM[0m
+[0;32mI (383) spi_flash: detected chip: gd[0m
+[0;32mI (386) spi_flash: flash io: dio[0m
+[0;32mI (390) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (397) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (404) main_task: Started on CPU0[0m
+[0;32mI (408) main_task: Calling app_main()[0m
+[0;32mI (412) from -> ./main/app_main.c: 
+___  _ _     ____  _        _____ ____  ____ 
+\  \/// \ /\/  _ \/ \  /|  /  __//  _ \/  _ \
+ \  / | | ||| / \|| |\ ||  | |  _| / \|| | \|
+ / /  | \_/|| |-||| | \||  | |_//| \_/|| |_/|
+/_/   \____/\_/ \|\_/  \|  \____\____/\____/
+[0m
+[0;32mI (437) from -> ./main/app_main.c: 小车开始初始化![0m
+[0;32mI (460) pp: pp rom version: e7ae62f[0m
+[0;32mI (461) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (462) wifi:wifi driver task: 3fcabbcc, prio:23, stack:6656, core=0[0m
+[0;32mI (474) wifi:wifi firmware version: 01d22db[0m
+[0;32mI (475) wifi:wifi certification version: v7.0[0m
+[0;32mI (475) wifi:config NVS flash: enabled[0m
+[0;32mI (476) wifi:config nano formating: disabled[0m
+[0;32mI (480) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (485) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (489) wifi:Init management short buffer num: 32[0m
+[0;32mI (493) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (497) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (501) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (506) wifi:Init static rx buffer num: 10[0m
+[0;32mI (509) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (514) wifi_init: rx ba win: 6[0m
+[0;32mI (517) wifi_init: tcpip mbox: 32[0m
+[0;32mI (521) wifi_init: udp mbox: 6[0m
+[0;32mI (525) wifi_init: tcp mbox: 6[0m
+[0;32mI (528) wifi_init: tcp tx win: 5760[0m
+[0;32mI (533) wifi_init: tcp rx win: 5760[0m
+[0;32mI (537) wifi_init: tcp mss: 1440[0m
+[0;32mI (541) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (545) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (550) WiFi SoftAP: ESP_WIFI_MODE_AP[0m
+[0;32mI (558) WiFi SoftAP: wifi_init_softap finished. SSID:yuangod_smart_car password:car_car_need_pass channel:1[0m
+[0;32mI (565) WiFi Sta: ESP_WIFI_MODE_STA[0m
+[0;32mI (570) WiFi Sta: wifi_init_sta finished.[0m
+[0;32mI (574) phy_init: phy_version 680,a6008b2,Jun  4 2024,16:41:10[0m
+�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x3 (RTC_SW_SYS_RST),boot:0x18 (SPI_FAST_FLASH_BOOT)
+Saved PC:0x40375b23
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3810,len:0x1870
+load:0x403c9700,len:0x4
+load:0x403c9704,len:0xcec
+load:0x403cc700,len:0x2ec4
+entry 0x403c9918
+[0;32mI (31) boot: ESP-IDF v5.2.5 2nd stage bootloader[0m
+[0;32mI (31) boot: compile time Oct 11 2025 12:44:37[0m
+[0;32mI (31) boot: Multicore bootloader[0m
+[0;32mI (34) boot: chip revision: v0.2[0m
+[0;32mI (38) boot: efuse block revision: v1.3[0m
+[0;32mI (43) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (48) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (52) boot.esp32s3: SPI Flash Size : 8MB[0m
+[0;32mI (57) boot: Enabling RNG early entropy source...[0m
+[0;32mI (62) boot: Partition Table:[0m
+[0;32mI (66) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (73) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (81) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (88) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (96) boot: End of partition table[0m
+[0;32mI (100) esp_image: segment 0: paddr=00010020 vaddr=3c0a0020 size=1fa18h (129560) map[0m
+[0;32mI (131) esp_image: segment 1: paddr=0002fa40 vaddr=3fc99200 size=005d8h (  1496) load[0m
+[0;32mI (132) esp_image: segment 2: paddr=00030020 vaddr=42000020 size=9d524h (644388) map[0m

@@ -1,0 +1,6 @@
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_network/user_network.c:31:13: warning: 'network_receive_task' defined but not used [-Wunused-function]
+   31 | static void network_receive_task(void* param)
+      |             ^~~~~~~~~~~~~~~~~~~~
+/home/yuangod/project/workspace/yuangod_smart_car/main/user_network/user_network.c:22:13: warning: 'network_send_task' defined but not used [-Wunused-function]
+   22 | static void network_send_task(void* param)
+      |             ^~~~~~~~~~~~~~~~~
