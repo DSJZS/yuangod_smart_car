@@ -262,14 +262,17 @@ static void softap_sta_init(void)
     }
 }
 
-void softap_sta_config(void)
+uint8_t softap_sta_config(void)
 {
     softap_sta_init();
 #ifdef CONFIG_USE_CAMPUS_NETWORK
     uint8_t ret = campus_network_login( CONFIG_CAMPUS_NETWORK_ID, CONFIG_CAMPUS_NETWORK_PASSWORD);
-    if( ret != 0 )
+    if( ret != 0 ) 
         ESP_LOGI(TAG_STA, "校园网认证成功!");
     else
         ESP_LOGI(TAG_STA, "校园网认证失败!");
+    return ret;
+#else
+    return 1;
 #endif
 }
