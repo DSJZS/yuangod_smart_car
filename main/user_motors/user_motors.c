@@ -56,9 +56,9 @@ static void motor_task(void* param)
         float new_speed = 0;
 
         left_pulses = dc_motor_control_get_pulse_cnt( &left_motor_dev);
-        ESP_LOGI(TAG, "left cnt = %d", left_pulses);
+        // ESP_LOGI(TAG, "left cnt = %d", left_pulses);
         right_pulses = dc_motor_control_get_pulse_cnt( &right_motor_dev);
-        ESP_LOGI(TAG, "right cnt = %d", right_pulses);
+        // ESP_LOGI(TAG, "right cnt = %d", right_pulses);
 
         motor_data_t motor_data = {
             .left_pulses = left_pulses,
