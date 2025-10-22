@@ -1,8 +1,0 @@
-/home/yuangod/project/workspace/yuangod_smart_car/components/softap_sta/campus_network.c:4:10: fatal error: esp_http_client.h: No such file or directory
-    4 | #include "esp_http_client.h"
-      |          ^~~~~~~~~~~~~~~~~~~
-compilation terminated.
-make[2]: *** [esp-idf/softap_sta/CMakeFiles/__idf_softap_sta.dir/build.make:90：esp-idf/softap_sta/CMakeFiles/__idf_softap_sta.dir/campus_network.c.obj] 错误 1
-make[1]: *** [CMakeFiles/Makefile2:5089：esp-idf/softap_sta/CMakeFiles/__idf_softap_sta.dir/all] 错误 2
-make[1]: *** 正在等待未完成的任务....
-make: *** [Makefile:136：all] 错误 2

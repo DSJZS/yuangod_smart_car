@@ -1,7 +1,0 @@
-[0;33m--- esp-idf-monitor 1.8.0 on /dev/ttyACM0 115200[0m
-[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
-[0m--- 0x40378c3a: [0;33mesp_crosscore_isr[0m[0m at [0;32m/home/yuangod/project/esp32/esp-idf/components/esp_system/crosscore_int.c[0m[0m:[1;31m103[0m
-[0m--- 0x40377671: [0;33m_xt_lowint1[0m[0m at [0;32m/home/yuangod/project/esp32/esp-idf/components/xtensa/xtensa_vectors.S[0m[0m:[1;31m1240[0m
-[0m--- 0x42093bfc: [0;33mnetwork_send_task[0m[0m at [0;32m/home/yuangod/project/workspace/yuangod_smart_car/main/user_network/user_network.c[0m[0m:[1;31m23[0m
-[0m--- 0x4037cde9: [0;33mvPortTaskWrapper[0m[0m at [0;32m/home/yuangod/project/esp32/esp-idf/components/freertos/FreeRTOS-Kernel/portable/xtensa/port.c[0m[0m:[1;31m139[0m
-[0m

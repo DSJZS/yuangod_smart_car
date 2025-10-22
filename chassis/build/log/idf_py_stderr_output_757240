@@ -1,3 +1,0 @@
-/home/yuangod/project/workspace/yuangod_smart_car/main/user_motors/user_motors.c:47:13: warning: 'motor_set_target' defined but not used [-Wunused-function]
-   47 | static void motor_set_target( dc_motor_control_context_t* control_context, int target_pulses)
-      |             ^~~~~~~~~~~~~~~~

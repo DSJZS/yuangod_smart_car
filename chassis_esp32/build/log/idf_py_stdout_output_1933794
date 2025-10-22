@@ -1,0 +1,139 @@
+�ddr�ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x18 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce3810,len:0x1870
+load:0x403c9700,len:0x4
+load:0x403c9704,len:0xcec
+load:0x403cc700,len:0x2ec4
+entry 0x403c9918
+[0;32mI (24) boot: ESP-IDF v5.2.5 2nd stage bootloader[0m
+[0;32mI (24) boot: compile time Oct 22 2025 15:58:57[0m
+[0;32mI (24) boot: Multicore bootloader[0m
+[0;32mI (27) boot: chip revision: v0.2[0m
+[0;32mI (31) boot: efuse block revision: v1.3[0m
+[0;32mI (35) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (40) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (45) boot.esp32s3: SPI Flash Size : 8MB[0m
+[0;32mI (49) boot: Enabling RNG early entropy source...[0m
+[0;32mI (55) boot: Partition Table:[0m
+[0;32mI (58) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (66) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (73) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (81) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (88) boot: End of partition table[0m
+[0;32mI (92) esp_image: segment 0: paddr=00010020 vaddr=3c0b0020 size=24278h (148088) map[0m
+[0;32mI (127) esp_image: segment 1: paddr=000342a0 vaddr=3fc9a700 size=04870h ( 18544) load[0m
+[0;32mI (131) esp_image: segment 2: paddr=00038b18 vaddr=40374000 size=07500h ( 29952) load[0m
+[0;32mI (139) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=a9b48h (695112) map[0m
+[0;32mI (264) esp_image: segment 4: paddr=000e9b70 vaddr=4037b500 size=0f1e4h ( 61924) load[0m
+[0;32mI (277) esp_image: segment 5: paddr=000f8d5c vaddr=600fe010 size=00004h (     4) load[0m
+[0;32mI (287) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (287) boot: Disabling RNG early entropy source...[0m
+[0;32mI (298) cpu_start: Multicore app[0m
+[0;32mI (308) cpu_start: Pro cpu start user code[0m
+[0;32mI (308) cpu_start: cpu freq: 240000000 Hz[0m
+[0;32mI (308) cpu_start: Application information:[0m
+[0;32mI (311) cpu_start: Project name:     yuangod_smart_car[0m
+[0;32mI (317) cpu_start: App version:      3b5078d-dirty[0m
+[0;32mI (322) cpu_start: Compile time:     Oct 22 2025 15:59:03[0m
+[0;32mI (329) cpu_start: ELF file SHA256:  569c42292...[0m
+[0;32mI (334) cpu_start: ESP-IDF:          v5.2.5[0m
+[0;32mI (339) cpu_start: Min chip rev:     v0.0[0m
+[0;32mI (343) cpu_start: Max chip rev:     v0.99 [0m
+[0;32mI (348) cpu_start: Chip rev:         v0.2[0m
+[0;32mI (353) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (360) heap_init: At 3FCA3148 len 000465C8 (281 KiB): RAM[0m
+[0;32mI (366) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (372) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (379) heap_init: At 600FE014 len 00001FD4 (7 KiB): RTCRAM[0m
+[0;32mI (386) spi_flash: detected chip: gd[0m
+[0;32mI (389) spi_flash: flash io: dio[0m
+[0;33mW (394) i2c: This driver is an old driver, please migrate your application code to adapt `driver/i2c_master.h`[0m
+[0;32mI (404) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (411) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (418) main_task: Started on CPU0[0m
+[0;32mI (422) main_task: Calling app_main()[0m
+[0;32mI (426) from -> ./main/app_main.c: 
+___  _ _     ____  _        _____ ____  ____ 
+\  \/// \ /\/  _ \/ \  /|  /  __//  _ \/  _ \
+ \  / | | ||| / \|| |\ ||  | |  _| / \|| | \|
+ / /  | \_/|| |-||| | \||  | |_//| \_/|| |_/|
+/_/   \____/\_/ \|\_/  \|  \____\____/\____/
+[0m
+[0;32mI (451) from -> ./main/app_main.c: 小车开始初始化![0m
+[0;32mI (458) from -> ./main/user_imu/user_imu.c: IMU 初始化完毕!!![0m
+[0;32mI (464) gpio: GPIO[33]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (473) gpio: GPIO[34]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (483) gpio: GPIO[12]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (492) gpio: GPIO[14]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (501) gpio: GPIO[14]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (510) gpio: GPIO[12]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (520) from -> ./components/bdc_motor_control/bdc_motor_control.c: 电机控制初始化完毕[0m
+[0;32mI (529) gpio: GPIO[35]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (538) gpio: GPIO[36]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (548) gpio: GPIO[20]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (557) gpio: GPIO[19]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (566) gpio: GPIO[19]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (575) gpio: GPIO[20]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (585) from -> ./components/bdc_motor_control/bdc_motor_control.c: 电机控制初始化完毕[0m
+[0;32mI (611) pp: pp rom version: e7ae62f[0m
+[0;32mI (612) net80211: net80211 rom version: e7ae62f[0m
+[0;32mI (614) wifi:wifi driver task: 3fcaff88, prio:23, stack:6656, core=0[0m
+[0;32mI (626) wifi:wifi firmware version: 01d22db[0m
+[0;32mI (626) wifi:wifi certification version: v7.0[0m
+[0;32mI (626) wifi:config NVS flash: enabled[0m
+[0;32mI (628) wifi:config nano formating: disabled[0m
+[0;32mI (632) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (637) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (641) wifi:Init management short buffer num: 32[0m
+[0;32mI (645) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (649) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (653) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (657) wifi:Init static rx buffer num: 10[0m
+[0;32mI (661) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (665) wifi_init: rx ba win: 6[0m
+[0;32mI (669) wifi_init: tcpip mbox: 32[0m
+[0;32mI (673) wifi_init: udp mbox: 6[0m
+[0;32mI (676) wifi_init: tcp mbox: 6[0m
+[0;32mI (680) wifi_init: tcp tx win: 5760[0m
+[0;32mI (684) wifi_init: tcp rx win: 5760[0m
+[0;32mI (688) wifi_init: tcp mss: 1440[0m
+[0;32mI (692) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (697) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (702) WiFi SoftAP: ESP_WIFI_MODE_AP[0m
+[0;32mI (709) WiFi SoftAP: wifi_init_softap finished. SSID:yuangod_smart_car password:car_car_need_pass channel:1[0m
+[0;32mI (716) WiFi Sta: ESP_WIFI_MODE_STA[0m
+[0;32mI (722) WiFi Sta: wifi_init_sta finished.[0m
+[0;32mI (725) phy_init: phy_version 680,a6008b2,Jun  4 2024,16:41:10[0m
+[0;32mI (768) wifi:mode : sta (9c:13:9e:a1:cf:84) + softAP (9c:13:9e:a1:cf:85)[0m
+[0;32mI (768) wifi:enable tsf[0m
+[0;32mI (772) wifi:Total power save buffer number: 16[0m
+[0;32mI (772) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (774) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (780) WiFi Sta: Station started[0m
+[0;32mI (785) esp_netif_lwip: DHCP server started on interface WIFI_AP_DEF with IP: 192.168.4.1[0m
+[0;32mI (3614) wifi:ap channel adjust o:1,1 n:11,2[0m
+[0;32mI (3614) wifi:new:<11,0>, old:<1,1>, ap:<11,2>, sta:<11,0>, prof:1[0m
+[0;32mI (3615) wifi:state: init -> auth (b0)[0m
+[0;32mI (3625) wifi:state: auth -> assoc (0)[0m
+[0;32mI (3630) wifi:state: assoc -> run (10)[0m
+[0;32mI (3631) wifi:connected with DLNU-NET, aid = 2, channel 11, BW20, bssid = 24:de:c6:dd:1b:e0[0m
+[0;32mI (3632) wifi:security: Open Auth, phy: bgn, rssi: -43[0m
+[0;32mI (3638) wifi:pm start, type: 1[0m
+
+[0;32mI (3639) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us[0m
+[0;32mI (3647) wifi:set rx beacon pti, rx_bcn_pti: 0, bcn_timeout: 25000, mt_pti: 0, mt_time: 10000[0m
+[0;32mI (3656) wifi:AP's beacon interval = 102400 us, DTIM period = 1[0m
+[0;32mI (3669) wifi:<ba-add>idx:0 (ifx:0, 24:de:c6:dd:1b:e0), tid:0, ssn:0, winSize:64[0m
+[0;32mI (4880) wifi:<ba-add>idx:1 (ifx:0, 24:de:c6:dd:1b:e0), tid:6, ssn:0, winSize:64[0m
+[0;32mI (5663) WiFi Sta: Got IP:10.3.67.20[0m
+[0;32mI (5664) esp_netif_handlers: sta ip: 10.3.67.20, mask: 255.255.0.0, gw: 10.3.0.1[0m
+[0;32mI (5665) WiFi Sta: connected to ap SSID:DLNU-NET password:[0m
+[0;33mW (5672) esp_netif_lwip: napt disabled on esp_netif:0x3fcb6320[0m
+[0;32mI (5719) campus_network: Received data (length=238): {"userIndex":"64663962333135666433393861623639373434396532313737363463666638655f31302e332e36372e32305f32303233303233323032","result":"success","message":"","forwordurl":null,"keepaliveInterval":0,"casFailErrString":null,"validCodeUrl":""}[0m
+[0;32mI (5735) campus_network: id: success[0m
+[0;32mI (5741) campus_network: Campus Network Auth success![0m
+[0;32mI (5745) WiFi Sta: 校园网认证成功![0m
+[0;32mI (5750) from -> ./main/user_network/user_network.c: Socket tcp 连接, 正在连接 192.168.0.181:8899[0m

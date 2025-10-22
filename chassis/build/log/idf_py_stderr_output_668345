@@ -1,9 +1,0 @@
-/home/yuangod/project/workspace/yuangod_smart_car/components/bdc_motor_control/bdc_motor_control.c: In function 'dc_motor_control_pid':
-/home/yuangod/project/workspace/yuangod_smart_car/components/bdc_motor_control/bdc_motor_control.c:211:56: warning: passing argument 1 of 'bdc_motor_set_speed_with_direction' from incompatible pointer type [-Wincompatible-pointer-types]
-  211 |     bdc_motor_set_speed_with_direction( control_context->motor, new_speed);
-      |                                         ~~~~~~~~~~~~~~~^~~~~~~
-      |                                                        |
-      |                                                        bdc_motor_handle_t {aka struct bdc_motor_t *}
-/home/yuangod/project/workspace/yuangod_smart_car/components/bdc_motor_control/bdc_motor_control.c:185:70: note: expected 'dc_motor_control_context_t *' but argument is of type 'bdc_motor_handle_t' {aka 'struct bdc_motor_t *'}
-  185 | void bdc_motor_set_speed_with_direction( dc_motor_control_context_t* control_context, float new_speed)
-      |                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~

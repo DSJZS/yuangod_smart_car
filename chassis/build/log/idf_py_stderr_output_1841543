@@ -1,9 +1,0 @@
-/home/yuangod/project/workspace/yuangod_smart_car/main/app_main.c: In function 'app_main':
-/home/yuangod/project/workspace/yuangod_smart_car/main/app_main.c:30:5: error: implicit declaration of function 'battery_estimation_init' [-Werror=implicit-function-declaration]
-   30 |     battery_estimation_init();  //  电压测量不正确
-      |     ^~~~~~~~~~~~~~~~~~~~~~~
-cc1: some warnings being treated as errors
-make[2]: *** [esp-idf/main/CMakeFiles/__idf_main.dir/build.make:76：esp-idf/main/CMakeFiles/__idf_main.dir/app_main.c.obj] 错误 1
-make[2]: *** 正在等待未完成的任务....
-make[1]: *** [CMakeFiles/Makefile2:4931：esp-idf/main/CMakeFiles/__idf_main.dir/all] 错误 2
-make: *** [Makefile:136：all] 错误 2

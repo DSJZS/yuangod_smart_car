@@ -1,9 +1,0 @@
-/home/yuangod/project/workspace/yuangod_smart_car/main/user_motors/user_motors.c:24:13: warning: 'motor_set_target' defined but not used [-Wunused-function]
-   24 | static void motor_set_target( dc_motor_control_context_t* control_context, int target_pulses)
-      |             ^~~~~~~~~~~~~~~~
-/home/yuangod/project/workspace/yuangod_smart_car/main/user_motors/user_motors.c:19:12: warning: 'motor_mps2pulses' defined but not used [-Wunused-function]
-   19 | static int motor_mps2pulses(float mps)
-      |            ^~~~~~~~~~~~~~~~
-/home/yuangod/project/workspace/yuangod_smart_car/main/user_motors/user_motors.c:14:14: warning: 'motor_pulses2mps' defined but not used [-Wunused-function]
-   14 | static float motor_pulses2mps(int pulses)
-      |              ^~~~~~~~~~~~~~~~
