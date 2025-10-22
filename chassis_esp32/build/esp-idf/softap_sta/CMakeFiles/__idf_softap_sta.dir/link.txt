@@ -1,2 +1,0 @@
-/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin/xtensa-esp32s3-elf-ar qc libsoftap_sta.a CMakeFiles/__idf_softap_sta.dir/softap_sta.c.obj CMakeFiles/__idf_softap_sta.dir/campus_network.c.obj
-/home/yuangod/.espressif/tools/xtensa-esp-elf/esp-13.2.0_20230928/xtensa-esp-elf/bin/xtensa-esp32s3-elf-ranlib libsoftap_sta.a
