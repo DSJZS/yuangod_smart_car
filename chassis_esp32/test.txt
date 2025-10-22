@@ -1,3 +1,0 @@
-{"userIndex":null,"result":"fail","message":"你使用的账号已达到同时在线用户数量上限!","forwordurl":null,"keepaliveInterval":0,"casFailErrString":null,"validCodeUrl":""}
-
-{"userIndex":"64663962333135666433393861623639373434396532313737363463666638655f31302e332e36372e32305f32303233303233323032","result":"success","message":"","forwordurl":null,"keepaliveInterval":0,"casFailErrString":null,"validCodeUrl":""}
