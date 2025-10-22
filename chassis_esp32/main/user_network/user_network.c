@@ -12,9 +12,9 @@
 #include "user_motors/user_motors.h"
 
 /* ROS2主机ip */
-#define HOST_IP_ADDR    ( "192.168.0.181" )
+#define HOST_IP_ADDR    ( CONFIG_ROS2_SERVER_HOST_IP_ADDR )
 /* ROS2主机对应进程端口 */
-#define PORT            ( 8899 )
+#define PORT            ( CONFIG_ROS2_SERVER_PORT )
 
 static const char* TAG = "from -> "__FILE__;
 static int socket_ros2_tcp = -1;
@@ -185,6 +185,8 @@ static void network_send_task(void* param)
     {
         get_car_data( &data);
         serialize_car_data( tcp_buffer, &data);
+        // ESP_LOGI(TAG, "%x",tcp_buffer[42]);
+
         err = send( socket_ros2_tcp, tcp_buffer, sizeof( tcp_buffer ), 0);
         if (err < 0) {
             ESP_LOGE(TAG, "Error occurred during sending: errno %d", errno);
