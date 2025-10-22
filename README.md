@@ -12,4 +12,8 @@ telnet localhost 端口号
 sudo sh -c 'echo "hello world" > /dev/ttyVIRT0'
 # 读取TCP端口发往虚拟串口的数据 ttyVIRT0 可改为对应虚拟串口
 sudo cat /dev/ttyVIRT0
+# 关闭socat进程
+sudo pkill socat 或者 sudo killall socat
+# 查询socat进程
+ps aux | grep socat
 ```
