@@ -5,6 +5,7 @@
 #include "softap_sta.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
+#include "freertos/semphr.h"
 
 #include <sys/socket.h>
 #include "user_imu/user_imu.h"
@@ -17,7 +18,13 @@
 #define PORT            ( CONFIG_ROS2_SERVER_PORT )
 
 static const char* TAG = "from -> "__FILE__;
+
+/* 连接ROS2服务器的套接字 */
 static int socket_ros2_tcp = -1;
+/* 管理连接ROS2服务器的套接字的读写的递归锁 
+ * 虽然TCP是全双工不需要互斥锁处理，但是考虑到重连接时的线程安全，还是添加了递归锁管理
+ */
+static SemaphoreHandle_t socket_ros2_tcp_rwlock = NULL;
 
 /* 发送数据结构体 */
 typedef struct {
@@ -135,26 +142,28 @@ static uint8_t network_config(void)
     return softap_sta_config();
 }
 
-static void network_socket_tcp_close(int* socket_tcp)
+static void network_socket_tcp_close(void)
 {
-    int socket = *socket_tcp;
-    if ( socket != -1) {
+    xSemaphoreTakeRecursive( socket_ros2_tcp_rwlock , portMAX_DELAY);
+    if ( socket_ros2_tcp != -1) {
         ESP_LOGE(TAG, "Shutting down socket_tcp...");
-        shutdown( socket, 0);
-        close( socket );
-        *socket_tcp = -1;
+        shutdown( socket_ros2_tcp, 0);
+        close( socket_ros2_tcp );
+        socket_ros2_tcp = -1;
     }
+    xSemaphoreGiveRecursive( socket_ros2_tcp_rwlock );
 }
-/* 配置socket */
-static uint8_t network_socket_init(void)
-{
-    struct sockaddr_in dest_addr;
 
-    network_socket_tcp_close( &socket_ros2_tcp );
+static uint8_t network_socket_tcp_connect()
+{
+    xSemaphoreTakeRecursive( socket_ros2_tcp_rwlock , portMAX_DELAY);
+
+    struct sockaddr_in dest_addr;
 
     socket_ros2_tcp =  socket( AF_INET, SOCK_STREAM, 0);
     if (socket_ros2_tcp < 0) {
         ESP_LOGE(TAG, "无法创建socket: errno %d", errno);
+        xSemaphoreGiveRecursive( socket_ros2_tcp_rwlock );
         return 0;
     }
     ESP_LOGI(TAG, "Socket tcp 连接, 正在连接 %s:%d", HOST_IP_ADDR, PORT);
@@ -166,12 +175,26 @@ static uint8_t network_socket_init(void)
     int err = connect(socket_ros2_tcp, (struct sockaddr *)&dest_addr, sizeof(dest_addr));
     if (err != 0) {
         ESP_LOGE(TAG, "Socket tcp 无法连接: errno %d", errno);
-        network_socket_tcp_close( &socket_ros2_tcp );
+        network_socket_tcp_close( );
+        xSemaphoreGiveRecursive( socket_ros2_tcp_rwlock );
         return 0;
     }
     ESP_LOGI(TAG, "Socket tcp 成功连接");
-
+    xSemaphoreGiveRecursive( socket_ros2_tcp_rwlock );
     return 1;
+}
+
+static uint8_t network_socket_tcp_reconnect()
+{
+    network_socket_tcp_close();
+    return network_socket_tcp_connect();
+}
+
+/* 配置socket */
+static uint8_t network_socket_init(void)
+{
+    socket_ros2_tcp_rwlock = xSemaphoreCreateRecursiveMutex();
+    return network_socket_tcp_connect( );
 }
 
 static void network_send_task(void* param)
@@ -187,11 +210,14 @@ static void network_send_task(void* param)
         serialize_car_data( tcp_buffer, &data);
         // ESP_LOGI(TAG, "%x",tcp_buffer[42]);
 
+        xSemaphoreTakeRecursive( socket_ros2_tcp_rwlock , portMAX_DELAY);
         err = send( socket_ros2_tcp, tcp_buffer, sizeof( tcp_buffer ), 0);
         if (err < 0) {
             ESP_LOGE(TAG, "Error occurred during sending: errno %d", errno);
-            // break;
+            network_socket_tcp_reconnect();
         }
+        xSemaphoreGiveRecursive( socket_ros2_tcp_rwlock );
+
         vTaskDelayUntil(&xLastWakeTime, xDelay);
     }
     vTaskDelete(NULL);
@@ -203,6 +229,10 @@ static void network_receive_task(void* param)
     TickType_t xLastWakeTime = xTaskGetTickCount();
     while(1)
     {
+        xSemaphoreTakeRecursive( socket_ros2_tcp_rwlock , portMAX_DELAY);
+
+        xSemaphoreGiveRecursive( socket_ros2_tcp_rwlock );
+
         vTaskDelayUntil(&xLastWakeTime, xDelay);
     }
     vTaskDelete(NULL);
