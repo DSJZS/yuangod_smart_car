@@ -1,0 +1,15 @@
+menu "Socket ROS2 Configuration"
+    
+    config ROS2_SERVER_HOST_IP_ADDR
+        string "ROS2 SERVER HOST IP ADDR"
+        default "192.168.0.181"
+        help
+            ip of the ROS2 Server for the car to connect to.
+
+    config ROS2_SERVER_PORT
+            int "ROS2 SERVER PORT"
+            default 8899
+            help
+                port of the ROS2 Server for the car to connect to.
+
+endmenu

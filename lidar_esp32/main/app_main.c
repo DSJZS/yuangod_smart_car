@@ -4,12 +4,18 @@
 #include "freertos/task.h"
 
 #include "wifi_station.h"
+#include "socket_ros2.h"
+#include "ld14.h"
 
 void app_main(void)
 {
     ESP_LOGI("TAG", "hello world!!");
 
     wifi_station_init();
+    socket_ros2_config();
+
+    ld14_init();
+
     while(1)
     {
         vTaskDelay(1);
