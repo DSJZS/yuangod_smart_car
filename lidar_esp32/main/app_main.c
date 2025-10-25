@@ -11,6 +11,7 @@ void app_main(void)
 {
     ESP_LOGI("TAG", "hello world!!");
 
+    // wifi站点模式初始化用于连接底盘上的ESP32 AP
     wifi_station_init();
     socket_ros2_config();
 
