@@ -17,8 +17,8 @@ static const char* TAG = "from -> "__FILE__;
 
 /* 连接ROS2服务器的套接字 */
 static int socket_ros2_tcp = -1;
-/* 管理连接ROS2服务器的套接字的读写的递归锁 
- * 虽然TCP是全双工不需要互斥锁处理，但是考虑到重连接时的线程安全，还是添加了递归锁管理
+/* 由底盘(chassis_esp32)工程的user_network直接移植过来
+ * 即使本工程数据只发不收, 但为了避免因为修改而产生额外的bug(不是因为偷懒), 不删除读写锁
  */
 static SemaphoreHandle_t socket_ros2_tcp_rwlock = NULL;
 
@@ -74,7 +74,7 @@ static uint8_t socket_ros2_tcp_reconnect()
 static uint8_t socket_ros2_init(void)
 {
     socket_ros2_tcp_rwlock = xSemaphoreCreateRecursiveMutex();
-    return socket_ros2_tcp_connect( );
+    return socket_ros2_tcp_connect();
 }
 
 void socket_ros2_tcp_send( uint8_t* tcp_tx_buffer, size_t buf_size)
@@ -95,7 +95,7 @@ void socket_ros2_config(void)
     /* 初始化socket */
     ret = socket_ros2_init();
     if( ret == 0 )
-        ESP_LOGI(TAG, "socket 初始化失败");
+        ESP_LOGI(TAG, "socket 初始化失败!!!");
     else
         ESP_LOGI(TAG, "socket 初始化成功!!!");
 }
