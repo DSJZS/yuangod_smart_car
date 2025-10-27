@@ -11,6 +11,9 @@ find_package(rclcpp REQUIRED)
 find_package(serial_driver REQUIRED)
 find_package(geometry_msgs REQUIRED)
 
+# 添加第三方库目录
+add_subdirectory(third_party/lwrb)
+
 add_executable(chassis_node src/chassis_node.cpp)
 target_include_directories(chassis_node PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -21,6 +24,12 @@ ament_target_dependencies(
   "rclcpp"
   "serial_driver"
   "geometry_msgs"
+)
+
+# 链接依赖 - 关键步骤！
+target_link_libraries(chassis_node 
+  lwrb           
+  lwrb_ex
 )
 
 install(TARGETS chassis_node

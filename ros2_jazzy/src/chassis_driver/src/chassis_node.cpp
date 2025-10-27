@@ -3,6 +3,8 @@
 #include "serial_driver/serial_driver.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include <string>
+/* 第三方库引用 */
+#include "lwrb/lwrb.h"  
 
 /* 功能包作用介绍:
  *  本功能包用于创建底盘节点, 功能如下:
@@ -12,7 +14,9 @@
  *  本项目就使用socat创建了一个绑定TCP端口的虚拟串口
  */
 
-/* 底盘节点对象 */
+
+
+/* 底盘节点对象类型 */
 class ChassisNode: public rclcpp::Node{
 public:
     ChassisNode( const std::string& node_name, const std::string& serial_device_name, uint32_t baud_rate);
@@ -24,6 +28,9 @@ private:
     std::unique_ptr<std::vector<uint8_t>> transmit_data_buffer_;
 
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr subscription_;
+
+    lwrb_t ring_buffer;
+    uint8_t rb_data[512];   //  这个512可以根据实际情况进行调整,个人测试已经十分的够用了
 };
 
 int main(int argc, char ** argv)
@@ -78,6 +85,8 @@ ChassisNode::ChassisNode(const std::string& node_name, const std::string& serial
         return;
     }
 
+    /* 创建循环缓冲区用于处理字节流数据 */
+    lwrb_init( &(this->ring_buffer), this->rb_data, sizeof(this->rb_data)); /* Initialize buffer */
     /* 创建发送缓存区 */
     this->transmit_data_buffer_ = std::make_unique<std::vector<uint8_t>>(1024);
     /* 设置串口异步接收回调 */
@@ -90,7 +99,6 @@ ChassisNode::ChassisNode(const std::string& node_name, const std::string& serial
 /**
   * @brief 从串口读取底盘上各个传感器的数据并发布到对应主题
   */
-
 void ChassisNode::read_sensors_data( std::vector<uint8_t> &data, const size_t &size)
 {
     /* debug */
