@@ -9,6 +9,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(serial_driver REQUIRED)
+find_package(geometry_msgs REQUIRED)
 
 add_executable(chassis_node src/chassis_node.cpp)
 target_include_directories(chassis_node PUBLIC
@@ -19,6 +20,7 @@ ament_target_dependencies(
   chassis_node
   "rclcpp"
   "serial_driver"
+  "geometry_msgs"
 )
 
 install(TARGETS chassis_node
