@@ -113,8 +113,14 @@ void ChassisNode::read_sensors_data( std::vector<uint8_t> &data, const size_t &s
     lwrb_write( &(this->ring_buffer_), data.data(),size);
 
     if( this->sfp_.get_command( &(this->ring_buffer_), command, &command_size) ) {
-        RCLCPP_INFO(this->get_logger(), "(%u bytes Received): %s", command_size, "test");
-    }
+        /* 本项目传感器传数据帧的 数据字段长度 默认为 40, 效率为 40/43=93% */
+        if( 40 == command_size ) {
+
+        } else {
+            /* 未知数据 */
+            RCLCPP_INFO(this->get_logger(), "(接收到了 %u bytes 未知数据): %.*s", command_size, command_size, (const char*)command);
+        }
+    } 
 }
 
 /**
