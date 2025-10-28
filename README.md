@@ -11,7 +11,13 @@
 ## TCP与虚拟串口双向通讯测试
 ``` bash
 # 监听对应端口，可以读取虚拟串口发来的数据或者向虚拟串口发送数据
+# 1. 使用telnet，好处是方便，缺点是不方便输入十六进制等数据
 telnet localhost 端口号
+# 2. 使用 socat + fifo
+mkfifo test_fifo
+socat ./test_fifo TCP:localhost:端口号
+printf "\xAA\xBB\xCC" > test_fifo
+rm test_fifo
 
 # 用虚拟串口向TCP端口发送数据 ttyVIRT0 可改为对应虚拟串口
 sudo sh -c 'echo "hello world" > /dev/ttyVIRT0'
