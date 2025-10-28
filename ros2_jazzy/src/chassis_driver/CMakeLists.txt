@@ -13,6 +13,7 @@ find_package(geometry_msgs REQUIRED)
 
 # 添加第三方库目录
 add_subdirectory(third_party/lwrb)
+add_subdirectory(third_party/simple_frame)
 
 add_executable(chassis_node src/chassis_node.cpp)
 target_include_directories(chassis_node PUBLIC
@@ -30,6 +31,7 @@ ament_target_dependencies(
 target_link_libraries(chassis_node 
   lwrb           
   lwrb_ex
+  simple_frame
 )
 
 install(TARGETS chassis_node

@@ -5,21 +5,22 @@
 #include <string>
 /* 第三方库引用 */
 #include "lwrb/lwrb.h"  
+#include "simple_frame/simple_frame.hpp"
+
+using cya::hal::protocol::Simple_Frame;
 
 /* 功能包作用介绍:
  *  本功能包用于创建底盘节点, 功能如下:
  *      1. 通过串口获取底盘各个传感器的数据并发布到对应主题
  *      2. 接收来自于 `/cmd_vel` 主题的速度消息，并通过串口转发到底盘用于控制机器人移动
  *  值得注意的是串口不一定为一个真实的物理串口，可以是通过socat等工具创建的虚拟串口
- *  本项目就使用socat创建了一个绑定TCP端口的虚拟串口
+ *      本项目就使用socat创建了一个绑定TCP端口的虚拟串口
  */
-
-
 
 /* 底盘节点对象类型 */
 class ChassisNode: public rclcpp::Node{
 public:
-    ChassisNode( const std::string& node_name, const std::string& serial_device_name, uint32_t baud_rate);
+    ChassisNode( const std::string& node_name, const std::string& serial_device_name, uint32_t baud_rate, uint8_t packet_head);
     void read_sensors_data( std::vector<uint8_t> &data, const size_t &size);
     void send_command( const geometry_msgs::msg::Twist& msg);
 private:
@@ -29,8 +30,11 @@ private:
 
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr subscription_;
 
-    lwrb_t ring_buffer;
-    uint8_t rb_data[512];   //  这个512可以根据实际情况进行调整,个人测试已经十分的够用了
+    /* 第三方库提供的 环形缓冲区 */
+    lwrb_t ring_buffer_;
+    uint8_t rb_data_[512];  //  这个512可以根据实际情况进行调整,个人测试已经十分的够用了
+    /* 第三方库提供的 简单帧处理对象 */
+    Simple_Frame sfp_;      //  上述的512如果更改了要顺便更改 Simple_Frame::kParserBufferLength 的值
 };
 
 int main(int argc, char ** argv)
@@ -39,7 +43,7 @@ int main(int argc, char ** argv)
     rclcpp::init( argc, argv);
 
     /* 创建对象并等待回调函数 */
-    auto chassis_node = std::make_shared<ChassisNode>( "chassis_node_cpp", "/dev/ttyVIRT0", 115200);
+    auto chassis_node = std::make_shared<ChassisNode>( "chassis_node_cpp", "/dev/ttyVIRT0", 115200, 0xAA);
     rclcpp::spin(chassis_node);
 
     /* 释放ROS2客户端资源 */
@@ -56,8 +60,8 @@ int main(int argc, char ** argv)
   * @return
   *      - Value: Text
   */
-ChassisNode::ChassisNode(const std::string& node_name, const std::string& serial_device_name, uint32_t baud_rate)
-    : Node(node_name)
+ChassisNode::ChassisNode(const std::string& node_name, const std::string& serial_device_name, uint32_t baud_rate, uint8_t packet_head)
+    : Node(node_name), sfp_(packet_head)
 {
     /* 节点构造函数体 */
     const char* c_node_name = node_name.c_str();
@@ -86,12 +90,11 @@ ChassisNode::ChassisNode(const std::string& node_name, const std::string& serial
     }
 
     /* 创建循环缓冲区用于处理字节流数据 */
-    lwrb_init( &(this->ring_buffer), this->rb_data, sizeof(this->rb_data)); /* Initialize buffer */
+    lwrb_init( &(this->ring_buffer_), this->rb_data_, sizeof(this->rb_data_)); /* Initialize buffer */
     /* 创建发送缓存区 */
     this->transmit_data_buffer_ = std::make_unique<std::vector<uint8_t>>(1024);
     /* 设置串口异步接收回调 */
     this->serial_driver_->port()->async_receive( std::bind( &ChassisNode::read_sensors_data, this, std::placeholders::_1, std::placeholders::_2));
-
     /* 订阅速度话题 */
     this->subscription_ = this->create_subscription<geometry_msgs::msg::Twist>("cmd_vel", 10, std::bind( &ChassisNode::send_command,this,std::placeholders::_1));
 }
@@ -102,9 +105,16 @@ ChassisNode::ChassisNode(const std::string& node_name, const std::string& serial
 void ChassisNode::read_sensors_data( std::vector<uint8_t> &data, const size_t &size)
 {
     /* debug */
-        std::string received_message(data.begin(), data.end());
-        RCLCPP_INFO(this->get_logger(), "(%ld bytes Received): %s", size, received_message.c_str());
+        // std::string received_message(data.begin(), data.end());
+        // RCLCPP_INFO(this->get_logger(), "(%ld bytes Received): %s", size, received_message.c_str());
     /* debug */
+    uint8_t command[512] = {0};
+    uint16_t command_size = 0;
+    lwrb_write( &(this->ring_buffer_), data.data(),size);
+
+    if( this->sfp_.get_command( &(this->ring_buffer_), command, &command_size) ) {
+        RCLCPP_INFO(this->get_logger(), "(%u bytes Received): %s", command_size, "test");
+    }
 }
 
 /**
