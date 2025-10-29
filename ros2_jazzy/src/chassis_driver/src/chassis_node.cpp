@@ -199,7 +199,7 @@ void ChassisNode::publish_sensors_data( uint8_t* data, uint16_t size)
     float imu_gyro_x, imu_gyro_y, imu_gyro_z;
     float battery_capacity;
 
-    /* 临时定义一个反序列化宏函数用于处理数据 */
+    /* 临时定义一个反序列化宏函数用于处理数据, 值得注意的是Ubuntu一般是小端 */
     uint16_t index = 0, copied = 0;
     #define deserialization(var) copied = sizeof( var ); memcpy( &var, &( data[index] ), copied); index += copied;
     deserialization(linear_x_speed);    deserialization(linear_y_speed);    deserialization(angular_z_speed);
@@ -296,7 +296,7 @@ void ChassisNode::send_command( const geometry_msgs::msg::Twist& msg)
     uint16_t index = 0, copied = 0;
     float linear_x_speed = msg.linear.x, linear_y_speed = msg.linear.y, angular_z_speed = msg.angular.z;    //  值得注意的是这里的 xy是线速度, z是角速度
     
-    /* 临时定义一个序列化宏函数用于处理数据 */
+    /* 临时定义一个序列化宏函数用于处理数据, 值得注意的是Ubuntu一般是小端 */
     #define serialization(var) copied = sizeof( var ); memcpy( &( data[index] ), &var, copied); index += copied;
     serialization( linear_x_speed); serialization( linear_y_speed); serialization( angular_z_speed); 
     #undef serialization
