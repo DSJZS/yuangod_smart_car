@@ -16,7 +16,9 @@ telnet localhost 端口号
 # 2. 使用 socat + fifo
 mkfifo test_fifo
 socat ./test_fifo TCP:localhost:端口号
-printf "\xAA\xBB\xCC" > test_fifo
+printf "\xAA\x04\x01\xAF" > test_fifo
+printf "\xAA\x04\x01\xAF" > test_msg.bin
+cat test_msg.bin > test_fifo
 rm test_fifo
 
 # 用虚拟串口向TCP端口发送数据 ttyVIRT0 可改为对应虚拟串口
