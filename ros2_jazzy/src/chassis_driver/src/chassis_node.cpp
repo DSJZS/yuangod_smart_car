@@ -80,6 +80,9 @@ private:
     float x_;
     float y_;
     float yaw_;
+    /* 时间戳记录 */
+    rclcpp::Time current_time_;
+    rclcpp::Time last_time_;
 
     /* 第三方库提供的 环形缓冲区 */
     lwrb_t ring_buffer_;
@@ -154,6 +157,9 @@ ChassisNode::ChassisNode(const std::string& node_name, const std::string& serial
     /* 设置串口异步接收回调 */
     this->serial_driver_->port()->async_receive( std::bind( &ChassisNode::read_sensors_data, this, std::placeholders::_1, std::placeholders::_2));
 
+    /* 初始化时间戳 */
+    this->current_time_ = this->now();
+    this->last_time_ = this->current_time_;
     /* 速度话题订阅 */
     this->twist_subscription_ = this->create_subscription<geometry_msgs::msg::Twist>(twist_topic_name, 1, std::bind( &ChassisNode::send_command,this,std::placeholders::_1));
     /* 里程计话题发布 */
@@ -209,11 +215,10 @@ void ChassisNode::publish_sensors_data( uint8_t* data, uint16_t size)
     #undef deserialization
 
     /* 获取时间戳 */
-    rclcpp::Time current_time = this->now();
-    static rclcpp::Time last_time = current_time;
+    this->current_time_ = this->now();
     
     /* 记录位移与姿态数据 */
-    float dt = ( current_time - last_time ).seconds();
+    float dt = ( this->current_time_ - this->last_time_ ).seconds();
     this->x_ += ( linear_x_speed * cos( this->yaw_ ) - linear_y_speed * sin( this->yaw_ ) ) * dt;
     this->y_ += ( linear_x_speed * sin( this->yaw_ ) + linear_y_speed * cos( this->yaw_ ) ) * dt;
     this->yaw_ += angular_z_speed * dt;
@@ -225,7 +230,7 @@ void ChassisNode::publish_sensors_data( uint8_t* data, uint16_t size)
     odom_quat = tf2::toMsg(quat_tf); 
 
     nav_msgs::msg::Odometry odometry;
-    odometry.header.stamp = current_time;
+    odometry.header.stamp = this->current_time_;
     odometry.header.frame_id = this->odom_frame_;
     odometry.pose.pose.position.x = this->x_;
     odometry.pose.pose.position.y = this->y_;
@@ -251,7 +256,7 @@ void ChassisNode::publish_sensors_data( uint8_t* data, uint16_t size)
     Imu_Quaternion quaternion;
     mahony_filter( &quaternion, imu_gyro_x, imu_gyro_y, imu_gyro_z, imu_acce_x, imu_acce_y, imu_acce_z);
     sensor_msgs::msg::Imu imu;
-    imu.header.stamp = current_time;
+    imu.header.stamp = this->current_time_;
     imu.header.frame_id = this->imu_frame_;
     imu.orientation.x = quaternion.x;
     imu.orientation.y = quaternion.y;
@@ -276,7 +281,7 @@ void ChassisNode::publish_sensors_data( uint8_t* data, uint16_t size)
     this->imu_publish_->publish( imu);
 
     /* 记录时间戳 */
-    last_time = current_time;
+    this->last_time_ = this->current_time_;
 }
 
 /**
