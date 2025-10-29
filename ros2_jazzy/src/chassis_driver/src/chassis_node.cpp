@@ -67,7 +67,6 @@ public:
 private:
     std::shared_ptr<drivers::serial_driver::SerialDriver> serial_driver_;
     std::shared_ptr<drivers::common::IoContext> io_context_;
-    std::unique_ptr<std::vector<uint8_t>> transmit_data_buffer_;
 
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr twist_subscription_;
     rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr odom_publish_;
@@ -151,8 +150,7 @@ ChassisNode::ChassisNode(const std::string& node_name, const std::string& serial
 
     /* 创建循环缓冲区用于处理字节流数据 */
     lwrb_init( &(this->ring_buffer_), this->rb_data_, sizeof(this->rb_data_)); /* Initialize buffer */
-    /* 创建发送缓存区 */
-    this->transmit_data_buffer_ = std::make_unique<std::vector<uint8_t>>(1024);
+
     /* 设置串口异步接收回调 */
     this->serial_driver_->port()->async_receive( std::bind( &ChassisNode::read_sensors_data, this, std::placeholders::_1, std::placeholders::_2));
 
@@ -203,7 +201,7 @@ void ChassisNode::publish_sensors_data( uint8_t* data, uint16_t size)
 
     /* 临时定义一个反序列化宏函数用于处理数据 */
     uint16_t index = 0, copied = 0;
-    #define deserialization(var) copied = sizeof( var ); memcpy( &var, &( data[index] ), size); index += copied;
+    #define deserialization(var) copied = sizeof( var ); memcpy( &var, &( data[index] ), copied); index += copied;
     deserialization(linear_x_speed);    deserialization(linear_y_speed);    deserialization(angular_z_speed);
     deserialization(imu_acce_x);        deserialization(imu_acce_y);        deserialization(imu_acce_z);
     deserialization(imu_gyro_x);        deserialization(imu_gyro_y);        deserialization(imu_gyro_z);
@@ -293,16 +291,24 @@ void ChassisNode::send_command( const geometry_msgs::msg::Twist& msg)
         RCLCPP_INFO( this->get_logger(), "angular x = %f, y = %f , z = %f", msg.angular.x,msg.angular.y,msg.angular.z);
     /* debug */
 
-/*
-    auto port = this->serial_driver_->port();
- 
+    uint8_t frame[64] = {0};
+    uint8_t data[64] = {0};
+    uint16_t index = 0, copied = 0;
+    float linear_x_speed = msg.linear.x, linear_y_speed = msg.linear.y, angular_z_speed = msg.angular.z;    //  值得注意的是这里的 xy是线速度, z是角速度
+    
+    #define serialization(var) copied = sizeof( var ); memcpy( &( data[index] ), &var, copied); index += copied;
+    serialization( linear_x_speed); serialization( linear_y_speed); serialization( angular_z_speed); 
+    #undef serialization
+
+    uint16_t frame_size = this->sfp_.create_frame( frame, data, index);
+    
     try {
-        size_t bytes_transmit_size = port->send( *(this->transmit_data_buffer_) );
-        RCLCPP_INFO( this->get_logger(), "Transmitted: %.*s (%ld bytes)", bytes_transmit_size, transmitted_message.c_str(), bytes_transmit_size);
+        std::vector<uint8_t> transmit_data_buffer( frame, frame+frame_size);
+        auto port = this->serial_driver_->port();
+        port->send( transmit_data_buffer );
     } catch(const std::exception &ex) {
         RCLCPP_ERROR( this->get_logger(), "串口传输发生错误 %s",ex.what());
     }
-*/
 }
 
 /**
