@@ -10,10 +10,15 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(serial_driver REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(nav_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(tf2 REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
 
 # 添加第三方库目录
 add_subdirectory(third_party/lwrb)
 add_subdirectory(third_party/simple_frame)
+add_subdirectory(third_party/mahony_filter)
 
 add_executable(chassis_node src/chassis_node.cpp)
 target_include_directories(chassis_node PUBLIC
@@ -25,6 +30,10 @@ ament_target_dependencies(
   "rclcpp"
   "serial_driver"
   "geometry_msgs"
+  "nav_msgs"
+  "sensor_msgs"
+  "tf2"
+  "tf2_geometry_msgs"
 )
 
 # 链接依赖 - 关键步骤！
@@ -32,6 +41,7 @@ target_link_libraries(chassis_node
   lwrb           
   lwrb_ex
   simple_frame
+  mahony_filter
 )
 
 install(TARGETS chassis_node

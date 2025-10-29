@@ -2,12 +2,17 @@
 #include "rclcpp/rclcpp.hpp"
 #include "serial_driver/serial_driver.hpp"
 #include "geometry_msgs/msg/twist.hpp"
+#include "nav_msgs/msg/odometry.hpp"
+#include "sensor_msgs/msg/imu.hpp"
+#include "tf2/LinearMath/Quaternion.h"
+#include <tf2_geometry_msgs/tf2_geometry_msgs.hpp> 
 #include <string>
+#include <array>
+#include <algorithm>
 /* 第三方库引用 */
 #include "lwrb/lwrb.h"  
 #include "simple_frame/simple_frame.hpp"
-
-using cya::hal::protocol::Simple_Frame;
+#include "mahony_filter/mahony_filter.hpp"
 
 /* 功能包作用介绍:
  *  本功能包用于创建底盘节点, 功能如下:
@@ -17,18 +22,65 @@ using cya::hal::protocol::Simple_Frame;
  *      本项目就使用socat创建了一个绑定TCP端口的虚拟串口
  */
 
+using cya::hal::protocol::Simple_Frame;
+
+/* 协方差 */
+static std::array<double ,36> odom_pose_covariance_dynamic = {
+    1e-3,   0,      0,      0,      0,      0, 
+    0,      1e-3,   0,      0,      0,      0,
+    0,      0,      1e6,    0,      0,      0,
+    0,      0,      0,      1e6,    0,      0,
+    0,      0,      0,      0,      1e6,    0,
+    0,      0,      0,      0,      0,      1e3     };
+static std::array<double ,36> odom_pose_covariance_static  = {
+    1e-9,   0,      0,      0,      0,      0, 
+    0,      1e-9,   0,      0,      0,      0,
+    0,      0,      1e6,    0,      0,      0,
+    0,      0,      0,      1e6,    0,      0,
+    0,      0,      0,      0,      1e6,    0,
+    0,      0,      0,      0,      0,      1e-9    };
+static std::array<double ,36> odom_twist_covariance_dynamic  = {
+    1e-3,   0,      0,      0,      0,      0, 
+    0,      1e-3,   0,      0,      0,      0,
+    0,      0,      1e6,    0,      0,      0,
+    0,      0,      0,      1e6,    0,      0,
+    0,      0,      0,      0,      1e6,    0,
+    0,      0,      0,      0,      0,      1e3     };
+static std::array<double ,36> odom_twist_covariance_static = {
+    1e-9,   0,      0,      0,      0,      0, 
+    0,      1e-9,   0,      0,      0,      0,
+    0,      0,      1e6,    0,      0,      0,
+    0,      0,      0,      1e6,    0,      0,
+    0,      0,      0,      0,      1e6,    0,
+    0,      0,      0,      0,      0,      1e-9    };
+
 /* 底盘节点对象类型 */
 class ChassisNode: public rclcpp::Node{
 public:
-    ChassisNode( const std::string& node_name, const std::string& serial_device_name, uint32_t baud_rate, uint8_t packet_head);
+    ChassisNode( const std::string& node_name, const std::string& serial_device_name, uint32_t baud_rate, uint8_t packet_head,
+                    const std::string &twist_topic_name, const std::string &odom_topic_name, const std::string &imu_topic_name,
+                    const std::string &odom_frame, const std::string &imu_frame, const std::string &base_frame);
     void read_sensors_data( std::vector<uint8_t> &data, const size_t &size);
+    void publish_sensors_data( uint8_t* data, uint16_t size);
     void send_command( const geometry_msgs::msg::Twist& msg);
+    bool is_static( float linear_x, float linear_y, float angular_z);
 private:
     std::shared_ptr<drivers::serial_driver::SerialDriver> serial_driver_;
     std::shared_ptr<drivers::common::IoContext> io_context_;
     std::unique_ptr<std::vector<uint8_t>> transmit_data_buffer_;
 
-    rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr subscription_;
+    rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr twist_subscription_;
+    rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr odom_publish_;
+    rclcpp::Publisher<sensor_msgs::msg::Imu>::SharedPtr imu_publish_;
+
+    std::string odom_frame_;
+    std::string imu_frame_;
+    std::string base_frame_;
+
+    /* 底盘需要记录的位移与姿态 */
+    float x_;
+    float y_;
+    float yaw_;
 
     /* 第三方库提供的 环形缓冲区 */
     lwrb_t ring_buffer_;
@@ -43,7 +95,9 @@ int main(int argc, char ** argv)
     rclcpp::init( argc, argv);
 
     /* 创建对象并等待回调函数 */
-    auto chassis_node = std::make_shared<ChassisNode>( "chassis_node_cpp", "/dev/ttyVIRT0", 115200, 0xAA);
+    auto chassis_node = std::make_shared<ChassisNode>(  "chassis_node_cpp", "/dev/ttyVIRT0", 115200, 0xAA, 
+                                                        "cmd_vel", "odom", "imu", 
+                                                        "odom", "imu_link","base_link");
     rclcpp::spin(chassis_node);
 
     /* 释放ROS2客户端资源 */
@@ -54,14 +108,20 @@ int main(int argc, char ** argv)
 /**
   * @brief 底盘节点构造函数
   *
-  * @param node_name 节点名称
-  * @param serial_device_name 串口设备名称
-  * @param baud_rate 串口波特率
-  * @return
-  *      - Value: Text
+  * @param node_name                节点名称
+  * @param serial_device_name       串口设备名称
+  * @param baud_rate                串口波特率
+  * @param packet_head              串口传输的数据帧的帧头
+  * @param twist_topic_name         订阅的速度主题
+  * @param odom_topic_name          发布的里程计主题
+  * @param imu_topic_name           发布的IMU主题
+  * @param odom_frame               里程计坐标系名称
+  * @param base_frame               基底坐标系名称
   */
-ChassisNode::ChassisNode(const std::string& node_name, const std::string& serial_device_name, uint32_t baud_rate, uint8_t packet_head)
-    : Node(node_name), sfp_(packet_head)
+ChassisNode::ChassisNode(const std::string& node_name, const std::string& serial_device_name, uint32_t baud_rate, uint8_t packet_head,
+                            const std::string &twist_topic_name, const std::string &odom_topic_name, const std::string &imu_topic_name,
+                            const std::string &odom_frame, const std::string &imu_frame, const std::string &base_frame)
+    : Node(node_name), odom_frame_(odom_frame), imu_frame_(imu_frame), base_frame_(base_frame), x_(0), y_(0), yaw_(0), sfp_(packet_head)
 {
     /* 节点构造函数体 */
     const char* c_node_name = node_name.c_str();
@@ -95,8 +155,13 @@ ChassisNode::ChassisNode(const std::string& node_name, const std::string& serial
     this->transmit_data_buffer_ = std::make_unique<std::vector<uint8_t>>(1024);
     /* 设置串口异步接收回调 */
     this->serial_driver_->port()->async_receive( std::bind( &ChassisNode::read_sensors_data, this, std::placeholders::_1, std::placeholders::_2));
-    /* 订阅速度话题 */
-    this->subscription_ = this->create_subscription<geometry_msgs::msg::Twist>("cmd_vel", 10, std::bind( &ChassisNode::send_command,this,std::placeholders::_1));
+
+    /* 速度话题订阅 */
+    this->twist_subscription_ = this->create_subscription<geometry_msgs::msg::Twist>(twist_topic_name, 1, std::bind( &ChassisNode::send_command,this,std::placeholders::_1));
+    /* 里程计话题发布 */
+    this->odom_publish_ = this->create_publisher<nav_msgs::msg::Odometry>( odom_topic_name, 1);
+    /* Imu传感器话题发布 */
+    this->imu_publish_ = this->create_publisher<sensor_msgs::msg::Imu>( imu_topic_name, 1);
 }
  
 /**
@@ -115,12 +180,105 @@ void ChassisNode::read_sensors_data( std::vector<uint8_t> &data, const size_t &s
     if( this->sfp_.get_command( &(this->ring_buffer_), command, &command_size) ) {
         /* 本项目传感器传数据帧的 数据字段长度 默认为 40, 效率为 40/43=93% */
         if( 40 == command_size ) {
-
+            RCLCPP_INFO(this->get_logger(), "获取了一帧数据, 发布中......");
+            this->publish_sensors_data( command, command_size);
         } else {
             /* 未知数据 */
-            RCLCPP_INFO(this->get_logger(), "(接收到了 %u bytes 未知数据): %.*s", command_size, command_size, (const char*)command);
+            RCLCPP_WARN(this->get_logger(), "(解析帧得到了 %u bytes 未知数据): %.*s", command_size, command_size, (const char*)command);
         }
-    } 
+    } else {
+        RCLCPP_INFO(this->get_logger(), "接收了不完整或者错误的帧");
+    }
+}
+
+void ChassisNode::publish_sensors_data( uint8_t* data, uint16_t size)
+{
+    /* 由于传感器数据的长度固定是40, 所以这里的 size 变量直接告知编译器故意不使用( 防止产生Warning ) */
+    (void)size;
+
+    float linear_x_speed, linear_y_speed, angular_z_speed;    //  值得注意的是这里的 xy是线速度, z是角速度
+    float imu_acce_x, imu_acce_y, imu_acce_z;
+    float imu_gyro_x, imu_gyro_y, imu_gyro_z;
+    float battery_capacity;
+
+    /* 临时定义一个反序列化宏函数用于处理数据 */
+    uint16_t index = 0, copied = 0;
+    #define deserialization(var) copied = sizeof( var ); memcpy( &var, &( data[index] ), size); index += copied;
+    deserialization(linear_x_speed);    deserialization(linear_y_speed);    deserialization(angular_z_speed);
+    deserialization(imu_acce_x);        deserialization(imu_acce_y);        deserialization(imu_acce_z);
+    deserialization(imu_gyro_x);        deserialization(imu_gyro_y);        deserialization(imu_gyro_z);
+    deserialization(battery_capacity);
+    #undef deserialization
+
+    /* 获取时间戳 */
+    rclcpp::Time current_time = this->now();
+    static rclcpp::Time last_time = current_time;
+    
+    /* 记录位移与姿态数据 */
+    float dt = ( current_time - last_time ).seconds();
+    this->x_ += ( linear_x_speed * cos( this->yaw_ ) - linear_y_speed * sin( this->yaw_ ) ) * dt;
+    this->y_ += ( linear_x_speed * sin( this->yaw_ ) + linear_y_speed * cos( this->yaw_ ) ) * dt;
+    this->yaw_ += angular_z_speed * dt;
+
+    tf2::Quaternion quat_tf;
+    geometry_msgs::msg::Quaternion odom_quat;
+    /* 发布里程计数据(交由 robot localization 处理) */
+    quat_tf.setRPY(0, 0, this->yaw_);
+    odom_quat = tf2::toMsg(quat_tf); 
+
+    nav_msgs::msg::Odometry odometry;
+    odometry.header.stamp = current_time;
+    odometry.header.frame_id = this->odom_frame_;
+    odometry.pose.pose.position.x = this->x_;
+    odometry.pose.pose.position.y = this->y_;
+    odometry.pose.pose.position.z = 0.0;
+    odometry.pose.pose.orientation = odom_quat;
+    
+    odometry.child_frame_id = this->base_frame_;
+    odometry.twist.twist.linear.x = linear_x_speed;
+    odometry.twist.twist.linear.y = linear_y_speed;
+    odometry.twist.twist.angular.z = angular_z_speed;
+
+    if ( this->is_static( linear_x_speed, linear_y_speed, angular_z_speed) ) {
+        std::copy( odom_pose_covariance_static.begin(), odom_pose_covariance_static.end(), odometry.pose.covariance.begin());
+        std::copy( odom_twist_covariance_static.begin(), odom_twist_covariance_static.end(), odometry.twist.covariance.begin());
+    } else {
+        std::copy( odom_pose_covariance_dynamic.begin(), odom_pose_covariance_dynamic.end(), odometry.pose.covariance.begin());
+        std::copy( odom_twist_covariance_dynamic.begin(), odom_twist_covariance_dynamic.end(), odometry.twist.covariance.begin());
+    }
+    
+    this->odom_publish_->publish( odometry);
+
+    /* 发布IMU数据(交由 robot localization 处理) */
+    Imu_Quaternion quaternion;
+    mahony_filter( &quaternion, imu_gyro_x, imu_gyro_y, imu_gyro_z, imu_acce_x, imu_acce_y, imu_acce_z);
+    sensor_msgs::msg::Imu imu;
+    imu.header.stamp = current_time;
+    imu.header.frame_id = this->imu_frame_;
+    imu.orientation.x = quaternion.x;
+    imu.orientation.y = quaternion.y;
+    imu.orientation.z = quaternion.z;
+    imu.orientation.w = quaternion.w;
+    imu.orientation_covariance[0] = 1e6;        // roll     方差很大,   表示不可信(因为本项目机器人工作在平面)
+    imu.orientation_covariance[4] = 1e6;        // pitch    方差很大,   表示不可信(因为本项目机器人工作在平面)  
+    imu.orientation_covariance[8] = 1e-6;       // yaw      方差很小,   表示可信
+
+    imu.linear_acceleration.x = imu_acce_x; 
+    imu.linear_acceleration.y = imu_acce_y;
+    imu.linear_acceleration.z = imu_acce_z;
+    // imu.linear_acceleration_covariance = ;   //  忽略
+
+    imu.angular_velocity.x = imu_gyro_x;
+    imu.angular_velocity.y = imu_gyro_y;
+    imu.angular_velocity.z = imu_gyro_z;
+    imu.angular_velocity_covariance[0] = 1e6;   // x轴角速度  方差很大,  表示不可信(因为本项目机器人工作在平面)
+    imu.angular_velocity_covariance[4] = 1e6;   // y轴角速度  方差很大,  表示不可信(因为本项目机器人工作在平面)
+    imu.angular_velocity_covariance[8] = 1e-6;  // z轴角速度  方差很小,  表示可信
+
+    this->imu_publish_->publish( imu);
+
+    /* 记录时间戳 */
+    last_time = current_time;
 }
 
 /**
@@ -135,16 +293,35 @@ void ChassisNode::send_command( const geometry_msgs::msg::Twist& msg)
         RCLCPP_INFO( this->get_logger(), "angular x = %f, y = %f , z = %f", msg.angular.x,msg.angular.y,msg.angular.z);
     /* debug */
 
-    /*
-
+/*
     auto port = this->serial_driver_->port();
  
     try {
-      size_t bytes_transmit_size = port->send( *(this->transmit_data_buffer_) );
-      RCLCPP_INFO( this->get_logger(), "Transmitted: %s (%ld bytes)", transmitted_message.c_str(), bytes_transmit_size);
+        size_t bytes_transmit_size = port->send( *(this->transmit_data_buffer_) );
+        RCLCPP_INFO( this->get_logger(), "Transmitted: %.*s (%ld bytes)", bytes_transmit_size, transmitted_message.c_str(), bytes_transmit_size);
     } catch(const std::exception &ex) {
-      RCLCPP_ERROR( this->get_logger(), "串口传输发生错误 %s",ex.what());
+        RCLCPP_ERROR( this->get_logger(), "串口传输发生错误 %s",ex.what());
     }
+*/
+}
 
-    */
+/**
+  * @brief 判断底盘是否处于静止状态
+  *
+  * @param linear_x  x方向的线速度
+  * @param linear_y  y方向的线速度
+  * @param angular_z z方向的角速度
+  * @return
+  *      - is_static: 处于静止为 true, 否则为 false
+  */
+bool ChassisNode::is_static( float linear_x, float linear_y, float angular_z)
+{
+    float linear_x_abs  = std::abs(linear_x);
+    float linear_y_abs  = std::abs(linear_y);
+    float angular_z_abs = std::abs(angular_z); 
+
+    if( ( linear_x_abs < 0.001 ) && ( linear_y_abs < 0.001 ) && ( angular_z_abs < 0.01 ) )
+        return true;
+    else
+        return false;
 }
