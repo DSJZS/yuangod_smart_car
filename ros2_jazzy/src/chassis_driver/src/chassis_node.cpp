@@ -296,12 +296,15 @@ void ChassisNode::send_command( const geometry_msgs::msg::Twist& msg)
     uint16_t index = 0, copied = 0;
     float linear_x_speed = msg.linear.x, linear_y_speed = msg.linear.y, angular_z_speed = msg.angular.z;    //  值得注意的是这里的 xy是线速度, z是角速度
     
+    /* 临时定义一个序列化宏函数用于处理数据 */
     #define serialization(var) copied = sizeof( var ); memcpy( &( data[index] ), &var, copied); index += copied;
     serialization( linear_x_speed); serialization( linear_y_speed); serialization( angular_z_speed); 
     #undef serialization
 
+    /* 生成帧 */
     uint16_t frame_size = this->sfp_.create_frame( frame, data, index);
     
+    /* 串口发送数据 */
     try {
         std::vector<uint8_t> transmit_data_buffer( frame, frame+frame_size);
         auto port = this->serial_driver_->port();
