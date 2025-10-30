@@ -18,7 +18,7 @@ telnet localhost 端口号
 socat - TCP:localhost:端口号
 ```
 ### 使用方法介绍
-与 telnet 使用方法一致, 终端接收和发送
+与 telnet 使用方法一致, 终端接收和发送，
 关闭方法为 `Ctrl + c`
 
 # 测试ROS2功能包通讯
@@ -29,6 +29,6 @@ socat ./test_fifo TCP:localhost:端口号
 cat test_msg.bin > test_fifo
 rm test_fifo
 ```
-使用 mkfifo 创建一个命名管道并与对应的端口号进行连接
-这样可以直接将二进制测试文件内容传输到对应端口
+使用 mkfifo 创建一个命名管道并与对应的端口号进行连接，
+这样可以直接将二进制测试文件内容传输到对应端口，
 可以通过日志或者rqt等工具查看ROS2功能包创建的节点是否正常接收并处理文件
