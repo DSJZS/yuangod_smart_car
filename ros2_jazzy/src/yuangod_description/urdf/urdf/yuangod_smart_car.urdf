@@ -1,0 +1,75 @@
+<robot name="yuangod_smart_car">
+
+    <link name="base_footprint">
+        <visual>
+        <geometry>
+            <sphere radius="0.001"/>
+        </geometry>
+        </visual>
+    </link>
+    
+    <link name="base_link">
+
+        <!-- link的质量、质心位置和中心惯性特性 -->
+        <inertial>
+            <origin
+                xyz="-0.00101544268127077 0.000104844267492474 0.02839068346615"
+                rpy="0 0 0" />
+
+            <mass value="0.180022847554128" />
+
+            <inertia
+                ixx="9.70163144349993E-05"
+                ixy="9.43769581890851E-08"
+                ixz="2.08772543011109E-06"
+                iyy="0.000127409899638961"
+                iyz="6.67040946587153E-09"
+                izz="0.000192694260676866" />
+        </inertial>
+
+        
+        <!-- link的碰撞属性 -->
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+
+            <geometry>
+                <mesh filename="package://yuangod_description/meshes/base_link.STL" />
+            </geometry>
+        </collision>
+
+        <!-- link的可视化属性 -->
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+
+            <geometry>
+                <mesh filename="package://yuangod_description/meshes/base_link.STL" />
+            </geometry>
+
+            <material name="">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+
+    </link>
+
+    <link name="lidar_link">
+        <visual>
+        <geometry>
+            <sphere radius="0.001"/>
+        </geometry>
+        </visual>
+    </link>
+
+    <joint name="baselink2basefootprint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link="base_link"/>
+        <origin xyz="0.0 0.0 0.005"/>
+    </joint>
+
+    <joint name="lidar_link2base_link" type="fixed">
+        <parent link="base_link"/>
+        <child link="lidar_link"/>
+        <origin xyz="0.0 0.0 0.005"/>
+    </joint>
+
+</robot>
