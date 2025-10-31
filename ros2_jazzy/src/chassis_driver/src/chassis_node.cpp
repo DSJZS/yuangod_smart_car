@@ -57,9 +57,7 @@ static std::array<double ,36> odom_twist_covariance_static = {
 /* 底盘节点对象类型 */
 class ChassisNode: public rclcpp::Node{
 public:
-    ChassisNode( const std::string& node_name, const std::string& serial_device_name, uint32_t baud_rate, uint8_t packet_head,
-                    const std::string &twist_topic_name, const std::string &odom_topic_name, const std::string &imu_topic_name,
-                    const std::string &odom_frame, const std::string &imu_frame, const std::string &base_frame);
+    ChassisNode( const std::string& node_name);
     void read_sensors_data( std::vector<uint8_t> &data, const size_t &size);
     void publish_sensors_data( uint8_t* data, uint16_t size);
     void send_command( const geometry_msgs::msg::Twist& msg);
@@ -86,9 +84,9 @@ private:
 
     /* 第三方库提供的 环形缓冲区 */
     lwrb_t ring_buffer_;
-    uint8_t rb_data_[512];  //  这个512可以根据实际情况进行调整,个人测试已经十分的够用了
+    uint8_t rb_data_[512];                      //  这个512可以根据实际情况进行调整,个人测试已经十分的够用了
     /* 第三方库提供的 简单帧处理对象 */
-    Simple_Frame sfp_;      //  上述的512如果更改了要顺便更改 Simple_Frame::kParserBufferLength 的值
+    std::unique_ptr<Simple_Frame> sfp_;         //  上述的512如果更改了要顺便更改 Simple_Frame::kParserBufferLength 的值
 };
 
 int main(int argc, char ** argv)
@@ -96,10 +94,11 @@ int main(int argc, char ** argv)
     /* 初始化ROS2客户端 */
     rclcpp::init( argc, argv);
 
+    /* 声明参数并设置默认值 */
+    
+
     /* 创建对象并等待回调函数 */
-    auto chassis_node = std::make_shared<ChassisNode>(  "chassis_node_cpp", "/dev/ttyVIRT0", 115200, 0xAA, 
-                                                        "cmd_vel", "odom", "imu", 
-                                                        "odom", "imu_link","base_link");
+    auto chassis_node = std::make_shared<ChassisNode>(  "chassis_node_cpp" );
     rclcpp::spin(chassis_node);
 
     /* 释放ROS2客户端资源 */
@@ -113,25 +112,45 @@ int main(int argc, char ** argv)
   * @param node_name                节点名称
   * @param serial_device_name       串口设备名称
   * @param baud_rate                串口波特率
-  * @param packet_head              串口传输的数据帧的帧头
+  * @param frame_head               串口传输的数据帧的帧头
   * @param twist_topic_name         订阅的速度主题
   * @param odom_topic_name          发布的里程计主题
   * @param imu_topic_name           发布的IMU主题
   * @param odom_frame               里程计坐标系名称
   * @param base_frame               基底坐标系名称
   */
-ChassisNode::ChassisNode(const std::string& node_name, const std::string& serial_device_name, uint32_t baud_rate, uint8_t packet_head,
-                            const std::string &twist_topic_name, const std::string &odom_topic_name, const std::string &imu_topic_name,
-                            const std::string &odom_frame, const std::string &imu_frame, const std::string &base_frame)
-    : Node(node_name), odom_frame_(odom_frame), imu_frame_(imu_frame), base_frame_(base_frame), x_(0), y_(0), yaw_(0), sfp_(packet_head)
+ChassisNode::ChassisNode(const std::string& node_name )
+    : Node(node_name), x_(0), y_(0), yaw_(0)
 {
     /* 节点构造函数体 */
     const char* c_node_name = node_name.c_str();
     RCLCPP_INFO( this->get_logger(), "%s 节点创建成功, 开始初始化节点", c_node_name);
 
+    /* 声明参数并设置默认值 */
+    this->declare_parameter("serial_device_name", "/dev/ttyVIRT0");
+    this->declare_parameter("baud_rate", 115200);
+    this->declare_parameter("frame_head", 0xAA);
+    this->declare_parameter("twist_topic_name", "cmd_vel");
+    this->declare_parameter("odom_topic_name", "odom");
+    this->declare_parameter("imu_topic_name", "imu");
+    this->declare_parameter("odom_frame", "odom");
+    this->declare_parameter("imu_frame", "imu_link");
+    this->declare_parameter("base_frame", "base_link");
+    /* 读取参数 */
+    rclcpp::Parameter serial_device_name = this->get_parameter("serial_device_name");
+    rclcpp::Parameter baud_rate = this->get_parameter("baud_rate");
+    rclcpp::Parameter frame_head = this->get_parameter("frame_head");
+    rclcpp::Parameter twist_topic_name = this->get_parameter("twist_topic_name");
+    rclcpp::Parameter odom_topic_name = this->get_parameter("odom_topic_name");
+    rclcpp::Parameter imu_topic_name = this->get_parameter("imu_topic_name");
+    this->get_parameter("odom_frame", this->odom_frame_);
+    this->get_parameter("imu_frame", this->imu_frame_);
+    this->get_parameter("base_frame", this->base_frame_);
+    this->sfp_ = std::make_unique<Simple_Frame>(frame_head.as_int());
+    
     /* 创建串口配置对象 */
     drivers::serial_driver::SerialPortConfig serial_config(
-        baud_rate,                                     //  波特率
+        baud_rate.as_int(),                         //  波特率
         drivers::serial_driver::FlowControl::NONE,  //  不开启流控制
         drivers::serial_driver::Parity::NONE,       //  不开启奇偶校验
         drivers::serial_driver::StopBits::ONE);     //  停止位设为1
@@ -140,7 +159,7 @@ ChassisNode::ChassisNode(const std::string& node_name, const std::string& serial
         this->io_context_ = std::make_shared<drivers::common::IoContext>(1);
         /* 初始化 serial_driver_ */
         this->serial_driver_ = std::make_shared<drivers::serial_driver::SerialDriver>(*io_context_);
-        this->serial_driver_->init_port(serial_device_name, serial_config);
+        this->serial_driver_->init_port( serial_device_name.as_string() , serial_config);
         this->serial_driver_->port()->open();
         
         RCLCPP_INFO(this->get_logger(), "串口初始化成功");
@@ -161,11 +180,11 @@ ChassisNode::ChassisNode(const std::string& node_name, const std::string& serial
     this->current_time_ = this->now();
     this->last_time_ = this->current_time_;
     /* 速度话题订阅 */
-    this->twist_subscription_ = this->create_subscription<geometry_msgs::msg::Twist>(twist_topic_name, 1, std::bind( &ChassisNode::send_command,this,std::placeholders::_1));
+    this->twist_subscription_ = this->create_subscription<geometry_msgs::msg::Twist>(twist_topic_name.as_string(), 1, std::bind( &ChassisNode::send_command,this,std::placeholders::_1));
     /* 里程计话题发布 */
-    this->odom_publish_ = this->create_publisher<nav_msgs::msg::Odometry>( odom_topic_name, 1);
+    this->odom_publish_ = this->create_publisher<nav_msgs::msg::Odometry>( odom_topic_name.as_string(), 1);
     /* Imu传感器话题发布 */
-    this->imu_publish_ = this->create_publisher<sensor_msgs::msg::Imu>( imu_topic_name, 1);
+    this->imu_publish_ = this->create_publisher<sensor_msgs::msg::Imu>( imu_topic_name.as_string(), 1);
 }
  
 /**
@@ -181,7 +200,7 @@ void ChassisNode::read_sensors_data( std::vector<uint8_t> &data, const size_t &s
     uint16_t command_size = 0;
     lwrb_write( &(this->ring_buffer_), data.data(),size);
 
-    if( this->sfp_.get_command( &(this->ring_buffer_), command, &command_size) ) {
+    if( this->sfp_->get_command( &(this->ring_buffer_), command, &command_size) ) {
         /* 本项目传感器传数据帧的 数据字段长度 默认为 40, 效率为 40/43=93% */
         if( 40 == command_size ) {
             RCLCPP_INFO(this->get_logger(), "获取了一帧数据, 发布中......");
@@ -307,7 +326,7 @@ void ChassisNode::send_command( const geometry_msgs::msg::Twist& msg)
     #undef serialization
 
     /* 生成帧 */
-    uint16_t frame_size = this->sfp_.create_frame( frame, data, index);
+    uint16_t frame_size = this->sfp_->create_frame( frame, data, index);
     
     /* 串口发送数据 */
     try {
