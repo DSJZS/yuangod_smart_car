@@ -32,7 +32,8 @@ def generate_launch_description():
     decl_odom_topic_name = DeclareLaunchArgument( name="odom_topic_name",default_value="odom")
     decl_imu_topic_name = DeclareLaunchArgument( name="imu_topic_name",default_value="imu")
     decl_odom_frame = DeclareLaunchArgument( name="odom_frame",default_value="odom")
-    decl_imu_frame = DeclareLaunchArgument( name="imu_frame",default_value="imu_link")
+    # decl_imu_frame = DeclareLaunchArgument( name="imu_frame",default_value="imu_link")
+    decl_imu_frame = DeclareLaunchArgument( name="imu_frame",default_value="base_link")
     decl_base_frame = DeclareLaunchArgument( name="base_frame",default_value="base_link")
 
     # 创建节点并且传入声明的参数
