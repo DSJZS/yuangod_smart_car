@@ -8,17 +8,30 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(serial_driver REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
 
-add_executable(lidar_node src/lidar_node.cpp)
+# 添加第三方库目录
+add_subdirectory(third_party/ld_lidar_driver)
+
+add_executable(lidar_node 
+    src/lidar_node.cpp 
+    src/ldlidar_ls.cpp )
 target_include_directories(lidar_node PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  $<INSTALL_INTERFACE:include/${PROJECT_NAME}>)
+  $<INSTALL_INTERFACE:include/${PROJECT_NAME}>
+  ${CMAKE_CURRENT_SOURCE_DIR}/include )
 target_compile_features(lidar_node PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 ament_target_dependencies(
   lidar_node
   "rclcpp"
-  "serial_driver"
+  "sensor_msgs"
+  "geometry_msgs"
+)
+
+# 链接依赖 - 关键步骤！
+target_link_libraries(lidar_node 
+    ld_lidar_driver
 )
 
 install(TARGETS lidar_node
