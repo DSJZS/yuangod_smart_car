@@ -21,20 +21,26 @@ RED='\033[0;31m'
 ros2 launch yuangod_description yuangod_description_launch.py &
 YUANGOD_DESCRIPTION_PID=$!
 
-
 # 启动底盘功能包!!!
-ros2 launch chassis_driver chassis_node_launch.py imu_frame:=pcb_link &
+ros2 launch chassis_driver chassis_node_launch.py imu_frame:=pcb_link serial_device_name:=/dev/ttyVIRT0 &
 CHASSIS_DRIVER_PID=$!
 
-sleep 3
+# 启动雷达功能包!!!
+ros2 launch lidar_driver lidar_driver_launch.py frame_id:=laser_Link port_name:=/dev/ttyVIRT1 &
+LIDAR_DRIVER_PID=$!
+
+# 等待全部启动完成
+sleep 10
 
 echo "可视化功能包已启动: PID $YUANGOD_DESCRIPTION_PID"
 echo "底盘功能包已启动: PID $CHASSIS_DRIVER_PID"
+echo "雷达功能包已启动: PID $LIDAR_DRIVER_PID"
 echo -e "${RED}按 Ctrl+C 停止所有程序${RESET}"
 
 cleanup() {
     kill -- -$CHASSIS_DRIVER_PID
     kill -- -$YUANGOD_DESCRIPTION_PID
+    kill -- -$LIDAR_DRIVER_PID
     . close_tcp2vsp.sh
 }
 
