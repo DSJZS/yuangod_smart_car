@@ -2,6 +2,12 @@
 **ros2_jazzy**工程用于管理各个ROS2功能包  
 > 值得注意的是取名 ros2_jazzy 是为指明了 ROS2 的版本为 Jazzy ，ROS2的相关依赖需要自行下载  
 
+# 使用方法
+在终端之中输入  
+``` bash
+. yuangod_start.sh
+```
+
 # 功能包介绍
 ## 用户功能包
 ### chassis_driver
