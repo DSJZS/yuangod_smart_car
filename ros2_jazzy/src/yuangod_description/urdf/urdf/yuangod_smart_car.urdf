@@ -1,75 +1,308 @@
-<robot name="yuangod_smart_car">
-
-    <link name="base_footprint">
-        <visual>
-        <geometry>
-            <sphere radius="0.001"/>
-        </geometry>
-        </visual>
-    </link>
-    
-    <link name="base_link">
-
-        <!-- link的质量、质心位置和中心惯性特性 -->
-        <inertial>
-            <origin
-                xyz="-0.00101544268127077 0.000104844267492474 0.02839068346615"
-                rpy="0 0 0" />
-
-            <mass value="0.180022847554128" />
-
-            <inertia
-                ixx="9.70163144349993E-05"
-                ixy="9.43769581890851E-08"
-                ixz="2.08772543011109E-06"
-                iyy="0.000127409899638961"
-                iyz="6.67040946587153E-09"
-                izz="0.000192694260676866" />
-        </inertial>
-
-        
-        <!-- link的碰撞属性 -->
-        <collision>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-
-            <geometry>
-                <mesh filename="package://yuangod_description/meshes/base_link.STL" />
-            </geometry>
-        </collision>
-
-        <!-- link的可视化属性 -->
-        <visual>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-
-            <geometry>
-                <mesh filename="package://yuangod_description/meshes/base_link.STL" />
-            </geometry>
-
-            <material name="">
-                <color rgba="1 1 1 1" />
-            </material>
-        </visual>
-
-    </link>
-
-    <link name="lidar_link">
-        <visual>
-        <geometry>
-            <sphere radius="0.001"/>
-        </geometry>
-        </visual>
-    </link>
-
-    <joint name="baselink2basefootprint" type="fixed">
-        <parent link="base_footprint"/>
-        <child link="base_link"/>
-        <origin xyz="0.0 0.0 0.005"/>
-    </joint>
-
-    <joint name="lidar_link2base_link" type="fixed">
-        <parent link="base_link"/>
-        <child link="lidar_link"/>
-        <origin xyz="0.0 0.0 0.005"/>
-    </joint>
-
+<robot
+  name="yuangod_smart_car">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.000330047254399959 7.4143448815755E-05 0.0283486834955112"
+        rpy="0 0 0" />
+      <mass
+        value="0.104620329652192" />
+      <inertia
+        ixx="8.23753967866806E-05"
+        ixy="1.11130369321052E-07"
+        ixz="2.08896412408536E-06"
+        iyy="0.000106861354863944"
+        iyz="-1.19781571869731E-08"
+        izz="0.000169340842380725" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://yuangod_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://yuangod_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="wheel_left_link">
+    <inertial>
+      <origin
+        xyz="-4.2995E-07 0.00074088 4.1808E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.020267" />
+      <inertia
+        ixx="3.1851E-06"
+        ixy="1.0945E-11"
+        ixz="9.306E-13"
+        iyy="5.4363E-06"
+        iyz="-1.0335E-12"
+        izz="3.1851E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://yuangod_description/meshes/wheel_left_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://yuangod_description/meshes/wheel_left_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_left_joint"
+    type="continuous">
+    <origin
+      xyz="0.015133 0.035405 0.018"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_left_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="wheel_right_link">
+    <inertial>
+      <origin
+        xyz="-4.2995E-07 -0.00074088 -4.1808E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.020267" />
+      <inertia
+        ixx="3.1851E-06"
+        ixy="-1.0945E-11"
+        ixz="-9.306E-13"
+        iyy="5.4363E-06"
+        iyz="-1.0335E-12"
+        izz="3.1851E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://yuangod_description/meshes/wheel_right_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://yuangod_description/meshes/wheel_right_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_right_joint"
+    type="continuous">
+    <origin
+      xyz="0.014933 -0.034698 0.018"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="wheel_right_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="pcb_link">
+    <inertial>
+      <origin
+        xyz="0.000942918033296075 -0.000860159906691781 -0.000858381274167418"
+        rpy="0 0 0" />
+      <mass
+        value="0.00718806747239929" />
+      <inertia
+        ixx="2.6100851933522E-06"
+        ixy="-1.69502315755909E-09"
+        ixz="-3.49897305274767E-10"
+        iyy="8.60722279888926E-07"
+        iyz="1.70035030025141E-12"
+        izz="3.45407061355613E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://yuangod_description/meshes/pcb_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://yuangod_description/meshes/pcb_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="pcb_joint"
+    type="fixed">
+    <origin
+      xyz="-0.025278 4.1266E-05 0.019586"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="pcb_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="laser_Link">
+    <inertial>
+      <origin
+        xyz="-0.0151949303679721 9.16071360831192E-05 -0.0033186971359941"
+        rpy="0 0 0" />
+      <mass
+        value="0.0254427990392578" />
+      <inertia
+        ixx="5.30104185186834E-06"
+        ixy="-1.51074417734349E-08"
+        ixz="-1.30503248086008E-09"
+        iyy="8.64649902711072E-06"
+        iyz="1.84867797639529E-08"
+        izz="1.33373246080046E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://yuangod_description/meshes/laser_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://yuangod_description/meshes/laser_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="laser_joint"
+    type="fixed">
+    <origin
+      xyz="0.0091199 0 0.050659"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="laser_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="camera_Link">
+    <inertial>
+      <origin
+        xyz="-0.00387523096476907 0.000118271755143977 -0.0078533939150644"
+        rpy="0 0 0" />
+      <mass
+        value="0.00265119308085073" />
+      <inertia
+        ixx="3.81204032056395E-07"
+        ixy="4.90537991957105E-11"
+        ixz="4.16235812064772E-10"
+        iyy="1.90298845357408E-07"
+        iyz="1.62153474526633E-10"
+        izz="1.93507528663904E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://yuangod_description/meshes/camera_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.309803921568627 0.309803921568627 0.309803921568627 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://yuangod_description/meshes/camera_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="camera_joint"
+    type="fixed">
+    <origin
+      xyz="0.05872 1.2794E-05 0.04045"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="camera_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
 </robot>
