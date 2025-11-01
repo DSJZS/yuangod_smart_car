@@ -35,6 +35,10 @@ int ld_lidar_startup(int argc, char **argv, const std::string &node_name)
 
   // create a ROS2 Node
   auto node = std::make_shared<rclcpp::Node>(node_name);    // "ldlidar_published"
+  /* 节点构造函数体 */
+  const char* c_node_name = node_name.c_str();
+  RCLCPP_INFO( node->get_logger(), "%s 节点创建成功, 开始初始化节点", c_node_name);
+
 
   std::string product_name;
   std::string laser_scan_topic_name;
@@ -127,7 +131,8 @@ int ld_lidar_startup(int argc, char **argv, const std::string &node_name)
   rclcpp::Publisher<sensor_msgs::msg::PointCloud>::SharedPtr lidar_pub_pointcloud = 
       node->create_publisher<sensor_msgs::msg::PointCloud>(point_cloud_2d_topic_name, 10);
 
-  rclcpp::WallRate r(6); // LD14 支持内部控速和外部控速。在 PWM 引脚接地或悬空时，默认为内部调速，默认转速为 6Hz
+  /* LD14 支持内部控速和外部控速。在 PWM 引脚接地或悬空时，默认为内部调速，默认转速为 6Hz */
+  rclcpp::WallRate r(6); 
 
   ldlidar::Points2D laser_scan_points;
 

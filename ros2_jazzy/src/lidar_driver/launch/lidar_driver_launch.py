@@ -20,6 +20,26 @@ from launch_ros.actions import Node
 # 设置环境变量------------------
 from launch.actions import SetEnvironmentVariable
 
+'''
+参数说明:
+---
+- 设置激光扫描方向: 
+    1. 设置逆时针扫描，示例: {'laser_scan_dir': True}
+    2. 设置顺时针扫描，示例: {'laser_scan_dir': False}
+- 角度裁剪设置，屏蔽设定角度范围内的数据:
+    1. 启用角度裁剪功能:
+        1.1. 启用角度裁剪，示例: {'enable_angle_crop_func': True}
+        1.2. 禁用角度裁剪，示例: {'enable_angle_crop_func': False}
+    2. 角度裁剪区间设置:
+        - 设置在指定角度范围内的距离和强度数据将被归零.
+        - 角度范围满足: angle ≥ 'angle_crop_min' 且 angle ≤ 'angle_crop_max'，即区间 [angle_crop_min, angle_crop_max]，单位是度.
+            示例:
+            {'angle_crop_min': 135.0}
+            {'angle_crop_max': 225.0}
+            即区间 [135.0, 225.0]，角度单位为度.
+'''
+
+
 def generate_launch_description():
     # 开启终端的着色(不开启时,Launch启动的节点发送的日志不会根据日志等级改变颜色)
     colorized_output = SetEnvironmentVariable(name='RCUTILS_COLORIZED_OUTPUT', value='1')
@@ -48,25 +68,3 @@ def generate_launch_description():
         colorized_output,
         lidar_node
     ])
-
-
-
-'''
-Parameter Description:
----
-- Set laser scan directon: 
-  1. Set counterclockwise, example: {'laser_scan_dir': True}
-  2. Set clockwise,        example: {'laser_scan_dir': False}
-- Angle crop setting, Mask data within the set angle range:
-  1. Enable angle crop fuction:
-    1.1. enable angle crop,  example: {'enable_angle_crop_func': True}
-    1.2. disable angle crop, example: {'enable_angle_crop_func': False}
-  2. Angle cropping interval setting:
-  - The distance and intensity data within the set angle range will be set to 0.
-  - angle >= 'angle_crop_min' and angle <= 'angle_crop_max' which is [angle_crop_min, angle_crop_max], unit is degress.
-    example:
-      {'angle_crop_min': 135.0}
-      {'angle_crop_max': 225.0}
-      which is [135.0, 225.0], angle unit is degress.
-'''
-

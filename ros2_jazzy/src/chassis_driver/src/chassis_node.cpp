@@ -107,7 +107,7 @@ int main(int argc, char ** argv)
 }
 
 /**
-  * @brief 底盘节点构造函数
+  * @brief 底盘节点构造函数(下述的参数为节点参数)
   *
   * @param node_name                节点名称
   * @param serial_device_name       串口设备名称
