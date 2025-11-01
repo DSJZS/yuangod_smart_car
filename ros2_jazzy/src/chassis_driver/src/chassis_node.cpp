@@ -134,8 +134,8 @@ ChassisNode::ChassisNode(const std::string& node_name )
     this->declare_parameter("odom_topic_name", "odom");
     this->declare_parameter("imu_topic_name", "imu");
     this->declare_parameter("odom_frame", "odom");
-    // this->declare_parameter("imu_frame", "imu_link");
-    this->declare_parameter("imu_frame", "base_link");
+    this->declare_parameter("imu_frame", "imu_link");
+    // this->declare_parameter("imu_frame", "base_link");
     this->declare_parameter("base_frame", "base_link");
     /* 读取参数 */
     rclcpp::Parameter serial_device_name = this->get_parameter("serial_device_name");
@@ -149,7 +149,9 @@ ChassisNode::ChassisNode(const std::string& node_name )
     this->get_parameter("base_frame", this->base_frame_);
     this->sfp_ = std::make_unique<Simple_Frame>(frame_head.as_int());
     /* 通过日志输出一些主要参数到终端 */
-    /* 不输出任何参数日志 */
+    RCLCPP_INFO(this->get_logger(), "基底坐标系: %s", this->base_frame_.c_str());
+    RCLCPP_INFO(this->get_logger(), "里程计坐标系: %s", this->odom_frame_.c_str());
+    RCLCPP_INFO(this->get_logger(), "IMU坐标系: %s", this->imu_frame_.c_str());
     
     /* 创建串口配置对象 */
     drivers::serial_driver::SerialPortConfig serial_config(
