@@ -50,6 +50,7 @@ int ld_lidar_startup(int argc, char **argv, const std::string &node_name)
   setting.enable_angle_crop_func = false;
   setting.angle_crop_min = 0.0;
   setting.angle_crop_max = 0.0;
+  setting.angle_offset = 0.0;
   int serial_baudrate = 0;
   ldlidar::LDType lidartypename = ldlidar::LDType::NO_VER;
 
@@ -64,6 +65,7 @@ int ld_lidar_startup(int argc, char **argv, const std::string &node_name)
   node->declare_parameter<bool>("enable_angle_crop_func", setting.enable_angle_crop_func);
   node->declare_parameter<double>("angle_crop_min", setting.angle_crop_min);
   node->declare_parameter<double>("angle_crop_max", setting.angle_crop_max);
+  node->declare_parameter<double>("angle_offset", setting.angle_offset);
 
   // get ros2 param
   node->get_parameter("product_name", product_name);
@@ -76,6 +78,7 @@ int ld_lidar_startup(int argc, char **argv, const std::string &node_name)
   node->get_parameter("enable_angle_crop_func", setting.enable_angle_crop_func);
   node->get_parameter("angle_crop_min", setting.angle_crop_min);
   node->get_parameter("angle_crop_max", setting.angle_crop_max);
+  node->get_parameter("angle_offset", setting.angle_offset);
 
   ldlidar::LDLidarDriver* lidar_drv = new ldlidar::LDLidarDriver();
 
@@ -90,6 +93,7 @@ int ld_lidar_startup(int argc, char **argv, const std::string &node_name)
   RCLCPP_INFO(node->get_logger(), "<enable_angle_crop_func>: %s", (setting.enable_angle_crop_func?"true":"false"));
   RCLCPP_INFO(node->get_logger(), "<angle_crop_min>: %f", setting.angle_crop_min);
   RCLCPP_INFO(node->get_logger(), "<angle_crop_max>: %f", setting.angle_crop_max);
+  RCLCPP_INFO(node->get_logger(), "<angle_offset>: %f", setting.angle_offset);
 
   if (port_name.empty()) {
     RCLCPP_ERROR(node->get_logger(), "fail, port_name is empty!");
@@ -116,12 +120,21 @@ int ld_lidar_startup(int argc, char **argv, const std::string &node_name)
     exit(EXIT_FAILURE);
   }
 
+  /*  */
   /* 规定时间内要建立通讯(底层貌似为需要收到2个有效数据包) */
-  if (lidar_drv->WaitLidarCommConnect(3500)) {
-    RCLCPP_INFO(node->get_logger(), "ldlidar communication is normal.");
-  } else {
-    RCLCPP_ERROR(node->get_logger(), "ldlidar communication is abnormal.");
-    exit(EXIT_FAILURE);
+  const int retrying = 10;
+  for( int i = 0 ; i < retrying ; i++ ) {
+    if (lidar_drv->WaitLidarCommConnect(3500)) {
+        RCLCPP_INFO(node->get_logger(), "ldlidar communication is normal.");
+        break;
+    } else {
+        if( i == retrying ) {
+            RCLCPP_ERROR(node->get_logger(), "ldlidar communication is abnormal. error, stop retrying");
+            exit(EXIT_FAILURE);
+        } else {
+            RCLCPP_WARN(node->get_logger(), "ldlidar communication is abnormal. retrying: %d", i);
+        }
+    }
   }
 
   // create ldlidar data topic and publisher
@@ -226,7 +239,11 @@ void  ToLaserscanMessagePublish(ldlidar::Points2D& src,  double lidar_spin_freq,
     for (auto point : src) {
       float range = point.distance / 1000.f;  // distance unit transform to meters
       float intensity = point.intensity;      // laser receive intensity 
-      float dir_angle = point.angle;
+
+      /* 方向角加上对应的偏置角度, 并确保位于 [0, 360) 区间 */
+      float dir_angle = point.angle + setting.angle_offset;
+      while (dir_angle >= 360.0) dir_angle -= 360.0;
+      while (dir_angle < 0.0) dir_angle += 360.0;
 
       if ((point.distance == 0) && (point.intensity == 0)) { // filter is handled to  0, Nan will be assigned variable.
         range = std::numeric_limits<float>::quiet_NaN(); 
@@ -234,7 +251,15 @@ void  ToLaserscanMessagePublish(ldlidar::Points2D& src,  double lidar_spin_freq,
       }
 
       if (setting.enable_angle_crop_func) { // Angle crop setting, Mask data within the set angle range
-        if ((dir_angle >= setting.angle_crop_min) && (dir_angle <= setting.angle_crop_max)) {
+        /* 角度裁剪也需要和方向角加上一样的偏置角度 */
+        float crop_min = setting.angle_crop_min + setting.angle_offset;
+        float crop_max = setting.angle_crop_max + setting.angle_offset;
+        // 处理裁剪边界的循环
+        while (crop_min >= 360.0) crop_min -= 360.0;
+        while (crop_min < 0.0) crop_min += 360.0;
+        while (crop_max >= 360.0) crop_max -= 360.0;
+        while (crop_max < 0.0) crop_max += 360.0;
+        if ((dir_angle >= crop_min) && (dir_angle <= crop_max)) {
           range = std::numeric_limits<float>::quiet_NaN();
           intensity = std::numeric_limits<float>::quiet_NaN();
         }
@@ -289,7 +314,7 @@ void  ToSensorPointCloudMessagePublish(ldlidar::Points2D& src, LaserScanSetting&
   static bool first_scan = true;
 
   ldlidar::Points2D dst = src;
-
+  
   start_scan_time = node->now();
   scan_time = (start_scan_time.seconds() - end_scan_time.seconds());
 
@@ -297,6 +322,14 @@ void  ToSensorPointCloudMessagePublish(ldlidar::Points2D& src, LaserScanSetting&
     first_scan = false;
     end_scan_time = start_scan_time;
     return;
+  }
+
+  for (auto& point : dst) {
+    point.angle += setting.angle_offset;
+
+    // 确保角度在 [0, 360) 范围内
+    while (point.angle >= 360.0) point.angle -= 360.0;
+    while (point.angle < 0.0) point.angle += 360.0;
   }
 
   if (setting.laser_scan_dir) {

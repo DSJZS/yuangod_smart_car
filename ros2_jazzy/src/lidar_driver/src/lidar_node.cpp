@@ -13,8 +13,9 @@
   * @param serial_baudrate              串口设备波特率， LD14 为 115200 ； LD14P 为 230400. 手册上规定的数值,不建议更改
   * @param laser_scan_dir               设置激光扫描方向, True 为逆时针 ; False 为顺时针
   * @param enable_angle_crop_func       角度裁剪功能使能, True 为启用 ; False 为关闭. 启用后在[angle_crop_min, angle_crop_max]区间内的距离和强度数据将被归零
-  * @param angle_crop_min               角度裁剪功能指定区间的最小值， enable_angle_crop_func 为 False 时无用
-  * @param angle_crop_max               角度裁剪功能指定区间的最大值， enable_angle_crop_func 为 False 时无用
+  * @param angle_crop_min               角度裁剪功能指定区间的最小值， enable_angle_crop_func 为 False 时无用, 单位为度
+  * @param angle_crop_max               角度裁剪功能指定区间的最大值， enable_angle_crop_func 为 False 时无用, 单位为度
+  * @param angle_offset                 角度的偏置, 偏置方向固定为顺时针, 单位为度
   * @return
   *      - status: 为 0 表示正常退出, 否则表示是因为错误退出
   */

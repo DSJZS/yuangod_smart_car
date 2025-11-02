@@ -26,7 +26,7 @@ ros2 launch chassis_driver chassis_node_launch.py imu_frame:=pcb_link serial_dev
 CHASSIS_DRIVER_PID=$!
 
 # 启动雷达功能包!!!
-ros2 launch lidar_driver lidar_driver_launch.py frame_id:=laser_Link port_name:=/dev/ttyVIRT1 &
+ros2 launch lidar_driver lidar_driver_launch.py frame_id:=laser_Link angle_offset:=180.0 port_name:=/dev/ttyVIRT1 &
 LIDAR_DRIVER_PID=$!
 
 # 等待全部启动完成

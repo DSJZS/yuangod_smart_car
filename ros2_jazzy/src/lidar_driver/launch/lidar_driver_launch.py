@@ -55,7 +55,8 @@ def generate_launch_description():
     decl_enable_angle_crop_func = DeclareLaunchArgument( name="enable_angle_crop_func",default_value="False")
     decl_angle_crop_min = DeclareLaunchArgument( name="angle_crop_min",default_value="135.0")
     decl_angle_crop_max = DeclareLaunchArgument( name="angle_crop_max",default_value="225.0")
-
+    decl_angle_offset = DeclareLaunchArgument( name="angle_offset",default_value="0.0")
+    
     # 创建节点并且传入声明的参数
     lidar_node = Node(
         package='lidar_driver',
@@ -72,7 +73,8 @@ def generate_launch_description():
             {'laser_scan_dir': LaunchConfiguration("laser_scan_dir")},
             {'enable_angle_crop_func': LaunchConfiguration("enable_angle_crop_func")},
             {'angle_crop_min': LaunchConfiguration("angle_crop_min")},
-            {'angle_crop_max': LaunchConfiguration("angle_crop_max")}
+            {'angle_crop_max': LaunchConfiguration("angle_crop_max")},
+            {'angle_offset': LaunchConfiguration("angle_offset")}
         ]
     )
 
@@ -96,6 +98,7 @@ def generate_launch_description():
         decl_enable_angle_crop_func,
         decl_angle_crop_min,
         decl_angle_crop_max,
+        decl_angle_offset,
         lidar_node,
         exit_event
     ])

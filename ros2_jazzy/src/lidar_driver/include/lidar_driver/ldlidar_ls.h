@@ -35,6 +35,7 @@ struct LaserScanSetting
   bool enable_angle_crop_func;
   double angle_crop_min;
   double angle_crop_max;
+  double angle_offset;
 };
 
 int ld_lidar_startup(int argc, char **argv, const std::string &node_name);
