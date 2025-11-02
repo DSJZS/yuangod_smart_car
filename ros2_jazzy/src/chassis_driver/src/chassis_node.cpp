@@ -13,6 +13,7 @@
 #include "lwrb/lwrb.h"  
 #include "simple_frame/simple_frame.hpp"
 #include "mahony_filter/mahony_filter.hpp"
+#include "mpu6050_kalman/mpu6050_kalman.h"
 
 /* 功能包作用介绍:
  *  本功能包用于创建底盘节点, 功能如下:
@@ -75,9 +76,9 @@ private:
     std::string base_frame_;
 
     /* 底盘需要记录的位移与姿态 */
-    float x_;
-    float y_;
-    float yaw_;
+    double x_;
+    double y_;
+    double yaw_;
     /* 时间戳记录 */
     rclcpp::Time current_time_;
     rclcpp::Time last_time_;
@@ -239,7 +240,7 @@ void ChassisNode::publish_sensors_data( uint8_t* data, uint16_t size)
     this->current_time_ = this->now();
     
     /* 记录位移与姿态数据 */
-    float dt = ( this->current_time_ - this->last_time_ ).seconds();
+    double dt = ( this->current_time_ - this->last_time_ ).seconds();
     this->x_ += ( linear_x_speed * cos( this->yaw_ ) - linear_y_speed * sin( this->yaw_ ) ) * dt;
     this->y_ += ( linear_x_speed * sin( this->yaw_ ) + linear_y_speed * cos( this->yaw_ ) ) * dt;
     this->yaw_ += angular_z_speed * dt;
@@ -274,16 +275,27 @@ void ChassisNode::publish_sensors_data( uint8_t* data, uint16_t size)
     
     this->odom_publish_->publish( odometry);
 
+
     /* 发布IMU数据(交由 robot localization 处理) */
-    Imu_Quaternion quaternion;
-    mahony_filter( &quaternion, imu_gyro_x, imu_gyro_y, imu_gyro_z, imu_acce_x, imu_acce_y, imu_acce_z);
+
+    /*  废弃 mahony滤波，因为这个mahoy库较不准确，这里弃用，改为 kalman 滤波方式
+        如果要用 mahony滤波 请自行更改第三方库 mahony_filter
+        Imu_Quaternion quaternion;
+        mahony_filter( &quaternion, imu_gyro_x, imu_gyro_y, imu_gyro_z, imu_acce_x, imu_acce_y, imu_acce_z);
+    */
+    MPU6050_Data_t mpu6050_data;
+    mpu6050_kalman_filter_rad( &mpu6050_data, imu_gyro_x, imu_gyro_y, imu_gyro_z, imu_acce_x, imu_acce_y, imu_acce_z, dt);
+    quat_tf.setRPY( mpu6050_data.KalmanAngleX, mpu6050_data.KalmanAngleY, mpu6050_data.KalmanAngleZ);
+    
+    // RCLCPP_INFO( this->get_logger(), "姿态  %.2f %.2f %.2f", mpu6050_data.KalmanAngleX, mpu6050_data.KalmanAngleY, mpu6050_data.KalmanAngleZ);
+
     sensor_msgs::msg::Imu imu;
     imu.header.stamp = this->current_time_;
     imu.header.frame_id = this->imu_frame_;
-    imu.orientation.x = quaternion.x;
-    imu.orientation.y = quaternion.y;
-    imu.orientation.z = quaternion.z;
-    imu.orientation.w = quaternion.w;
+    imu.orientation.x = quat_tf.x();
+    imu.orientation.y = quat_tf.y();
+    imu.orientation.z = quat_tf.z();
+    imu.orientation.w = quat_tf.w();
     imu.orientation_covariance[0] = 1e6;        // roll     方差很大,   表示不可信(因为本项目机器人工作在平面)
     imu.orientation_covariance[4] = 1e6;        // pitch    方差很大,   表示不可信(因为本项目机器人工作在平面)  
     imu.orientation_covariance[8] = 1e-6;       // yaw      方差很小,   表示可信
@@ -304,9 +316,6 @@ void ChassisNode::publish_sensors_data( uint8_t* data, uint16_t size)
 
     /* 记录时间戳 */
     this->last_time_ = this->current_time_;
-
-    // RCLCPP_INFO( this->get_logger(), "前进速度 %.2f, 转向速度 %.2f", linear_x_speed, angular_z_speed);
-    // RCLCPP_INFO( this->get_logger(), "姿态  %.2f %.2f %.2f", linear_x_speed, angular_z_speed, angular_z_speed);
 }
 
 /**

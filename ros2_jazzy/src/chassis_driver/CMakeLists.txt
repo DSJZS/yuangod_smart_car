@@ -19,6 +19,7 @@ find_package(tf2_geometry_msgs REQUIRED)
 add_subdirectory(third_party/lwrb)
 add_subdirectory(third_party/simple_frame)
 add_subdirectory(third_party/mahony_filter)
+add_subdirectory(third_party/mpu6050_kalman)
 
 add_executable(chassis_node src/chassis_node.cpp)
 target_include_directories(chassis_node PUBLIC
@@ -42,6 +43,7 @@ target_link_libraries(chassis_node
   lwrb_ex
   simple_frame
   mahony_filter
+  kalman_filter
 )
 
 install(TARGETS chassis_node
