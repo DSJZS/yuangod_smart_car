@@ -12,6 +12,9 @@ RED='\033[0;31m'
 # 创建TCP转虚拟串口
 . create_tcp2vsp.sh
 
+# 等待虚拟串口启动完成(可选,建议延时)
+sleep 1
+
 # ROS2配置
 # 注意后加载的工作空间配置文件优先级更高，但是ROS2系统的setup.bash无论前后加载，优先级总是最低
 . /opt/ros/jazzy/setup.bash
@@ -29,8 +32,8 @@ CHASSIS_DRIVER_PID=$!
 ros2 launch lidar_driver lidar_driver_launch.py frame_id:=laser_Link angle_offset:=180.0 port_name:=/dev/ttyVIRT1 &
 LIDAR_DRIVER_PID=$!
 
-# 等待全部启动完成
-sleep 10
+# 等待功能包启动完成(可选)
+sleep 1
 
 echo "可视化功能包已启动: PID $YUANGOD_DESCRIPTION_PID"
 echo "底盘功能包已启动: PID $CHASSIS_DRIVER_PID"
