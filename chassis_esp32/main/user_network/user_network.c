@@ -7,6 +7,8 @@
 #include "freertos/task.h"
 #include "freertos/semphr.h"
 
+#include "simple_frame/simple_frame.h"
+
 #include <sys/socket.h>
 #include "user_imu/user_imu.h"
 #include "user_battery/user_battery.h"
@@ -28,25 +30,24 @@ static SemaphoreHandle_t socket_ros2_tcp_rwlock = NULL;
 
 /* 发送数据结构体 */
 typedef struct {
-    uint8_t head;                   //  1
     float x_speed;                  //  4
     float y_speed;                  //  4
     float z_speed;                  //  4
     float battery_capacity;         //  4
     mpu6050_acce_value_t imu_acce;  //  3*4=12
     mpu6050_gyro_value_t imu_gyro;  //  3*4=12
-    uint8_t tail;                   //  1
-} send_data_t;                      //  sum = TCP_BUFFER_LEN - 1
-// TCP传输buffer长度, 加一位为校验位
-#define TCP_BUFFER_LEN     ( (1+4+4+4+4+12+12+1) + 1 ) 
-static uint8_t tcp_buffer[TCP_BUFFER_LEN] = {0};
+} send_data_t;                      
+/* TCP传输buffer长度 */
+#define TCP_BUFFER_LEN      ( 4+4+4+4+12+12 )
+/* Simple Frame Parser */
+#define SFP_FRAME_HEAD      ( 0xAA )
+static Simple_Frame sfp;
 
 /* 结构体收集信息 */
 static void get_car_data( send_data_t* data)
 {
     float x=0,y=0,z=0;   //  临时变量
-    float battery=0;        //  临时变量
-    data->head = 0x55;      //  bin: 0101 0101
+    float battery=0;        //  临时变量     
     motor_get_speed( &x, &z);
     data->x_speed = x;
     data->y_speed = y;
@@ -54,86 +55,25 @@ static void get_car_data( send_data_t* data)
     battery_get_capacity(&battery);
     data->battery_capacity = battery;
     imu_get_data( &( data->imu_acce ), &( data->imu_gyro ) );
-    data->tail = 0xAA;      //  bin: 1010 1010
-}
-
-/**
-  * @brief 计算发送或接受的数据校验
-  *
-  * @param buffer 计算校验和的缓存
-  * @param count_number 校验前多少位
-  * @return
-  *      - check_sum: 计算
-  */
-uint8_t buffer_check_sum(uint8_t* buffer, uint8_t count_number)
-{
-	uint8_t check_sum = 0, k = 0;
-
-    for( k = 0 ; k < count_number ; k++ )
-    {
-        check_sum=check_sum^buffer[k];
-    }
-
-	return check_sum;
 }
 
 /* 结构体数据转为字节流(序列化) */
 static void serialize_car_data( uint8_t* buffer, send_data_t* data)
 {
-    uint16_t index = 0, size = 0;
+    uint16_t index = 0, copied = 0;
 
-    size = sizeof( data->head );
-    memcpy( &( buffer[index] ), &(data->head), size);
-    index += size;
-
-    size = sizeof( data->x_speed );
-    memcpy( &( buffer[index] ), &(data->x_speed), size);
-    index += size;
-
-    size = sizeof( data->y_speed );
-    memcpy( &( buffer[index] ), &(data->y_speed), size);
-    index += size;
-
-    size = sizeof( data->z_speed );
-    memcpy( &( buffer[index] ), &(data->z_speed), size);
-    index += size;
-
-    size = sizeof( data->imu_acce.acce_x );
-    memcpy( &( buffer[index] ), &(data->imu_acce.acce_x), size);
-    index += size;
-
-    size = sizeof( data->imu_acce.acce_y );
-    memcpy( &( buffer[index] ), &(data->imu_acce.acce_y), size);
-    index += size;
-
-    size = sizeof( data->imu_acce.acce_z );
-    memcpy( &( buffer[index] ), &(data->imu_acce.acce_z), size);
-    index += size;
-
-    size = sizeof( data->imu_gyro.gyro_x );
-    memcpy( &( buffer[index] ), &(data->imu_gyro.gyro_x), size);
-    index += size;
-
-    size = sizeof( data->imu_gyro.gyro_y );
-    memcpy( &( buffer[index] ), &(data->imu_gyro.gyro_y), size);
-    index += size;
-
-    size = sizeof( data->imu_gyro.gyro_z );
-    memcpy( &( buffer[index] ), &(data->imu_gyro.gyro_z), size);
-    index += size;
-
-    size = sizeof( data->battery_capacity );
-    memcpy( &( buffer[index] ), &(data->battery_capacity), size);
-    index += size;
-
-    uint8_t check_sum = buffer_check_sum( buffer, index);
-    size = sizeof( check_sum );
-    memcpy( &( buffer[index] ), &(check_sum), size);
-    index += size;
-
-    size = sizeof( data->tail );
-    memcpy( &( buffer[index] ), &(data->tail), size);
-    index += size;
+    #define serialization(var) copied = sizeof( var ); memcpy( &( buffer[index] ), &var, copied); index += copied;
+    serialization( data->x_speed );
+    serialization( data->y_speed );
+    serialization( data->z_speed );
+    serialization( data->imu_acce.acce_x );
+    serialization( data->imu_acce.acce_y );
+    serialization( data->imu_acce.acce_z );
+    serialization( data->imu_gyro.gyro_x );
+    serialization( data->imu_gyro.gyro_y );
+    serialization( data->imu_gyro.gyro_z );
+    serialization( data->battery_capacity );
+    #undef serialization
 }
 
 /* 配置softap_sta */
@@ -203,15 +143,18 @@ static void network_send_task(void* param)
     TickType_t xLastWakeTime = xTaskGetTickCount();
 
     send_data_t data = { 0 };
+    uint8_t frame_buffer[TCP_BUFFER_LEN+3] = {0};
     int err = 0;
     while(1)
     {
+        uint8_t data_buffer[TCP_BUFFER_LEN] = {0};
+        uint16_t frame_size = 0;
         get_car_data( &data);
-        serialize_car_data( tcp_buffer, &data);
-        // ESP_LOGI(TAG, "%x",tcp_buffer[42]);
+        serialize_car_data( data_buffer, &data);
+        frame_size = sfp_create_frame( &sfp, frame_buffer, data_buffer, sizeof( data_buffer ));
 
         xSemaphoreTakeRecursive( socket_ros2_tcp_rwlock , portMAX_DELAY);
-        err = send( socket_ros2_tcp, tcp_buffer, sizeof( tcp_buffer ), 0);
+        err = send( socket_ros2_tcp, frame_buffer, frame_size, 0);
         if (err < 0) {
             ESP_LOGE(TAG, "Error occurred during sending: errno %d", errno);
             network_socket_tcp_reconnect();
@@ -241,6 +184,10 @@ static void network_receive_task(void* param)
 void network_setup(void)
 {
     uint8_t ret = 0;
+
+    /* 初始化 Simple Frame Parser */
+    sfp_init( &sfp, SFP_FRAME_HEAD);
+
     /* 初始化网络配置 */
     ret = network_config();
     if( ret == 0 )

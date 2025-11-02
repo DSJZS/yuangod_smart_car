@@ -115,6 +115,8 @@ void motor_init(void)
 
     motor_mailbox = xQueueCreate( 1, sizeof(motor_data_t) );
     xTaskCreatePinnedToCore( motor_task, "motor_task", 4096, NULL, MOTOR_TASK_PRIO, NULL, 1);
+
+    ESP_LOGI(TAG, "电机 初始化完毕!!!");
 }
 
 
