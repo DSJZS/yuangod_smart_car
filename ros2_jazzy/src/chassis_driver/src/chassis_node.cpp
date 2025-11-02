@@ -93,10 +93,7 @@ int main(int argc, char ** argv)
 {
     /* 初始化ROS2客户端 */
     rclcpp::init( argc, argv);
-
-    /* 声明参数并设置默认值 */
     
-
     /* 创建对象并等待回调函数 */
     auto chassis_node = std::make_shared<ChassisNode>(  "chassis_node_cpp" );
     rclcpp::spin(chassis_node);
@@ -178,9 +175,6 @@ ChassisNode::ChassisNode(const std::string& node_name )
     /* 创建循环缓冲区用于处理字节流数据 */
     lwrb_init( &(this->ring_buffer_), this->rb_data_, sizeof(this->rb_data_)); /* Initialize buffer */
 
-    /* 设置串口异步接收回调 */
-    this->serial_driver_->port()->async_receive( std::bind( &ChassisNode::read_sensors_data, this, std::placeholders::_1, std::placeholders::_2));
-
     /* 初始化时间戳 */
     this->current_time_ = this->now();
     this->last_time_ = this->current_time_;
@@ -190,6 +184,9 @@ ChassisNode::ChassisNode(const std::string& node_name )
     this->odom_publish_ = this->create_publisher<nav_msgs::msg::Odometry>( odom_topic_name.as_string(), 1);
     /* Imu传感器话题发布 */
     this->imu_publish_ = this->create_publisher<sensor_msgs::msg::Imu>( imu_topic_name.as_string(), 1);
+
+    /* 设置串口异步接收回调 */
+    this->serial_driver_->port()->async_receive( std::bind( &ChassisNode::read_sensors_data, this, std::placeholders::_1, std::placeholders::_2));
 }
  
 /**
@@ -208,7 +205,7 @@ void ChassisNode::read_sensors_data( std::vector<uint8_t> &data, const size_t &s
     if( this->sfp_->get_command( &(this->ring_buffer_), command, &command_size) ) {
         /* 本项目传感器传数据帧的 数据字段长度 默认为 40, 效率为 40/43=93% */
         if( 40 == command_size ) {
-            RCLCPP_INFO(this->get_logger(), "获取了一帧数据, 发布中......");
+            RCLCPP_INFO(this->get_logger(), "获取了一帧数据( %u bytes )", command_size);
             this->publish_sensors_data( command, command_size);
         } else {
             /* 未知数据 */
@@ -224,10 +221,10 @@ void ChassisNode::publish_sensors_data( uint8_t* data, uint16_t size)
     /* 由于传感器数据的长度固定是40, 所以这里的 size 变量直接告知编译器故意不使用( 防止产生Warning ) */
     (void)size;
 
-    float linear_x_speed, linear_y_speed, angular_z_speed;    //  值得注意的是这里的 xy是线速度, z是角速度
-    float imu_acce_x, imu_acce_y, imu_acce_z;
-    float imu_gyro_x, imu_gyro_y, imu_gyro_z;
-    float battery_capacity;
+    float linear_x_speed = 0, linear_y_speed  = 0, angular_z_speed = 0;    //  值得注意的是这里的 xy是线速度, z是角速度
+    float imu_acce_x = 0, imu_acce_y = 0, imu_acce_z = 0;
+    float imu_gyro_x = 0, imu_gyro_y = 0, imu_gyro_z = 0;
+    float battery_capacity = 0;
 
     /* 临时定义一个反序列化宏函数用于处理数据, 值得注意的是Ubuntu一般是小端 */
     uint16_t index = 0, copied = 0;
@@ -265,6 +262,7 @@ void ChassisNode::publish_sensors_data( uint8_t* data, uint16_t size)
     odometry.twist.twist.linear.x = linear_x_speed;
     odometry.twist.twist.linear.y = linear_y_speed;
     odometry.twist.twist.angular.z = angular_z_speed;
+
 
     if ( this->is_static( linear_x_speed, linear_y_speed, angular_z_speed) ) {
         std::copy( odom_pose_covariance_static.begin(), odom_pose_covariance_static.end(), odometry.pose.covariance.begin());
@@ -306,6 +304,9 @@ void ChassisNode::publish_sensors_data( uint8_t* data, uint16_t size)
 
     /* 记录时间戳 */
     this->last_time_ = this->current_time_;
+
+    // RCLCPP_INFO( this->get_logger(), "前进速度 %.2f, 转向速度 %.2f", linear_x_speed, angular_z_speed);
+    // RCLCPP_INFO( this->get_logger(), "姿态  %.2f %.2f %.2f", linear_x_speed, angular_z_speed, angular_z_speed);
 }
 
 /**
