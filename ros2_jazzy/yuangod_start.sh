@@ -25,7 +25,7 @@ ros2 launch yuangod_description yuangod_description_launch.py &
 YUANGOD_DESCRIPTION_PID=$!
 
 # 启动底盘功能包!!!
-ros2 launch chassis_driver chassis_node_launch.py imu_frame:=pcb_link serial_device_name:=/dev/ttyVIRT0 &
+ros2 launch chassis_driver chassis_node_launch.py odom_topic_name:=yuangod/odom imu_topic_name:=yuangod/imu imu_frame:=pcb_link serial_device_name:=/dev/ttyVIRT0 &
 CHASSIS_DRIVER_PID=$!
 
 # 启动雷达功能包!!!

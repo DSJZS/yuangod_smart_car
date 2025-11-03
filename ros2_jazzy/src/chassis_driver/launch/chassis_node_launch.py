@@ -16,15 +16,19 @@ from launch.substitutions import LaunchConfiguration
 from launch.event_handlers import OnProcessStart, OnProcessExit
 from launch.actions import ExecuteProcess, RegisterEventHandler,LogInfo
 # 获取功能包下share目录路径-------
-# from ament_index_python.packages import get_package_share_directory
+from ament_index_python.packages import get_package_share_directory
 # 设置环境变量------------------
 from launch.actions import SetEnvironmentVariable
+
+import os
 
 def generate_launch_description():
     # 开启终端的着色(不开启时,Launch启动的节点发送的日志不会根据日志等级改变颜色)
     colorized_output = SetEnvironmentVariable(name='RCUTILS_COLORIZED_OUTPUT', value='1')
 
-    # 参数的声明
+    chassis_driver_dir = get_package_share_directory("chassis_driver")
+
+    # 底盘节点参数的声明
     decl_serial_device_name = DeclareLaunchArgument( name="serial_device_name",default_value="/dev/ttyVIRT0")
     decl_baud_rate = DeclareLaunchArgument( name="baud_rate",default_value="115200")
     decl_frame_head = DeclareLaunchArgument( name="frame_head",default_value="0xAA") # 如果错误可以换成十进制也就是 "170"
@@ -36,7 +40,7 @@ def generate_launch_description():
     # decl_imu_frame = DeclareLaunchArgument( name="imu_frame",default_value="base_link")
     decl_base_frame = DeclareLaunchArgument( name="base_frame",default_value="base_link")
 
-    # 创建节点并且传入声明的参数
+    # 创建底盘节点并且传入声明的参数
     chassis_node = Node(
         package="chassis_driver",
         executable="chassis_node",
@@ -51,6 +55,15 @@ def generate_launch_description():
             "imu_frame": LaunchConfiguration("imu_frame"),
             "base_frame": LaunchConfiguration("base_frame"),
         }]
+    )
+
+    # 创建robot_localization节点
+    robot_localization_node = Node(
+        package='robot_localization',
+        executable='ekf_node',
+        name='ekf_filter_node',
+        output='screen',
+        parameters=[os.path.join(chassis_driver_dir, "config", "ekf.yaml")]
     )
 
     # 创建退出事件, 当 chassis_node节点 退出时输出LOG
