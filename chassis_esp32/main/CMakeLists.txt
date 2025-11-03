@@ -3,4 +3,5 @@ idf_component_register(SRCS "app_main.c"
                             "./user_imu/user_imu.c"
                             "./user_battery/user_battery.c"
                             "./user_network/user_network.c"
+                            "./user_buzzer/user_buzzer.c"
                     INCLUDE_DIRS ".")
