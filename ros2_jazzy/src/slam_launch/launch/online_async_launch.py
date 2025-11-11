@@ -12,9 +12,15 @@ from launch_ros.actions import LifecycleNode
 from launch_ros.event_handlers import OnStateTransition
 from launch_ros.events.lifecycle import ChangeState
 from lifecycle_msgs.msg import Transition
-
-
+# 设置环境变量------------------
+from launch.actions import SetEnvironmentVariable
+ 
 def generate_launch_description():
+    # 开启终端的着色(不开启时,Launch启动的节点发送的日志不会根据日志等级改变颜色)
+    colorized_output = SetEnvironmentVariable(name='RCUTILS_COLORIZED_OUTPUT', value='1')
+
+    slam_launch_dir = get_package_share_directory("slam_launch")
+
     autostart = LaunchConfiguration('autostart')
     use_lifecycle_manager = LaunchConfiguration("use_lifecycle_manager")
     use_sim_time = LaunchConfiguration('use_sim_time')
@@ -33,7 +39,7 @@ def generate_launch_description():
         description='Use simulation/Gazebo clock')
     declare_slam_params_file_cmd = DeclareLaunchArgument(
         'slam_params_file',
-        default_value=os.path.join(get_package_share_directory("slam_toolbox"),
+        default_value=os.path.join(slam_launch_dir,
                                    'config', 'mapper_params_online_async.yaml'),
         description='Full path to the ROS2 parameters file to use for the slam_toolbox node')
 
@@ -78,6 +84,7 @@ def generate_launch_description():
 
     ld = LaunchDescription()
 
+    ld.add_action(colorized_output)
     ld.add_action(declare_autostart_cmd)
     ld.add_action(declare_use_lifecycle_manager)
     ld.add_action(declare_use_sim_time_argument)

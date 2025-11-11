@@ -32,18 +32,25 @@ CHASSIS_DRIVER_PID=$!
 ros2 launch lidar_driver lidar_driver_launch.py frame_id:=laser_Link angle_offset:=180.0 port_name:=/dev/ttyVIRT1 &
 LIDAR_DRIVER_PID=$!
 
+# 启动SLAM功能包!!!
+ros2 launch slam_launch online_async_launch.py use_sim_time:=False &
+SLAM_PID=$!
+
 # 等待功能包启动完成(可选)
+ros2 launch 
 sleep 1
 
 echo "可视化功能包已启动: PID $YUANGOD_DESCRIPTION_PID"
 echo "底盘功能包已启动: PID $CHASSIS_DRIVER_PID"
 echo "雷达功能包已启动: PID $LIDAR_DRIVER_PID"
+echo "SLAM功能包已启动: PID $SLAM_PID"
 echo -e "${RED}按 Ctrl+C 停止所有程序${RESET}"
 
 cleanup() {
     kill -- -$CHASSIS_DRIVER_PID
     kill -- -$YUANGOD_DESCRIPTION_PID
     kill -- -$LIDAR_DRIVER_PID
+    kill -- -$SLAM_PID
     . close_tcp2vsp.sh
 }
 
