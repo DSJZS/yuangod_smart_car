@@ -206,7 +206,7 @@ void ChassisNode::read_sensors_data( std::vector<uint8_t> &data, const size_t &s
     if( this->sfp_->get_command( &(this->ring_buffer_), command, &command_size) ) {
         /* 本项目传感器传数据帧的 数据字段长度 默认为 40, 效率为 40/43=93% */
         if( 40 == command_size ) {
-            RCLCPP_INFO(this->get_logger(), "获取了一帧数据( %u bytes )", command_size);
+            // RCLCPP_INFO(this->get_logger(), "获取了一帧数据( %u bytes )", command_size);
             this->publish_sensors_data( command, command_size);
         } else {
             /* 未知数据 */
@@ -326,8 +326,7 @@ void ChassisNode::publish_sensors_data( uint8_t* data, uint16_t size)
 void ChassisNode::send_command( const geometry_msgs::msg::Twist& msg)
 {
     /* debug */
-        RCLCPP_INFO( this->get_logger(), "linear x = %f, y = %f , z = %f", msg.linear.x,msg.linear.y,msg.linear.z);
-        RCLCPP_INFO( this->get_logger(), "angular x = %f, y = %f , z = %f", msg.angular.x,msg.angular.y,msg.angular.z);
+        RCLCPP_INFO( this->get_logger(), "linear x = %f, linear y = %f , angular z = %f", msg.linear.x,msg.linear.y,msg.angular.z);
     /* debug */
 
     uint8_t frame[64] = {0};
