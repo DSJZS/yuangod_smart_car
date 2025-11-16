@@ -36,6 +36,10 @@ LIDAR_DRIVER_PID=$!
 ros2 launch slam_launch online_async_launch.py use_sim_time:=False &
 SLAM_PID=$!
 
+# 启动导航功能包!!!
+ros2 launch nav2_launch navigation_launch.py use_sim_time:=False &
+NAV2_PID=$!
+
 # 等待功能包启动完成(可选)
 ros2 launch 
 sleep 1
@@ -44,6 +48,7 @@ echo "可视化功能包已启动: PID $YUANGOD_DESCRIPTION_PID"
 echo "底盘功能包已启动: PID $CHASSIS_DRIVER_PID"
 echo "雷达功能包已启动: PID $LIDAR_DRIVER_PID"
 echo "SLAM功能包已启动: PID $SLAM_PID"
+echo "导航功能包已启动: PID $NAV2_PID"
 echo -e "${RED}按 Ctrl+C 停止所有程序${RESET}"
 
 cleanup() {
@@ -51,6 +56,9 @@ cleanup() {
     kill -- -$YUANGOD_DESCRIPTION_PID
     kill -- -$LIDAR_DRIVER_PID
     kill -- -$SLAM_PID
+    kill -- -$NAV2_PID
+    echo "所有功能包已停止"
+    # 关闭TCP转虚拟串口
     . close_tcp2vsp.sh
 }
 
