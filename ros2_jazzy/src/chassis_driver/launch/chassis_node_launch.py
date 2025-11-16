@@ -86,5 +86,6 @@ def generate_launch_description():
         decl_imu_frame,
         decl_base_frame,
         chassis_node,
+        robot_localization_node,
         exit_event,
     ])
