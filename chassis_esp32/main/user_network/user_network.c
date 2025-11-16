@@ -30,15 +30,22 @@ static SemaphoreHandle_t socket_ros2_tcp_rwlock = NULL;
 
 /* 发送数据结构体 */
 typedef struct {
-    float x_speed;                  //  4
-    float y_speed;                  //  4
-    float z_speed;                  //  4
+    float x_linear_speed;           //  4
+    float y_linear_speed;           //  4
+    float z_angular_speed;          //  4
     float battery_capacity;         //  4
     mpu6050_acce_value_t imu_acce;  //  3*4=12
     mpu6050_gyro_value_t imu_gyro;  //  3*4=12
 } send_data_t;                      
+/* 接收数据结构体 */
+typedef struct {
+    float x_linear_speed;           //  4
+    float y_linear_speed;           //  4
+    float z_angular_speed;          //  4
+} receive_data_t;
 /* TCP传输buffer长度 */
-#define TCP_BUFFER_LEN      ( 4+4+4+4+12+12 )
+#define TCP_SEND_BUFFER_LEN      ( 4+4+4+4+12+12 )
+#define TCP_RECEIVE_BUFFER_LEN   ( 256 * 2 )    //  环形队列，读取缓存各一半
 /* Simple Frame Parser */
 #define SFP_FRAME_HEAD      ( 0xAA )
 static Simple_Frame sfp;
@@ -49,9 +56,9 @@ static void get_car_data( send_data_t* data)
     float x=0,y=0,z=0;   //  临时变量
     float battery=0;        //  临时变量     
     motor_get_speed( &x, &z);
-    data->x_speed = x;
-    data->y_speed = y;
-    data->z_speed = z;
+    data->x_linear_speed = x;
+    data->y_linear_speed = y;
+    data->z_angular_speed = z;
     battery_get_capacity(&battery);
     data->battery_capacity = battery;
     imu_get_data( &( data->imu_acce ), &( data->imu_gyro ) );
@@ -63,9 +70,9 @@ static void serialize_car_data( uint8_t* buffer, send_data_t* data)
     uint16_t index = 0, copied = 0;
 
     #define serialization(var) copied = sizeof( var ); memcpy( &( buffer[index] ), &var, copied); index += copied;
-    serialization( data->x_speed );
-    serialization( data->y_speed );
-    serialization( data->z_speed );
+    serialization( data->x_linear_speed );
+    serialization( data->y_linear_speed );
+    serialization( data->z_angular_speed );
     serialization( data->imu_acce.acce_x );
     serialization( data->imu_acce.acce_y );
     serialization( data->imu_acce.acce_z );
@@ -74,6 +81,17 @@ static void serialize_car_data( uint8_t* buffer, send_data_t* data)
     serialization( data->imu_gyro.gyro_z );
     serialization( data->battery_capacity );
     #undef serialization
+}
+
+static void deserialize_car_data( uint8_t* buffer, receive_data_t* data)
+{
+    uint16_t index = 0, copied = 0;
+
+    #define deserialization(var) copied = sizeof( var ); memcpy( &var, &( buffer[index] ), copied); index += copied;
+    deserialization( data->x_linear_speed );
+    deserialization( data->y_linear_speed );
+    deserialization( data->z_angular_speed );
+    #undef deserialization
 }
 
 /* 配置softap_sta */
@@ -143,11 +161,11 @@ static void network_send_task(void* param)
     TickType_t xLastWakeTime = xTaskGetTickCount();
 
     send_data_t data = { 0 };
-    uint8_t frame_buffer[TCP_BUFFER_LEN+3] = {0};
+    uint8_t frame_buffer[TCP_SEND_BUFFER_LEN+3] = {0};
     int err = 0;
     while(1)
     {
-        uint8_t data_buffer[TCP_BUFFER_LEN] = {0};
+        uint8_t data_buffer[TCP_SEND_BUFFER_LEN] = {0};
         uint16_t frame_size = 0;
         get_car_data( &data);
         serialize_car_data( data_buffer, &data);
@@ -170,9 +188,40 @@ static void network_receive_task(void* param)
 {
     const TickType_t xDelay = pdMS_TO_TICKS( TCP_RECEIVE_TASK_PERIOD );
     TickType_t xLastWakeTime = xTaskGetTickCount();
+    uint8_t data_buffer[TCP_RECEIVE_BUFFER_LEN/2] = {0};
+    int s_len = 0;
+
+    lwrb_t ring_buffer;
+    uint8_t rb_data[TCP_RECEIVE_BUFFER_LEN/2] = {0};
+    lwrb_init( &ring_buffer, rb_data, sizeof( rb_data ) );
+
+    uint16_t command_size = 0;
+    receive_data_t receive_data = { 0 };
+
     while(1)
     {
         xSemaphoreTakeRecursive( socket_ros2_tcp_rwlock , portMAX_DELAY);
+
+        /* 必须不阻塞的接收数据，如果阻塞会一直占用读写锁导致发送任务一直卡住 */
+        s_len = recv( socket_ros2_tcp, data_buffer, sizeof( data_buffer ), MSG_DONTWAIT);
+        
+        if (s_len > 0) {    /* 正常读取 */
+            lwrb_write( &ring_buffer, data_buffer, s_len );
+            //  处理数据
+            while( sfp_get_command( &sfp, &ring_buffer, data_buffer, &command_size) ) {
+                deserialize_car_data( data_buffer, &receive_data);
+                ESP_LOGI(TAG, "x: %.3f, z: %.3f", receive_data.x_linear_speed, receive_data.z_angular_speed);
+            }
+        } else if (s_len == 0) {    /* 对方关闭连接，尝试重连 */
+            // ESP_LOGW(TAG, "Connection closed");
+            network_socket_tcp_reconnect();
+        } else {
+            /* 这里不过多说明并简单处理，如果错误代码不为 EINTR、EAGAIN、EWOULDBLOCK，应该重连 */
+            if( !(errno == EINTR ||(errno == EAGAIN)||errno == EWOULDBLOCK) ) {
+                ESP_LOGE(TAG, "Error occurred during receiving: errno %d", errno);
+                network_socket_tcp_reconnect();
+            }
+        }
 
         xSemaphoreGiveRecursive( socket_ros2_tcp_rwlock );
 
