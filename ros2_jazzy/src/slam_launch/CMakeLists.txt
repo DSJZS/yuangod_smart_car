@@ -9,7 +9,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(slam_toolbox REQUIRED)
 
-install(DIRECTORY launch config
+install(DIRECTORY launch config map
   DESTINATION share/${PROJECT_NAME})
   
 if(BUILD_TESTING)
