@@ -1,46 +1,13 @@
 #include "./include/bdc_motor_control.h"
 #include "esp_log.h"
 #include "esp_timer.h"
+#include "low_pass_filter.h"
 
 #define BDC_MCPWM_TIMER_RESOLUTION_HZ 10000000 // 10MHz, 1 tick = 0.1us
 #define BDC_ENCODER_PCNT_HIGH_LIMIT   1000
 #define BDC_ENCODER_PCNT_LOW_LIMIT    -1000
 
 static const char* TAG = "from -> "__FILE__;
-
-/**
-  * @brief pid控制回调(只能在任务中使用，不要在中断中使用， 线程安全)
-  *
-  * @param args dc_motor_control_context_t类型数据
-  */
-// static void pid_loop_cb(void *args)
-// {
-//     dc_motor_control_context_t *ctx = (dc_motor_control_context_t *)args;
-//     xSemaphoreTakeRecursive( ctx->mutex, portMAX_DELAY);
-
-//     pcnt_unit_handle_t pcnt_unit = ctx->pcnt_encoder;
-//     pid_ctrl_block_handle_t pid_ctrl = ctx->pid_ctrl;
-//     bdc_motor_handle_t motor = ctx->motor;
-
-//     // get the result from rotary encoder
-//     int cur_pulse_count = 0;
-//     pcnt_unit_get_count(pcnt_unit, &cur_pulse_count);
-//     int real_pulses = cur_pulse_count - ctx->last_pulses;
-//     ctx->last_pulses = cur_pulse_count;
-//     ctx->report_pulses = real_pulses;
-
-//     // calculate the speed error
-//     float error = ctx->target_pulses - real_pulses;
-//     float new_speed = 0;
-
-//     // ESP_LOGI(TAG, "error:%f", error);
-
-//     // set the new speed
-//     pid_compute(pid_ctrl, error, &new_speed);
-//     bdc_motor_set_speed_with_direction(motor, new_speed);
-
-//     xSemaphoreGiveRecursive( ctx->mutex);
-// }
 
 /**
   * @brief 直流电机控制初始化(PWM配置， 4x正交解码器配置, PID配置)
@@ -109,7 +76,7 @@ void dc_motor_control_init( dc_motor_control_config_t* control_config, dc_motor_
         .kp = control_config->pid.kp,
         .ki = control_config->pid.ki,
         .kd = control_config->pid.kd,
-        .cal_type = PID_CAL_TYPE_INCREMENTAL,
+        .cal_type = PID_CAL_TYPE_POSITIONAL,
         .max_output   = (BDC_MCPWM_TIMER_RESOLUTION_HZ / control_config->pwm_freq_hz) - 1,
         .min_output   = 0,
         .max_integral = control_config->pid.max_integral,
@@ -179,10 +146,14 @@ int dc_motor_control_get_pulse_cnt( dc_motor_control_context_t* control_context)
     pcnt_unit_get_count(pcnt_unit, &cur_pulse_count);
     int real_pulses = cur_pulse_count - control_context->last_pulses;
     control_context->last_pulses = cur_pulse_count;
-    control_context->report_pulses = real_pulses;
+
+
+    /* 更新本论速度值(低通滤波) */
+    control_context->report_pulses = (int)low_pass_filter( 0.3f, (float)control_context->report_pulses, (float)real_pulses);
+    // control_context->report_pulses = real_pulses;
 
     xSemaphoreGiveRecursive( control_context->mutex);
-    return real_pulses;
+    return control_context->report_pulses;
 }
 
  /**
@@ -224,9 +195,13 @@ float dc_motor_control_pid_compute( dc_motor_control_context_t* control_context)
     float error = control_context->target_pulses - control_context->report_pulses;
     float new_speed = 0;
 
-    ESP_LOGD(TAG, "error:%f", error);
-
+    // ESP_LOGD(TAG, "error: %f", error);
+    
     pid_compute( control_context->pid_ctrl, error, &new_speed);
+    
+    ESP_LOGI(TAG, "error:%d - %d = %f -> %f", control_context->target_pulses, control_context->report_pulses, error, new_speed);
+    
     xSemaphoreGiveRecursive( control_context->mutex);
+    
     return new_speed;
 }

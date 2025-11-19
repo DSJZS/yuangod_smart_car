@@ -29,7 +29,7 @@ typedef struct {
 static float motor_pulses2mps(int pulses)
 {
     float mps = (float)pulses;
-    mps /= ( WHEEL_PER_ROUND ); //  减速比 50、 基础脉冲数(分辨率) 7ppr、 四倍频, 此布得圈数
+    mps /= ( WHEEL_PER_ROUND ); //  减速比 50、 基础脉冲数(分辨率) 7ppr、 四倍频, 此步得圈数
     mps *= WHEEL_PERIMETER; // 轮子直径42mm 求得周长，此步得位移
     mps /= ( MOTOR_TASK_PERIOD / 1000.0f ); //  时间单位为 MOTOR_TASK_PERIOD ，此步得速度
     return mps;
@@ -40,7 +40,7 @@ static int motor_mps2pulses(float mps)
     float pulses = mps;
     pulses *= ( MOTOR_TASK_PERIOD / 1000.0f );  //  //  时间单位为 MOTOR_TASK_PERIOD, 得到每时间单位位移
     pulses /= WHEEL_PERIMETER; // 轮子直径42mm 求得周长，此步得圈数
-    pulses *= ( WHEEL_PER_ROUND ); //  减速比 50、 基础脉冲数(分辨率) 7ppr、 四倍频, 此布得脉冲
+    pulses *= ( WHEEL_PER_ROUND ); //  减速比 50、 基础脉冲数(分辨率) 7ppr、 四倍频, 此步得脉冲
     return (int)pulses;
 }
 
@@ -66,10 +66,10 @@ static void motor_task(void* param)
         };
         xQueueOverwrite( motor_mailbox, &motor_data);
 
-        // new_speed = dc_motor_control_pid_compute( &left_motor_dev);
+        new_speed = dc_motor_control_pid_compute( &left_motor_dev);
         bdc_motor_set_speed_with_direction( &left_motor_dev, new_speed);
 
-        // new_speed = dc_motor_control_pid_compute( &right_motor_dev);
+        new_speed = dc_motor_control_pid_compute( &right_motor_dev);
         bdc_motor_set_speed_with_direction( &right_motor_dev, new_speed);
         
         vTaskDelayUntil(&xLastWakeTime, xDelay);
@@ -87,9 +87,9 @@ void motor_init(void)
         .encoder_gpio_a_num = GPIO_NUM_12,
         .encoder_gpio_b_num = GPIO_NUM_14,
         .pid = {
-            .kp = 40.0f,
+            .kp = 1.5f,
             .ki = 0.0f,
-            .kd = 100.0f,
+            .kd = 0.5f,
             .max_integral = 1000,
             .min_integral = -1000,
             .period_ms = 5,
@@ -102,9 +102,9 @@ void motor_init(void)
         .encoder_gpio_a_num = GPIO_NUM_20,
         .encoder_gpio_b_num = GPIO_NUM_19,
         .pid = {
-            .kp = 0.6,
-            .ki = 0.4,
-            .kd = 0.2,
+            .kp = 0.0f,
+            .ki = 0.0f,
+            .kd = 0.0f,
             .max_integral = 1000,
             .min_integral = -1000,
             .period_ms = 5,
@@ -149,4 +149,25 @@ void motor_get_speed( float* linear_x, float* angular_z)
 
     *linear_x = ( left_speed + right_speed ) / 2.0f;
     *angular_z = (right_speed - left_speed) / WHEEL_SEPARATION;
+}
+
+void motor_set_raw_speed( float left_speed, float right_speed)
+{
+    int left_target = 0, right_target = 0;
+
+    left_target = motor_mps2pulses(left_speed);
+    right_target = motor_mps2pulses(right_speed);
+
+    dc_motor_control_set_target( &left_motor_dev, left_target);
+    dc_motor_control_set_target( &right_motor_dev, right_target);
+}
+
+void motor_get_raw_speed( float* left_speed, float* right_speed)
+{
+    motor_data_t motor_data = {0};
+    
+    xQueuePeek( motor_mailbox, &motor_data, portMAX_DELAY);
+
+    *left_speed = motor_pulses2mps( motor_data.left_pulses );
+    *right_speed = motor_pulses2mps( motor_data.right_pulses );
 }
