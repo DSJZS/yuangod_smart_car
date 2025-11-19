@@ -19,6 +19,11 @@
 /* ROS2主机对应进程端口 */
 #define PORT            ( CONFIG_ROS2_SERVER_PORT )
 
+#ifdef DEBUG_MOTOR_PID
+float left_debug_target = 0;
+float right_debug_target = 0;
+#endif
+
 static const char* TAG = "from -> "__FILE__;
 
 /* 连接ROS2服务器的套接字 */
@@ -154,11 +159,7 @@ static uint8_t network_socket_init(void)
     socket_ros2_tcp_rwlock = xSemaphoreCreateRecursiveMutex();
     return network_socket_tcp_connect( );
 }
-#define DEBUG_MOTOR_PID
-#ifdef DEBUG_MOTOR_PID
-float left_debug_target = 0;
-float right_debug_target = 0;
-#endif
+
 static void network_send_task(void* param)
 {
     const TickType_t xDelay = pdMS_TO_TICKS( TCP_SEND_TASK_PERIOD );
@@ -229,7 +230,9 @@ static void network_receive_task(void* param)
                 if ( 12 == command_size) {
                     deserialize_car_data( data_buffer, &receive_data);
                     ESP_LOGI(TAG, "x: %.3f, z: %.3f", receive_data.x_linear_speed, receive_data.z_angular_speed);
-                } else if ( 9 == command_size) {
+                } 
+#ifdef DEBUG_MOTOR_PID 
+                else if ( 9 == command_size) {
                     if ( data_buffer[0] == 0x01 ) {
                         left_debug_target = *((float*)&data_buffer[1]);
                         right_debug_target = *((float*)&data_buffer[5]);
@@ -238,7 +241,9 @@ static void network_receive_task(void* param)
                     } 
                 }else if ( 1 == command_size ) {
                     ESP_LOGW(TAG, "收到测试包, 发出的单字节是否为: 0x%02X ?", data_buffer[0]);
-                } else {
+                } 
+#endif
+                else {
                     ESP_LOGE(TAG, "收到未知命令，长度 %d", command_size);
                 }
             }

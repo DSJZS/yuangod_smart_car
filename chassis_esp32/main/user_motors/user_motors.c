@@ -102,9 +102,9 @@ void motor_init(void)
         .encoder_gpio_a_num = GPIO_NUM_20,
         .encoder_gpio_b_num = GPIO_NUM_19,
         .pid = {
-            .kp = 0.0f,
+            .kp = 1.5f,
             .ki = 0.0f,
-            .kd = 0.0f,
+            .kd = 0.5f,
             .max_integral = 1000,
             .min_integral = -1000,
             .period_ms = 5,
