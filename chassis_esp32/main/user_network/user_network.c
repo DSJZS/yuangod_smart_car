@@ -229,7 +229,8 @@ static void network_receive_task(void* param)
             while( sfp_get_command( &sfp, &ring_buffer, data_buffer, &command_size) ) {
                 if ( 12 == command_size) {
                     deserialize_car_data( data_buffer, &receive_data);
-                    ESP_LOGI(TAG, "x: %.3f, z: %.3f", receive_data.x_linear_speed, receive_data.z_angular_speed);
+                    motor_set_speed( receive_data.x_linear_speed, receive_data.z_angular_speed );
+                    ESP_LOGD(TAG, "x: %.3f, z: %.3f", receive_data.x_linear_speed, receive_data.z_angular_speed);
                 } 
 #ifdef DEBUG_MOTOR_PID 
                 else if ( 9 == command_size) {
