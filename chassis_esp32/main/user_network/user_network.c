@@ -154,7 +154,11 @@ static uint8_t network_socket_init(void)
     socket_ros2_tcp_rwlock = xSemaphoreCreateRecursiveMutex();
     return network_socket_tcp_connect( );
 }
-
+#define DEBUG_MOTOR_PID
+#ifdef DEBUG_MOTOR_PID
+float left_debug_target = 0;
+float right_debug_target = 0;
+#endif
 static void network_send_task(void* param)
 {
     const TickType_t xDelay = pdMS_TO_TICKS( TCP_SEND_TASK_PERIOD );
@@ -163,10 +167,23 @@ static void network_send_task(void* param)
     send_data_t data = { 0 };
     uint8_t frame_buffer[TCP_SEND_BUFFER_LEN+3] = {0};
     int err = 0;
+
     while(1)
     {
+#ifdef DEBUG_MOTOR_PID 
+        float left_speed = 0, right_speed = 0;
+        motor_get_raw_speed( &left_speed, &right_speed);
+        char sstring[64] = {0};
+        sprintf( sstring, "%.4f,%.4f,%.4f,%.4f\n", left_debug_target, left_speed, right_debug_target, right_speed);
+        err = send( socket_ros2_tcp, sstring, strlen(sstring), 0);
+        if (err < 0) {
+            ESP_LOGE(TAG, "Error occurred during sending: errno %d", errno);
+            network_socket_tcp_reconnect();
+        }
+#else
         uint8_t data_buffer[TCP_SEND_BUFFER_LEN] = {0};
         uint16_t frame_size = 0;
+    
         get_car_data( &data);
         serialize_car_data( data_buffer, &data);
         frame_size = sfp_create_frame( &sfp, frame_buffer, data_buffer, sizeof( data_buffer ));
@@ -178,7 +195,7 @@ static void network_send_task(void* param)
             network_socket_tcp_reconnect();
         }
         xSemaphoreGiveRecursive( socket_ros2_tcp_rwlock );
-
+#endif
         vTaskDelayUntil(&xLastWakeTime, xDelay);
     }
     vTaskDelete(NULL);
@@ -209,8 +226,21 @@ static void network_receive_task(void* param)
             lwrb_write( &ring_buffer, data_buffer, s_len );
             //  处理数据
             while( sfp_get_command( &sfp, &ring_buffer, data_buffer, &command_size) ) {
-                deserialize_car_data( data_buffer, &receive_data);
-                ESP_LOGI(TAG, "x: %.3f, z: %.3f", receive_data.x_linear_speed, receive_data.z_angular_speed);
+                if ( 12 == command_size) {
+                    deserialize_car_data( data_buffer, &receive_data);
+                    ESP_LOGI(TAG, "x: %.3f, z: %.3f", receive_data.x_linear_speed, receive_data.z_angular_speed);
+                } else if ( 9 == command_size) {
+                    if ( data_buffer[0] == 0x01 ) {
+                        left_debug_target = *((float*)&data_buffer[1]);
+                        right_debug_target = *((float*)&data_buffer[5]);
+                        ESP_LOGW(TAG, "收到调试包, 判断为调试目标速度设置( L:%.4f R:%.4f)", left_debug_target, right_debug_target);
+                        motor_set_raw_speed( left_debug_target, right_debug_target );
+                    } 
+                }else if ( 1 == command_size ) {
+                    ESP_LOGW(TAG, "收到测试包, 发出的单字节是否为: 0x%02X ?", data_buffer[0]);
+                } else {
+                    ESP_LOGE(TAG, "收到未知命令，长度 %d", command_size);
+                }
             }
         } else if (s_len == 0) {    /* 对方关闭连接，尝试重连 */
             // ESP_LOGW(TAG, "Connection closed");
