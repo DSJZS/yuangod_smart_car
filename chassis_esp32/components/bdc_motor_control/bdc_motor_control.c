@@ -72,13 +72,16 @@ void dc_motor_control_init( dc_motor_control_config_t* control_config, dc_motor_
     ESP_LOGD( TAG, "初始化电机4倍频正交解码器中!!!");
 
     ESP_LOGD( TAG, "初始化电机PID控制块中!!!");
+
+    float max_output_abs = (float)( (BDC_MCPWM_TIMER_RESOLUTION_HZ / control_config->pwm_freq_hz) - 1 );
+
     pid_ctrl_parameter_t pid_runtime_param = {
         .kp = control_config->pid.kp,
         .ki = control_config->pid.ki,
         .kd = control_config->pid.kd,
         .cal_type = PID_CAL_TYPE_POSITIONAL,
-        .max_output   = (BDC_MCPWM_TIMER_RESOLUTION_HZ / control_config->pwm_freq_hz) - 1,
-        .min_output   = 0,
+        .max_output   =  max_output_abs,
+        .min_output   = -max_output_abs,
         .max_integral = control_config->pid.max_integral,
         .min_integral = control_config->pid.min_integral,
     };
@@ -196,10 +199,12 @@ float dc_motor_control_pid_compute( dc_motor_control_context_t* control_context)
     float new_speed = 0;
 
     // ESP_LOGD(TAG, "error: %f", error);
-    
+
     pid_compute( control_context->pid_ctrl, error, &new_speed);
+
+    // ESP_LOGD(TAG, "new_speed: %f", new_speed);
     
-    ESP_LOGI(TAG, "error:%d - %d = %f -> %f", control_context->target_pulses, control_context->report_pulses, error, new_speed);
+    // ESP_LOGD(TAG, "error:%d - %d = %f -> %f", control_context->target_pulses, control_context->report_pulses, error, new_speed);
     
     xSemaphoreGiveRecursive( control_context->mutex);
     

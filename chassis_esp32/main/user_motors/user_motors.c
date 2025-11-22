@@ -53,7 +53,7 @@ static void motor_task(void* param)
     {
         int left_pulses = 0, right_pulses = 0;
         
-        float new_speed = 0;
+        float left_speed = 0, right_speed = 0;
 
         left_pulses = dc_motor_control_get_pulse_cnt( &left_motor_dev);
         // ESP_LOGI(TAG, "left cnt = %d", left_pulses);
@@ -66,11 +66,13 @@ static void motor_task(void* param)
         };
         xQueueOverwrite( motor_mailbox, &motor_data);
 
-        new_speed = dc_motor_control_pid_compute( &left_motor_dev);
-        bdc_motor_set_speed_with_direction( &left_motor_dev, new_speed);
+        left_speed = dc_motor_control_pid_compute( &left_motor_dev);
+        bdc_motor_set_speed_with_direction( &left_motor_dev, left_speed);
 
-        new_speed = dc_motor_control_pid_compute( &right_motor_dev);
-        bdc_motor_set_speed_with_direction( &right_motor_dev, new_speed);
+        right_speed = dc_motor_control_pid_compute( &right_motor_dev);
+        bdc_motor_set_speed_with_direction( &right_motor_dev, right_speed);
+
+        // ESP_LOGD(TAG, "l: %.3f, r: %.3f", left_speed, right_speed);
         
         vTaskDelayUntil(&xLastWakeTime, xDelay);
     }
@@ -90,8 +92,8 @@ void motor_init(void)
             .kp = 1.5f,
             .ki = 0.0f,
             .kd = 0.5f,
-            .max_integral = 1000,
-            .min_integral = -1000,
+            .max_integral = 100,
+            .min_integral = -100,
             .period_ms = 5,
         }
     };
@@ -105,8 +107,8 @@ void motor_init(void)
             .kp = 1.5f,
             .ki = 0.0f,
             .kd = 0.5f,
-            .max_integral = 1000,
-            .min_integral = -1000,
+            .max_integral = 100,
+            .min_integral = -100,
             .period_ms = 5,
         }
     };
@@ -129,8 +131,12 @@ void motor_set_speed( float linear_x, float angular_z)
     left_speed = linear_x - angular_z * WHEEL_SEPARATION / 2.0f;
     right_speed = linear_x + angular_z * WHEEL_SEPARATION / 2.0f;
 
+    // ESP_LOGD(TAG, "l: %.3f, r: %.3f", left_speed, right_speed);
+
     left_target = motor_mps2pulses(left_speed);
     right_target = motor_mps2pulses(right_speed);
+
+    // ESP_LOGD(TAG, "l: %d, r: %d", left_target, right_target);
 
     dc_motor_control_set_target( &left_motor_dev, left_target);
     dc_motor_control_set_target( &right_motor_dev, right_target);

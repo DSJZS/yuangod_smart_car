@@ -19,6 +19,8 @@
 /* ROS2主机对应进程端口 */
 #define PORT            ( CONFIG_ROS2_SERVER_PORT )
 
+// #define DEBUG_MOTOR_PID
+
 #ifdef DEBUG_MOTOR_PID
 float left_debug_target = 0;
 float right_debug_target = 0;
@@ -160,6 +162,8 @@ static uint8_t network_socket_init(void)
     return network_socket_tcp_connect( );
 }
 
+
+
 static void network_send_task(void* param)
 {
     const TickType_t xDelay = pdMS_TO_TICKS( TCP_SEND_TASK_PERIOD );
@@ -230,7 +234,7 @@ static void network_receive_task(void* param)
                 if ( 12 == command_size) {
                     deserialize_car_data( data_buffer, &receive_data);
                     motor_set_speed( receive_data.x_linear_speed, receive_data.z_angular_speed );
-                    ESP_LOGD(TAG, "x: %.3f, z: %.3f", receive_data.x_linear_speed, receive_data.z_angular_speed);
+                    // ESP_LOGD(TAG, "x: %.3f, z: %.3f", receive_data.x_linear_speed, receive_data.z_angular_speed);
                 } 
 #ifdef DEBUG_MOTOR_PID 
                 else if ( 9 == command_size) {
