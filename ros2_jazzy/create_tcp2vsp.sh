@@ -1,4 +1,4 @@
-#!/bin/bash #脚本解释器为shell
+#!/bin/bash
 
 # 创建虚拟串口并监听TCP
 # 如果想要检查是否创建成功，测试方式可以参考README.md相关说明
