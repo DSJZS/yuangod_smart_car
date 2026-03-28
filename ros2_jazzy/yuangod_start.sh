@@ -1,4 +1,20 @@
-#!/bin/bash #脚本解释器为shell
+#!/bin/bash
+
+set -- $(getopt -qu s "$@")
+
+continuing_mapping_mode='n'
+
+while [ -n "$1" ]; do
+    opt="$1"
+    case "$opt" in
+        -s) echo "持续建图模式"
+            continuing_mapping_mode='y' ;;
+        --) shift
+            break ;;
+        *) echo "unknow option: $opt" ;;
+    esac
+    shift
+done
 
 # 重置颜色
 RESET='\033[0m'
@@ -28,6 +44,12 @@ YUANGOD_DESCRIPTION_PID=$!
 ros2 launch chassis_driver chassis_node_launch.py odom_topic_name:=yuangod/odom imu_topic_name:=yuangod/imu imu_frame:=pcb_link serial_device_name:=/dev/ttyVIRT0 &
 CHASSIS_DRIVER_PID=$!
 
+# 等待底盘功能包启动完成
+# 因为底盘功能包负责启动 robot_localization 节点，而SLAM和导航功能包都依赖该节点
+# 不等待启动完成。肯呢个出现 odom->base_link TF 变换丢失的问题
+echo "Wait for chassis_driver to start..."
+sleep 5
+
 # 启动雷达功能包!!!
 ros2 launch lidar_driver lidar_driver_launch.py frame_id:=laser_Link angle_offset:=180.0 port_name:=/dev/ttyVIRT1 &
 LIDAR_DRIVER_PID=$!
@@ -39,10 +61,6 @@ SLAM_PID=$!
 # 启动导航功能包!!!
 ros2 launch nav2_launch navigation_launch.py use_sim_time:=False &
 NAV2_PID=$!
-
-# 等待功能包启动完成(可选)
-ros2 launch 
-sleep 1
 
 echo "可视化功能包已启动: PID $YUANGOD_DESCRIPTION_PID"
 echo "底盘功能包已启动: PID $CHASSIS_DRIVER_PID"
